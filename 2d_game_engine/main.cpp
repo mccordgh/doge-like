@@ -1,15 +1,20 @@
-//
-//  main.cpp
-//  2d_game_engine
-//
-//  Created by Matthew mccord on 7/21/20.
-//  Copyright © 2020 MCCORDINATOR. All rights reserved.
-//
+#include "Game.hpp"
 
-#include <iostream>
+Game *game = nullptr;
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    game = new Game();
+    
+    game->init("McEngine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, true);
+    
+    while (game->running())
+    {
+        game->handleEvents();
+        game->update();
+        game->render();
+    }
+    
+    game->clean();
+    
     return 0;
 }
