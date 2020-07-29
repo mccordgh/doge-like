@@ -14,19 +14,19 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		96A735D524C804C600F0E181 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			buildActionMask = 12;
+			dstPath = /usr/share/man/man1;
 			dstSubfolderSpec = 0;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9628D03C24D135E300D5A975 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
 		96A735D724C804C600F0E181 /* 2d_game_engine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 2d_game_engine; sourceTree = BUILT_PRODUCTS_DIR; };
 		96A735DA24C804C600F0E181 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		96A735E224C8057C00F0E181 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		96A735E624C805E000F0E181 /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		96A735E724C805E000F0E181 /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		96A735E924C80E3900F0E181 /* 2d_game_engine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 2d_game_engine.entitlements; sourceTree = "<group>"; };
@@ -43,12 +43,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9628D03824D1330900D5A975 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				96A735DA24C804C600F0E181 /* main.cpp */,
+				96A735E624C805E000F0E181 /* Game.cpp */,
+				96A735E724C805E000F0E181 /* Game.hpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		9628D03924D1332300D5A975 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				9628D03C24D135E300D5A975 /* player.png */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
 		96A735CE24C804C600F0E181 = {
 			isa = PBXGroup;
 			children = (
 				96A735D924C804C600F0E181 /* 2d_game_engine */,
 				96A735D824C804C600F0E181 /* Products */,
-				96A735E124C8057C00F0E181 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,20 +80,11 @@
 		96A735D924C804C600F0E181 /* 2d_game_engine */ = {
 			isa = PBXGroup;
 			children = (
+				9628D03924D1332300D5A975 /* assets */,
+				9628D03824D1330900D5A975 /* src */,
 				96A735E924C80E3900F0E181 /* 2d_game_engine.entitlements */,
-				96A735DA24C804C600F0E181 /* main.cpp */,
-				96A735E624C805E000F0E181 /* Game.cpp */,
-				96A735E724C805E000F0E181 /* Game.hpp */,
 			);
 			path = 2d_game_engine;
-			sourceTree = "<group>";
-		};
-		96A735E124C8057C00F0E181 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				96A735E224C8057C00F0E181 /* SDL2.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,12 +272,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = /usr/local/include/SDL2;
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				OTHER_LDFLAGS = (
-					"-framework",
-					SDL2,
+					"-lSDL2_image",
+					"-lSDL2",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cool.mccordinator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -288,12 +297,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = /usr/local/include/SDL2;
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				OTHER_LDFLAGS = (
-					"-framework",
-					SDL2,
+					"-lSDL2_image",
+					"-lSDL2",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cool.mccordinator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
