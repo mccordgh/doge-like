@@ -1,0 +1,38 @@
+//
+//  TextureManager.cpp
+//  2d_game_engine
+//
+//  Created by Matthew mccord on 8/9/20.
+//  Copyright © 2020 MCCORDINATOR. All rights reserved.
+//
+
+#include "TextureManager.h"
+
+const char* assetsDir = "assets/";
+const char* spriteExtension = ".png";
+
+SDL_Texture* TextureManager::LoadTexture(const char* fileName)
+{
+    size_t bufferSize = strlen(assetsDir) + strlen(fileName) + strlen(spriteExtension) + 1;
+    char* fullpath = new char[bufferSize];
+    
+    strcpy(fullpath, assetsDir);
+    strcat(fullpath, fileName);
+    strcat(fullpath, spriteExtension);
+    
+    SDL_Surface* tempSurface = IMG_Load(fullpath);
+    //std::cout << "IMG_Load Error: " << IMG_GetError() << std::endl << std::endl;
+
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(Game::renderer, tempSurface);
+    
+    SDL_FreeSurface(tempSurface);
+    delete[] fullpath;
+    
+    return texture;
+}
+
+void TextureManager::Draw(SDL_Texture* tex, SDL_Rect src, SDL_Rect dest)
+{
+    SDL_RenderCopy(Game::renderer, tex, &src, &dest);
+}
+

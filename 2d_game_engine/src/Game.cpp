@@ -7,14 +7,15 @@
 //
 
 #include "Game.hpp"
+#include "GameObject.h"
+#include "TextureManager.h"
+#include "Map.h"
 
-SDL_Texture* playerTexture;
-SDL_Rect sourceRect, destinationRect;
+GameObject* player;
+GameObject* enemy;
+Map* map;
 
-enum Direction { NW, NE, SE, SW };
-
-int xx = 0, yy = 0;
-Direction dir = SE;
+SDL_Renderer* Game::renderer = nullptr;
 
 Game::Game() {}
 
@@ -56,13 +57,10 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
     
-    SDL_Surface* tmpSurface = IMG_Load("assets/player.png");
-    std::cout << "IMG_Load Error: " << IMG_GetError() << std::endl << std::endl;
-    playerTexture = SDL_CreateTextureFromSurface(renderer, tmpSurface);
-    SDL_FreeSurface(tmpSurface);
+    player = new GameObject("player", 32 * 12, 32 * 12);
+    enemy = new GameObject("enemy", 32 * 14, 32 * 12);
     
-    destinationRect.h = 64;
-    destinationRect.w = 64;
+    map = new Map();
 }
 
 void Game::handleEvents() {
@@ -82,77 +80,8 @@ void Game::handleEvents() {
 
 void Game::update()
 {
-    switch (dir) {
-        case NW:
-            xx -= 2;
-            yy -= 2;
-            
-            if (xx < 0) {
-                xx = 0;
-                dir = NE;
-                break;
-            }
-            
-            if (yy < 0) {
-                yy = 0;
-                dir = SW;
-            }
-            break;
-            
-        case NE:
-            xx += 2;
-            yy -= 2;
-            
-            if (xx > 800 - 64) {
-                xx = 800 - 64;
-                dir = NW;
-                break;
-            }
-            
-            if (yy < 0) {
-                yy = 0;
-                dir = SE;
-            }
-            break;
-            
-        case SE:
-            xx += 2;
-            yy += 2;
-            
-            if (xx > 800-64) {
-                xx = 800-64;
-                dir = SW;
-                break;
-            }
-            
-            if (yy > 600-64) {
-                yy = 600-64;
-                dir = NE;
-            }
-            break;
-            
-        case SW:
-            xx -= 2;
-            yy += 2;
-            
-            if (xx < 0) {
-                xx = 0;
-                dir = SE;
-                break;
-            }
-            
-            if (yy > 600-64) {
-                yy = 600-64;
-                dir = NW;
-            }
-            break;
-            
-        default:
-            break;
-    }
-    
-    destinationRect.x = xx;
-    destinationRect.y = yy;
+    player->Update();
+    enemy->Update();
 }
 
 void Game::render()
@@ -160,7 +89,10 @@ void Game::render()
     // Always first?
     SDL_RenderClear(renderer);
     
-    SDL_RenderCopy(renderer, playerTexture, NULL, &destinationRect);
+    map->DrawMap();
+    
+    player->Render();
+    enemy->Render();
     
     // Always last?
     SDL_RenderPresent(renderer);
@@ -168,6 +100,11 @@ void Game::render()
 
 void Game::clean()
 {
+    delete player;
+    delete enemy;
+    
+    delete map;
+    
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     

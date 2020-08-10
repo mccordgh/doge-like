@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		96A735DB24C804C600F0E181 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96A735DA24C804C600F0E181 /* main.cpp */; };
 		96A735E824C805E000F0E181 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96A735E624C805E000F0E181 /* Game.cpp */; };
+		96DD04BD24E0EB4D00E55C41 /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96DD04BC24E0EB4D00E55C41 /* TextureManager.cpp */; };
+		96DD04C024E0F2F900E55C41 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96DD04BF24E0F2F900E55C41 /* GameObject.cpp */; };
+		96DD04C424E11E9500E55C41 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96DD04C324E11E9500E55C41 /* Map.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +33,16 @@
 		96A735E624C805E000F0E181 /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		96A735E724C805E000F0E181 /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		96A735E924C80E3900F0E181 /* 2d_game_engine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 2d_game_engine.entitlements; sourceTree = "<group>"; };
+		96DD04BB24E0EA5400E55C41 /* TextureManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextureManager.h; sourceTree = "<group>"; };
+		96DD04BC24E0EB4D00E55C41 /* TextureManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TextureManager.cpp; sourceTree = "<group>"; };
+		96DD04BE24E0F22300E55C41 /* GameObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
+		96DD04BF24E0F2F900E55C41 /* GameObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
+		96DD04C124E1177800E55C41 /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
+		96DD04C224E1197300E55C41 /* Map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
+		96DD04C324E11E9500E55C41 /* Map.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
+		96DD04C524E123CF00E55C41 /* dirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dirt.png; sourceTree = "<group>"; };
+		96DD04C624E123D800E55C41 /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
+		96DD04C724E123E000E55C41 /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +62,12 @@
 				96A735DA24C804C600F0E181 /* main.cpp */,
 				96A735E624C805E000F0E181 /* Game.cpp */,
 				96A735E724C805E000F0E181 /* Game.hpp */,
+				96DD04BB24E0EA5400E55C41 /* TextureManager.h */,
+				96DD04BC24E0EB4D00E55C41 /* TextureManager.cpp */,
+				96DD04BE24E0F22300E55C41 /* GameObject.h */,
+				96DD04BF24E0F2F900E55C41 /* GameObject.cpp */,
+				96DD04C224E1197300E55C41 /* Map.h */,
+				96DD04C324E11E9500E55C41 /* Map.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -56,7 +75,11 @@
 		9628D03924D1332300D5A975 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				96DD04C524E123CF00E55C41 /* dirt.png */,
+				96DD04C124E1177800E55C41 /* enemy.png */,
+				96DD04C624E123D800E55C41 /* grass.png */,
 				9628D03C24D135E300D5A975 /* player.png */,
+				96DD04C724E123E000E55C41 /* water.png */,
 			);
 			path = assets;
 			sourceTree = "<group>";
@@ -144,8 +167,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96DD04C024E0F2F900E55C41 /* GameObject.cpp in Sources */,
+				96DD04C424E11E9500E55C41 /* Map.cpp in Sources */,
 				96A735DB24C804C600F0E181 /* main.cpp in Sources */,
 				96A735E824C805E000F0E181 /* Game.cpp in Sources */,
+				96DD04BD24E0EB4D00E55C41 /* TextureManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
