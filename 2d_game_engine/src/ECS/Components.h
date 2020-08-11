@@ -11,7 +11,7 @@
 
 #include "ECS.h"
 
-#include "PositionComponent.h"
+#include "TransformComponent.h"
 #include "SpriteComponent.h"
 
 #endif /* Components_h */

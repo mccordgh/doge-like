@@ -12,6 +12,7 @@
 		96DD04BD24E0EB4D00E55C41 /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96DD04BC24E0EB4D00E55C41 /* TextureManager.cpp */; };
 		96DD04C024E0F2F900E55C41 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96DD04BF24E0F2F900E55C41 /* GameObject.cpp */; };
 		96DD04C424E11E9500E55C41 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96DD04C324E11E9500E55C41 /* Map.cpp */; };
+		96FF624124E24A8500AB516A /* Vector2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96FF624024E24A8500AB516A /* Vector2D.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,7 +47,9 @@
 		96FF623A24E2423E00AB516A /* SpriteComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteComponent.h; sourceTree = "<group>"; };
 		96FF623B24E2423E00AB516A /* ECS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECS.h; sourceTree = "<group>"; };
 		96FF623C24E2423E00AB516A /* Components.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Components.h; sourceTree = "<group>"; };
-		96FF623D24E2423E00AB516A /* PositionComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionComponent.h; sourceTree = "<group>"; };
+		96FF623E24E2487B00AB516A /* TransformComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransformComponent.h; sourceTree = "<group>"; };
+		96FF623F24E2494A00AB516A /* Vector2D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vector2D.h; sourceTree = "<group>"; };
+		96FF624024E24A8500AB516A /* Vector2D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2D.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,8 @@
 				96DD04BF24E0F2F900E55C41 /* GameObject.cpp */,
 				96DD04C224E1197300E55C41 /* Map.h */,
 				96DD04C324E11E9500E55C41 /* Map.cpp */,
+				96FF623F24E2494A00AB516A /* Vector2D.h */,
+				96FF624024E24A8500AB516A /* Vector2D.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -121,7 +126,7 @@
 				96FF623A24E2423E00AB516A /* SpriteComponent.h */,
 				96FF623B24E2423E00AB516A /* ECS.h */,
 				96FF623C24E2423E00AB516A /* Components.h */,
-				96FF623D24E2423E00AB516A /* PositionComponent.h */,
+				96FF623E24E2487B00AB516A /* TransformComponent.h */,
 			);
 			path = ECS;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 			files = (
 				96DD04C024E0F2F900E55C41 /* GameObject.cpp in Sources */,
 				96DD04C424E11E9500E55C41 /* Map.cpp in Sources */,
+				96FF624124E24A8500AB516A /* Vector2D.cpp in Sources */,
 				96A735DB24C804C600F0E181 /* main.cpp in Sources */,
 				96A735E824C805E000F0E181 /* Game.cpp in Sources */,
 				96DD04BD24E0EB4D00E55C41 /* TextureManager.cpp in Sources */,
