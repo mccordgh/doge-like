@@ -50,6 +50,7 @@
 		96FF623E24E2487B00AB516A /* TransformComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransformComponent.h; sourceTree = "<group>"; };
 		96FF623F24E2494A00AB516A /* Vector2D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vector2D.h; sourceTree = "<group>"; };
 		96FF624024E24A8500AB516A /* Vector2D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2D.cpp; sourceTree = "<group>"; };
+		96FF624224E24FEF00AB516A /* KeyboardController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +128,7 @@
 				96FF623B24E2423E00AB516A /* ECS.h */,
 				96FF623C24E2423E00AB516A /* Components.h */,
 				96FF623E24E2487B00AB516A /* TransformComponent.h */,
+				96FF624224E24FEF00AB516A /* KeyboardController.h */,
 			);
 			path = ECS;
 			sourceTree = "<group>";

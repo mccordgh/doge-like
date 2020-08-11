@@ -6,8 +6,7 @@
 //  Copyright © 2020 MCCORDINATOR. All rights reserved.
 //
 
-#ifndef Game_hpp
-#define Game_hpp
+#pragma once
 
 #include "SDL2/SDL.h"
 #include "SDL_image.h"
@@ -29,12 +28,11 @@ public:
     bool running() { return isRunning; }
     
     static SDL_Renderer *renderer;
-
+    static SDL_Event event;
+    
 private:
     bool isRunning;
     int count = 0;
     
     SDL_Window *window;
 };
-
-#endif /* Game_hpp */

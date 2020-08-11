@@ -6,8 +6,7 @@
 //  Copyright © 2020 MCCORDINATOR. All rights reserved.
 //
 
-#ifndef ECS_h
-#define ECS_h
+#pragma once
 
 #include <iostream>
 #include <vector>
@@ -141,6 +140,3 @@ public:
 private:
     std::vector<std::unique_ptr<Entity>> entities;
 };
-
-
-#endif /* ECS_h */

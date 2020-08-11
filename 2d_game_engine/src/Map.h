@@ -6,8 +6,7 @@
 //  Copyright © 2020 MCCORDINATOR. All rights reserved.
 //
 
-#ifndef Map_h
-#define Map_h
+#pragma once
 
 #include "Game.hpp"
 
@@ -29,5 +28,3 @@ private:
     
     int map[20][25];
 };
-
-#endif /* Map_h */

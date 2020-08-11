@@ -6,12 +6,11 @@
 //  Copyright © 2020 MCCORDINATOR. All rights reserved.
 //
 
-#ifndef Components_h
-#define Components_h
+#pragma once
 
 #include "ECS.h"
 
 #include "TransformComponent.h"
+#include "KeyboardController.h"
 #include "SpriteComponent.h"
 
-#endif /* Components_h */

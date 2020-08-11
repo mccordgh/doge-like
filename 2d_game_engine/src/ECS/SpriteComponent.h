@@ -6,8 +6,7 @@
 //  Copyright © 2020 MCCORDINATOR. All rights reserved.
 //
 
-#ifndef SpriteComponent_h
-#define SpriteComponent_h
+#pragma once
 
 #include "Components.h"
 #include "SDL2/SDL.h"
@@ -54,5 +53,3 @@ private:
     SDL_Texture *texture;
     SDL_Rect srcRect, destRect;
 };
-
-#endif /* SpriteComponent_h */

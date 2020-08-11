@@ -6,8 +6,7 @@
 //  Copyright © 2020 MCCORDINATOR. All rights reserved.
 //
 
-#ifndef Vector2D_h
-#define Vector2D_h
+#pragma once
 
 #include <iostream>
 
@@ -37,5 +36,3 @@ public:
     
     friend std::ostream& operator<<(std::ostream& stream, const Vector2D& vec);
 };
-
-#endif /* Vector2D_h */

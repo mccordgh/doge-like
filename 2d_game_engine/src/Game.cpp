@@ -16,6 +16,7 @@ Map* map;
 Manager manager;
 
 SDL_Renderer* Game::renderer = nullptr;
+SDL_Event Game::event;
 
 auto& player(manager.addEntity());
 
@@ -62,10 +63,10 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     
     player.addComponent<TransformComponent>();
     player.addComponent<SpriteComponent>("player");
+    player.addComponent<KeyboardController>();
 }
 
 void Game::handleEvents() {
-    SDL_Event event;
     SDL_PollEvent(&event);
     
     switch (event.type)
@@ -84,9 +85,7 @@ void Game::update()
     manager.refresh();
     manager.update();
     
-    player.getComponent<TransformComponent>().position.Add(Vector2D(0, 5));
-    
-    if (player.getComponent<TransformComponent>().position.y == 200)
+    if (player.getComponent<TransformComponent>().position.y > 200)
     {
         player.getComponent<SpriteComponent>().setTexture("enemy");
     }

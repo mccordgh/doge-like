@@ -6,8 +6,7 @@
 //  Copyright © 2020 MCCORDINATOR. All rights reserved.
 //
 
-#ifndef TransformComponent_h
-#define TransformComponent_h
+#pragma once
 
 #include "Components.h"
 #include "Vector2D.h"
@@ -16,6 +15,9 @@ class TransformComponent : public Component
 {
 public:
     Vector2D position;
+    Vector2D velocity;
+    
+    int speed = 3;
     
     TransformComponent()
     {
@@ -29,10 +31,15 @@ public:
         position.y = y;
     }
     
+    void init() override
+    {
+        velocity.x = 0.0f;
+        velocity.y = 0.0f;
+    }
+    
     void update() override
     {
-        
+        position.x += velocity.x * speed;
+        position.y += velocity.y * speed;
     }
 };
-
-#endif /* TransformComponent_h */

@@ -6,8 +6,7 @@
 //  Copyright © 2020 MCCORDINATOR. All rights reserved.
 //
 
-#ifndef GameObject_h
-#define GameObject_h
+#pragma once
 
 #include "Game.hpp"
 
@@ -29,5 +28,3 @@ private:
     int xpos;
     int ypos;
 };
-
-#endif /* GameObject_h */
