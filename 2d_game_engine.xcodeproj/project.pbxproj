@@ -55,6 +55,7 @@
 		96FF624324E255D000AB516A /* ColliderComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColliderComponent.h; sourceTree = "<group>"; };
 		96FF624424E25B0F00AB516A /* Collision.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Collision.h; sourceTree = "<group>"; };
 		96FF624524E25B6900AB516A /* Collision.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Collision.cpp; sourceTree = "<group>"; };
+		96FF624824E2651C00AB516A /* TileComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TileComponent.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +137,7 @@
 				96FF624224E24FEF00AB516A /* KeyboardController.h */,
 				96FF623A24E2423E00AB516A /* SpriteComponent.h */,
 				96FF623E24E2487B00AB516A /* TransformComponent.h */,
+				96FF624824E2651C00AB516A /* TileComponent.h */,
 			);
 			path = ECS;
 			sourceTree = "<group>";
