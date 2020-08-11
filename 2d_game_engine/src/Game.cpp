@@ -6,21 +6,17 @@
 //  Copyright © 2020 MCCORDINATOR. All rights reserved.
 //
 
-#include "Components.h"
-#include "ECS.h"
+#include "ECS/Components.h"
 #include "Game.hpp"
-#include "GameObject.h"
 #include "TextureManager.h"
 #include "Map.h"
 
-GameObject* player;
-GameObject* enemy;
 Map* map;
+Manager manager;
 
 SDL_Renderer* Game::renderer = nullptr;
 
-Manager manager;
-auto& newPlayer(manager.addEntity());
+auto& player(manager.addEntity());
 
 Game::Game() {}
 Game::~Game() {}
@@ -61,13 +57,10 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
     
-    player = new GameObject("player", 32 * 12, 32 * 12);
-    enemy = new GameObject("enemy", 32 * 14, 32 * 12);
-    
     map = new Map();
     
-    newPlayer.addComponent<PositionComponent>();
-    newPlayer.getComponent<PositionComponent>().setPos(500, 500);
+    player.addComponent<PositionComponent>(0, 0);
+    player.addComponent<SpriteComponent>("player");
 }
 
 void Game::handleEvents() {
@@ -87,34 +80,22 @@ void Game::handleEvents() {
 
 void Game::update()
 {
-    player->Update();
-    enemy->Update();
-    
+    manager.refresh();
     manager.update();
-    
-    std::cout << newPlayer.getComponent<PositionComponent>().x() << ", "
-        << newPlayer.getComponent<PositionComponent>().y() << std::endl;
-}
+ }
 
 void Game::render()
 {
-    // Always first?
     SDL_RenderClear(renderer);
     
     map->DrawMap();
+    manager.draw();
     
-    player->Render();
-    enemy->Render();
-    
-    // Always last?
     SDL_RenderPresent(renderer);
 }
 
 void Game::clean()
 {
-    delete player;
-    delete enemy;
-    
     delete map;
     
     SDL_DestroyWindow(window);
