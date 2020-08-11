@@ -11,6 +11,7 @@
 #include "TextureManager.h"
 #include "Map.h"
 #include "Vector2D.h"
+#include "Collision.h"
 
 Map* map;
 Manager manager;
@@ -19,6 +20,7 @@ SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
 auto& player(manager.addEntity());
+auto& wall(manager.addEntity());
 
 Game::Game() {}
 Game::~Game() {}
@@ -61,9 +63,14 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     
     map = new Map();
     
-    player.addComponent<TransformComponent>();
+    player.addComponent<TransformComponent>(2);
     player.addComponent<SpriteComponent>("player");
     player.addComponent<KeyboardController>();
+    player.addComponent<ColliderComponent>("player");
+    
+    wall.addComponent<TransformComponent>(300.0f, 300.0f, 20, 300, 1);
+    wall.addComponent<SpriteComponent>("dirt");
+    wall.addComponent<ColliderComponent>("wall");
 }
 
 void Game::handleEvents() {
@@ -85,9 +92,12 @@ void Game::update()
     manager.refresh();
     manager.update();
     
-    if (player.getComponent<TransformComponent>().position.y > 200)
-    {
-        player.getComponent<SpriteComponent>().setTexture("enemy");
+    if (
+        Collision::AABB(player.getComponent<ColliderComponent>().collider, wall.getComponent<ColliderComponent>().collider)
+    ) {
+        player.getComponent<TransformComponent>().scale = 1;
+    } else {
+        player.getComponent<TransformComponent>().scale = 2;
     }
  }
 

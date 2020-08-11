@@ -11,6 +11,6 @@
 #include "ECS.h"
 
 #include "TransformComponent.h"
-#include "KeyboardController.h"
 #include "SpriteComponent.h"
-
+#include "KeyboardController.h"
+#include "ColliderComponent.h"
