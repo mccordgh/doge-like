@@ -6,6 +6,8 @@
 //  Copyright © 2020 MCCORDINATOR. All rights reserved.
 //
 
+#include "Components.h"
+#include "ECS.h"
 #include "Game.hpp"
 #include "GameObject.h"
 #include "TextureManager.h"
@@ -17,8 +19,10 @@ Map* map;
 
 SDL_Renderer* Game::renderer = nullptr;
 
-Game::Game() {}
+Manager manager;
+auto& newPlayer(manager.addEntity());
 
+Game::Game() {}
 Game::~Game() {}
 
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
@@ -61,6 +65,9 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     enemy = new GameObject("enemy", 32 * 14, 32 * 12);
     
     map = new Map();
+    
+    newPlayer.addComponent<PositionComponent>();
+    newPlayer.getComponent<PositionComponent>().setPos(500, 500);
 }
 
 void Game::handleEvents() {
@@ -82,6 +89,11 @@ void Game::update()
 {
     player->Update();
     enemy->Update();
+    
+    manager.update();
+    
+    std::cout << newPlayer.getComponent<PositionComponent>().x() << ", "
+        << newPlayer.getComponent<PositionComponent>().y() << std::endl;
 }
 
 void Game::render()

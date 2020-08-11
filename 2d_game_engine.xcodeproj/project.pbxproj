@@ -33,6 +33,8 @@
 		96A735E624C805E000F0E181 /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		96A735E724C805E000F0E181 /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		96A735E924C80E3900F0E181 /* 2d_game_engine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 2d_game_engine.entitlements; sourceTree = "<group>"; };
+		96AC05FF24E233DE00FC7814 /* ECS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECS.h; sourceTree = "<group>"; };
+		96AC060024E23B5500FC7814 /* Components.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Components.h; sourceTree = "<group>"; };
 		96DD04BB24E0EA5400E55C41 /* TextureManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextureManager.h; sourceTree = "<group>"; };
 		96DD04BC24E0EB4D00E55C41 /* TextureManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TextureManager.cpp; sourceTree = "<group>"; };
 		96DD04BE24E0F22300E55C41 /* GameObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
@@ -68,6 +70,8 @@
 				96DD04BF24E0F2F900E55C41 /* GameObject.cpp */,
 				96DD04C224E1197300E55C41 /* Map.h */,
 				96DD04C324E11E9500E55C41 /* Map.cpp */,
+				96AC05FF24E233DE00FC7814 /* ECS.h */,
+				96AC060024E23B5500FC7814 /* Components.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
