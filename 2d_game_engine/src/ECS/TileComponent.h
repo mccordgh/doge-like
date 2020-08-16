@@ -36,15 +36,15 @@ public:
         switch(tileID)
         {
             case 0:
-                name = "water";
+                name = strdup("tiles/grass");
                 break;
                 
             case 1:
-                name = "dirt";
+                name = strdup("tiles/dirt");
                 break;
                 
             case 2:
-                name = "grass";
+                name = strdup("tiles/water");
                 break;
         }
     }

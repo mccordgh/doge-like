@@ -13,7 +13,6 @@
 #include "Vector2D.h"
 #include "Collision.h"
 
-Map* map;
 Manager manager;
 
 SDL_Renderer* Game::renderer = nullptr;
@@ -21,12 +20,15 @@ SDL_Event Game::event;
 
 std::vector<ColliderComponent*> Game::colliders;
 
-auto& wall(manager.addEntity());
-auto& tile0(manager.addEntity());
-auto& tile1(manager.addEntity());
-auto& tile2(manager.addEntity());
-
 auto& player(manager.addEntity());
+
+enum groupLabels : std::size_t
+{
+    groupMap,
+    groupPlayers,
+    groupEnemies,
+    groupColliders
+};
 
 Game::Game() {}
 Game::~Game() {}
@@ -67,23 +69,13 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
     
-    map = new Map();
-    
-    tile0.addComponent<TileComponent>(200, 200, 32, 32, 0);
-    tile0.addComponent<ColliderComponent>("water");
-    tile1.addComponent<TileComponent>(300, 300, 32, 32, 1);
-    tile1.addComponent<ColliderComponent>("dirt");
-    tile2.addComponent<TileComponent>(400, 400, 32, 32, 2);
-    tile2.addComponent<ColliderComponent>("grass");
+    Map::LoadMap("assets/tiles/p16x16.map", 16, 16);
 
     player.addComponent<TransformComponent>(2);
     player.addComponent<SpriteComponent>("player");
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("player");
-    
-    wall.addComponent<TransformComponent>(500.0f, 300.0f, 20, 300, 1);
-    wall.addComponent<SpriteComponent>("dirt");
-    wall.addComponent<ColliderComponent>("wall");
+    player.addGroup(groupPlayers);
 }
 
 void Game::handleEvents() {
@@ -109,22 +101,39 @@ void Game::update()
     {
         Collision::AABB(player.getComponent<ColliderComponent>(), *cc);
     }
- }
+}
+
+auto& tiles(manager.getGroup(groupMap));
+auto& players(manager.getGroup(groupPlayers));
+auto& enemies(manager.getGroup(groupEnemies));
+auto& colliders(manager.getGroup(groupColliders));
 
 void Game::render()
 {
+    // clear renderer
     SDL_RenderClear(renderer);
     
-//    map->DrawMap();
-    manager.draw();
+    for (auto& t : tiles)
+    {
+        t->draw();
+    }
     
+    for (auto& e : enemies)
+    {
+        e->draw();
+    }
+    
+    for (auto& p : players)
+    {
+        p->draw();
+    }
+    
+    // present everything
     SDL_RenderPresent(renderer);
 }
 
 void Game::clean()
 {
-    delete map;
-    
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     
@@ -132,4 +141,12 @@ void Game::clean()
     
     std::cout << "Game Cleaned" << std::endl;
     std::cin.get();
+}
+
+void Game::AddTile(int id, int x, int y)
+{
+    auto& tile(manager.addEntity());
+    
+    tile.addComponent<TileComponent>(x, y, 32, 32, id);
+    tile.addGroup(groupMap);
 }
