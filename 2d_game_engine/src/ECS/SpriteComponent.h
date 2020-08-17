@@ -21,6 +21,15 @@ public:
         setTexture(name);
     }
     
+    SpriteComponent(const char* name, int mFrames, int mSpeed)
+    {
+        animated = true;
+        frames = mFrames;
+        speed = mSpeed;
+        
+        setTexture(name);
+    }
+    
     ~SpriteComponent()
     {
         SDL_DestroyTexture(texture);
@@ -42,6 +51,11 @@ public:
     
     void update() override
     {
+        if (animated)
+        {
+            srcRect.x = srcRect.w * static_cast<int>((SDL_GetTicks() / speed) % frames);
+        }
+        
         destRect.x = (int) transform->position.x;
         destRect.y = (int) transform->position.y;
         destRect.w = transform->width * transform->scale;
@@ -58,4 +72,8 @@ private:
     
     SDL_Texture *texture;
     SDL_Rect srcRect, destRect;
+    
+    bool animated = false;
+    int frames = 0;
+    int speed = 100;
 };
