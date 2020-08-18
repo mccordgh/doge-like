@@ -11,21 +11,33 @@
 #include "Components.h"
 #include "SDL2/SDL.h"
 #include "TextureManager.h"
+#include "Animation.h"
+#include <map>
 
 class SpriteComponent : public Component
 {
 public:
+    int animIndex = 0;
+    
+    std::map<const char*, Animation> animations;
+    
     SpriteComponent() = default;
     SpriteComponent(const char* name)
     {
         setTexture(name);
     }
     
-    SpriteComponent(const char* name, int mFrames, int mSpeed)
+    SpriteComponent(const char* name, bool isAnimated)
     {
-        animated = true;
-        frames = mFrames;
-        speed = mSpeed;
+        animated = isAnimated;
+        
+        Animation idle = Animation(0, 4, 200);
+        Animation walk = Animation(1, 4, 200);
+        
+        animations.emplace("idle", idle);
+        animations.emplace("walk", walk);
+        
+        Play("idle");
         
         setTexture(name);
     }
@@ -56,6 +68,8 @@ public:
             srcRect.x = srcRect.w * static_cast<int>((SDL_GetTicks() / speed) % frames);
         }
         
+        srcRect.y = animIndex * transform->height;
+        
         destRect.x = (int) transform->position.x;
         destRect.y = (int) transform->position.y;
         destRect.w = transform->width * transform->scale;
@@ -65,6 +79,13 @@ public:
     void draw() override
     {
         TextureManager::Draw(texture, srcRect, destRect);
+    }
+    
+    void Play(const char* animName)
+    {
+        frames = animations[animName].frames;
+        animIndex = animations[animName].index;
+        speed = animations[animName].speed;
     }
     
 private:

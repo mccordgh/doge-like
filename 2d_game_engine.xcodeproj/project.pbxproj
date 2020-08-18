@@ -30,13 +30,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9628D03C24D135E300D5A975 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
+		96249B2D24EC6BB50099BED8 /* Animation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
+		96249B2E24EC70700099BED8 /* player_anims.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_anims.png; sourceTree = "<group>"; };
 		968CAB6224E9F55300D2BDC6 /* dirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dirt.png; sourceTree = "<group>"; };
 		968CAB6424E9F55300D2BDC6 /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
 		968CAB6524E9F55300D2BDC6 /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
 		968CAB6624E9F59800D2BDC6 /* p16x16.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = p16x16.map; sourceTree = "<group>"; };
 		968CAB6724E9FDFC00D2BDC6 /* ECS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ECS.cpp; sourceTree = "<group>"; };
-		968CAB6924EA034800D2BDC6 /* player_idle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_idle.png; sourceTree = "<group>"; };
 		96A735D724C804C600F0E181 /* 2d_game_engine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 2d_game_engine; sourceTree = BUILT_PRODUCTS_DIR; };
 		96A735DA24C804C600F0E181 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		96A735E624C805E000F0E181 /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
@@ -99,8 +99,7 @@
 			children = (
 				968CAB6124E9F55300D2BDC6 /* tiles */,
 				96DD04C124E1177800E55C41 /* enemy.png */,
-				9628D03C24D135E300D5A975 /* player.png */,
-				968CAB6924EA034800D2BDC6 /* player_idle.png */,
+				96249B2E24EC70700099BED8 /* player_anims.png */,
 			);
 			path = assets;
 			sourceTree = "<group>";
@@ -153,6 +152,7 @@
 				96FF623A24E2423E00AB516A /* SpriteComponent.h */,
 				96FF623E24E2487B00AB516A /* TransformComponent.h */,
 				96FF624824E2651C00AB516A /* TileComponent.h */,
+				96249B2D24EC6BB50099BED8 /* Animation.h */,
 			);
 			path = ECS;
 			sourceTree = "<group>";

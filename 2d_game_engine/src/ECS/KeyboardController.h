@@ -16,9 +16,11 @@ class KeyboardController : public Component
 {
 public:
     TransformComponent *transform;
+    SpriteComponent *sprite;
     
     void init() override
     {
+        sprite = &entity->getComponent<SpriteComponent>();
         transform = &entity->getComponent<TransformComponent>();
     }
     
@@ -44,6 +46,10 @@ public:
                     transform->velocity.x = 1;
                     break;
             }
+            
+            if (transform->velocity.x != 0 || transform->velocity.y != 0) {
+                sprite->Play("walk");
+            }
         }
         
         if(Game::event.type == SDL_KEYUP)
@@ -65,6 +71,10 @@ public:
                case SDLK_d:
                    transform->velocity.x = 0;
                    break;
+            }
+            
+            if (transform->velocity.x == 0 && transform->velocity.y == 0) {
+                sprite->Play("idle");
             }
         }
     }
