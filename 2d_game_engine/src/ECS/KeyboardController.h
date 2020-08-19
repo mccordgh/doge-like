@@ -40,6 +40,8 @@ public:
                     
                 case SDLK_a:
                     transform->velocity.x = -1;
+                    sprite->spriteFlip = SDL_FLIP_HORIZONTAL;
+
                     break;
                     
                 case SDLK_d:
@@ -66,6 +68,8 @@ public:
                    
                case SDLK_a:
                    transform->velocity.x = 0;
+                   sprite->spriteFlip = SDL_FLIP_NONE;
+
                    break;
                    
                case SDLK_d:
