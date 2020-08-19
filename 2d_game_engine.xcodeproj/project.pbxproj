@@ -34,6 +34,7 @@
 		96249B2F24EC732A0099BED8 /* player_anims.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_anims.png; sourceTree = "<group>"; };
 		964548F924ECF5EC0072AD6D /* map1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = map1.txt; sourceTree = "<group>"; };
 		964548FA24ECF8670072AD6D /* terrain_sheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terrain_sheet.png; sourceTree = "<group>"; };
+		964548FB24ECF9DD0072AD6D /* p16x16.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = p16x16.map; sourceTree = "<group>"; };
 		968CAB6724E9FDFC00D2BDC6 /* ECS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ECS.cpp; sourceTree = "<group>"; };
 		96A735D724C804C600F0E181 /* 2d_game_engine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 2d_game_engine; sourceTree = BUILT_PRODUCTS_DIR; };
 		96A735DA24C804C600F0E181 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -104,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				964548FA24ECF8670072AD6D /* terrain_sheet.png */,
+				964548FB24ECF9DD0072AD6D /* p16x16.map */,
 				964548F924ECF5EC0072AD6D /* map1.txt */,
 			);
 			path = tiles;
