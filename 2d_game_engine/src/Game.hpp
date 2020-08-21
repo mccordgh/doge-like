@@ -35,9 +35,12 @@ public:
     static SDL_Renderer *renderer;
     static SDL_Event event;
     static std::vector<ColliderComponent*> colliders;
+    static bool isRunning;
+
+    // camera object maybe move to its own class
+    static SDL_Rect camera;
     
 private:
-    bool isRunning;
     int count = 0;
     
     SDL_Window *window;
