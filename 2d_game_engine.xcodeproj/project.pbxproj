@@ -30,6 +30,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9618AC1C24FDEBCA00CA5CEA /* collision_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collision_texture.png; sourceTree = "<group>"; };
 		96249B2D24EC6BB50099BED8 /* Animation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		96249B2F24EC732A0099BED8 /* player_anims.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_anims.png; sourceTree = "<group>"; };
 		964548F924ECF5EC0072AD6D /* map1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = map1.txt; sourceTree = "<group>"; };
@@ -106,6 +107,7 @@
 			children = (
 				964548FA24ECF8670072AD6D /* terrain_sheet.png */,
 				964548FB24ECF9DD0072AD6D /* p16x16.map */,
+				9618AC1C24FDEBCA00CA5CEA /* collision_texture.png */,
 				964548F924ECF5EC0072AD6D /* map1.txt */,
 			);
 			path = tiles;

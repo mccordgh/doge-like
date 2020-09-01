@@ -9,8 +9,15 @@
 #include "Map.h"
 #include "Game.hpp"
 #include <fstream>
+#include "ECS.h"
+#include "Components.h"
 
-Map::Map() {}
+extern Manager manager;
+
+Map::Map(const char* mfp, int ms, int tsize) : mapFilePath(mfp), mapScale(ms), tileSize(tsize)
+{
+    scaledSize = ms * tsize;
+}
 
 Map::~Map() {}
 
@@ -23,17 +30,39 @@ void Map::LoadMap(std::string path, int sizeX, int sizeY)
     
     int srcX, srcY;
     
-    for(int y = 0; y < sizeY; y += 1)
+    for (int y = 0; y < sizeY; y += 1)
     {
-        for(int x = 0; x < sizeX; x += 1)
+        for (int x = 0; x < sizeX; x += 1)
         {
             mapFile.get(c);
-            srcY = atoi(&c) * 32;
+            srcY = atoi(&c) * tileSize;
             
             mapFile.get(c);
-            srcX = atoi(&c) * 32;
+            srcX = atoi(&c) * tileSize;
             
-            Game::AddTile(srcX, srcY, x * 64, y * 64);
+            AddTile(srcX, srcY, x * scaledSize, y * scaledSize);
+            
+            // ignoring comma after each tile character and newline char after each line
+            mapFile.ignore();
+        }
+    }
+    
+    // ignore blank line between tiles and colliders
+    mapFile.ignore();
+    
+    for (int y = 0; y < sizeY; y += 1)
+    {
+        for (int x = 0; x < sizeX; x += 1)
+        {
+            mapFile.get(c);
+            
+            // 1 is collider 0 is nothing
+            if (c == '1')
+            {
+                auto& tcol(manager.addEntity());
+                tcol.addComponent<ColliderComponent>("terrain", x * scaledSize, y * scaledSize, scaledSize);
+                tcol.addGroup(Game::groupColliders);
+            }
             
             // ignoring comma after each tile character and newline char after each line
             mapFile.ignore();
@@ -41,4 +70,12 @@ void Map::LoadMap(std::string path, int sizeX, int sizeY)
     }
     
     mapFile.close();
+}
+
+void Map::AddTile(int srcX, int srcY, int xpos, int ypos)
+{
+    auto& tile(manager.addEntity());
+
+    tile.addComponent<TileComponent>(srcX, srcY, xpos, ypos, tileSize, mapScale, mapFilePath);
+    tile.addGroup(Game::groupMap);
 }

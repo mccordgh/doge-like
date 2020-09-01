@@ -94,8 +94,8 @@
             filePath = "2d_game_engine/src/Map.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "Map::LoadMap(path, sizeX, sizeY)"
             landmarkType = "7">
          </BreakpointContent>
