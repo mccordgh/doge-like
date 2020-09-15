@@ -74,5 +74,5 @@ public:
     }
     
 private:
-    bool drawTexture = false;
+    bool drawTexture = true;
 };

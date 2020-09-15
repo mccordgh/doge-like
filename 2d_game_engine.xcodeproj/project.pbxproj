@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9630B812251060060092FAA3 /* AssetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9630B811251060060092FAA3 /* AssetManager.cpp */; };
 		968CAB6824E9FDFC00D2BDC6 /* ECS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 968CAB6724E9FDFC00D2BDC6 /* ECS.cpp */; };
 		96A735DB24C804C600F0E181 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96A735DA24C804C600F0E181 /* main.cpp */; };
 		96A735E824C805E000F0E181 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96A735E624C805E000F0E181 /* Game.cpp */; };
@@ -33,6 +34,10 @@
 		9618AC1C24FDEBCA00CA5CEA /* collision_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collision_texture.png; sourceTree = "<group>"; };
 		96249B2D24EC6BB50099BED8 /* Animation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		96249B2F24EC732A0099BED8 /* player_anims.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_anims.png; sourceTree = "<group>"; };
+		9630B81025105F0E0092FAA3 /* AssetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetManager.h; sourceTree = "<group>"; };
+		9630B811251060060092FAA3 /* AssetManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AssetManager.cpp; sourceTree = "<group>"; };
+		9630B81425106A3D0092FAA3 /* ProjectileComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjectileComponent.h; sourceTree = "<group>"; };
+		9630B81525106B790092FAA3 /* projectile_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectile_test.png; sourceTree = "<group>"; };
 		964548F924ECF5EC0072AD6D /* map1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = map1.txt; sourceTree = "<group>"; };
 		964548FA24ECF8670072AD6D /* terrain_sheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terrain_sheet.png; sourceTree = "<group>"; };
 		964548FB24ECF9DD0072AD6D /* p16x16.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = p16x16.map; sourceTree = "<group>"; };
@@ -89,6 +94,8 @@
 				96FF624024E24A8500AB516A /* Vector2D.cpp */,
 				96FF624424E25B0F00AB516A /* Collision.h */,
 				96FF624524E25B6900AB516A /* Collision.cpp */,
+				9630B81025105F0E0092FAA3 /* AssetManager.h */,
+				9630B811251060060092FAA3 /* AssetManager.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -98,6 +105,7 @@
 			children = (
 				968CAB6124E9F55300D2BDC6 /* tiles */,
 				96249B2F24EC732A0099BED8 /* player_anims.png */,
+				9630B81525106B790092FAA3 /* projectile_test.png */,
 			);
 			path = assets;
 			sourceTree = "<group>";
@@ -151,6 +159,7 @@
 				96FF623E24E2487B00AB516A /* TransformComponent.h */,
 				96FF624824E2651C00AB516A /* TileComponent.h */,
 				96249B2D24EC6BB50099BED8 /* Animation.h */,
+				9630B81425106A3D0092FAA3 /* ProjectileComponent.h */,
 			);
 			path = ECS;
 			sourceTree = "<group>";
@@ -218,6 +227,7 @@
 				968CAB6824E9FDFC00D2BDC6 /* ECS.cpp in Sources */,
 				96FF624124E24A8500AB516A /* Vector2D.cpp in Sources */,
 				96A735DB24C804C600F0E181 /* main.cpp in Sources */,
+				9630B812251060060092FAA3 /* AssetManager.cpp in Sources */,
 				96A735E824C805E000F0E181 /* Game.cpp in Sources */,
 				96DD04BD24E0EB4D00E55C41 /* TextureManager.cpp in Sources */,
 			);

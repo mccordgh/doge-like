@@ -11,14 +11,14 @@
 const char* assetsDir = "assets/";
 const char* spriteExtension = ".png";
 
-SDL_Texture* TextureManager::LoadTexture(const char* fileName)
+SDL_Texture* TextureManager::LoadTexture(const char* fullpath)
 {
-    size_t bufferSize = strlen(assetsDir) + strlen(fileName) + strlen(spriteExtension) + 1;
-    char* fullpath = new char[bufferSize];
-    
-    strcpy(fullpath, assetsDir);
-    strcat(fullpath, fileName);
-    strcat(fullpath, spriteExtension);
+//    size_t bufferSize = strlen(assetsDir) + strlen(fileName) + strlen(spriteExtension) + 1;
+//    char* fullpath = new char[bufferSize];
+//
+//    strcpy(fullpath, assetsDir);
+//    strcat(fullpath, fileName);
+//    strcat(fullpath, spriteExtension);
     
     SDL_Surface* tempSurface = IMG_Load(fullpath);
     //std::cout << "IMG_Load Error: " << IMG_GetError() << std::endl << std::endl;
@@ -26,7 +26,7 @@ SDL_Texture* TextureManager::LoadTexture(const char* fileName)
     SDL_Texture* texture = SDL_CreateTextureFromSurface(Game::renderer, tempSurface);
     
     SDL_FreeSurface(tempSurface);
-    delete[] fullpath;
+//    delete[] fullpath;
     
     return texture;
 }

@@ -12,7 +12,9 @@
 #include "SDL_image.h"
 #include <iostream>
 #include <vector>
+#include "AssetManager.h"
 
+class AssetManager;
 class ColliderComponent;
 
 class Game
@@ -36,13 +38,15 @@ public:
 
     // camera object maybe move to its own class
     static SDL_Rect camera;
+    static AssetManager* assets;
     
     enum groupLabels : std::size_t
     {
+        groupColliders,
+        groupEnemies,
         groupMap,
         groupPlayers,
-        groupEnemies,
-        groupColliders
+        groupProjectiles,
     };
     
 private:

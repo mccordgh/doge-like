@@ -14,7 +14,7 @@
 
 extern Manager manager;
 
-Map::Map(const char* mfp, int ms, int tsize) : mapFilePath(mfp), mapScale(ms), tileSize(tsize)
+Map::Map(std::string texId, int ms, int tsize) : textureId(texId), mapScale(ms), tileSize(tsize)
 {
     scaledSize = ms * tsize;
 }
@@ -25,7 +25,6 @@ void Map::LoadMap(std::string path, int sizeX, int sizeY)
 {
     char c;
     std::fstream mapFile;
-    
     mapFile.open(path);
     
     int srcX, srcY;
@@ -76,6 +75,6 @@ void Map::AddTile(int srcX, int srcY, int xpos, int ypos)
 {
     auto& tile(manager.addEntity());
 
-    tile.addComponent<TileComponent>(srcX, srcY, xpos, ypos, tileSize, mapScale, mapFilePath);
+    tile.addComponent<TileComponent>(srcX, srcY, xpos, ypos, tileSize, mapScale, textureId);
     tile.addGroup(Game::groupMap);
 }

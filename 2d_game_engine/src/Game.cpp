@@ -21,6 +21,7 @@ SDL_Event Game::event;
 // camera object x, y, width of map, height of map
 SDL_Rect Game::camera = {0, 0, 800, 640};
 
+AssetManager* Game::assets = new AssetManager(&manager);
 Map* map;
 
 auto& player(manager.addEntity());
@@ -29,6 +30,8 @@ bool Game::isRunning = false;
 
 Game::Game() {}
 Game::~Game() {}
+
+// TODO FIX GAME CAMERA ITS OFF SOMEHOW THE MATH OR SOMETHING??
 
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
@@ -66,20 +69,27 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
     
-    map = new Map("tiles/terrain_sheet", 3, 32);
+    assets->AddTexture("terrain", "assets/tiles/terrain_sheet.png");
+    assets->AddTexture("player", "assets/player_anims.png");
+    assets->AddTexture("projectile", "assets/projectile_test.png");
+    
+    map = new Map("terrain", 3, 32);
     map->LoadMap("assets/tiles/map1.txt", 25, 20);
 
     player.addComponent<TransformComponent>(2);
-    player.addComponent<SpriteComponent>("player_anims", true);
+    player.addComponent<SpriteComponent>("player", true);
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("player");
     player.addGroup(groupPlayers);
+    
+    assets->CreateProjectile("projectile", Vector2D(350, 1100), Vector2D(2, 0), 200, 2);
 }
 
-auto& tiles(manager.getGroup(Game::groupMap));
-auto& players(manager.getGroup(Game::groupPlayers));
-auto& enemies(manager.getGroup(Game::groupEnemies));
 auto& colliders(manager.getGroup(Game::groupColliders));
+auto& enemies(manager.getGroup(Game::groupEnemies));
+auto& players(manager.getGroup(Game::groupPlayers));
+auto& projectiles(manager.getGroup(Game::groupProjectiles));
+auto& tiles(manager.getGroup(Game::groupMap));
 
 void Game::handleEvents() {
     SDL_PollEvent(&event);
@@ -110,6 +120,15 @@ void Game::update()
         if (Collision::AABB(cCollider, playerCollider))
         {
             player.getComponent<TransformComponent>().position = playerPos;
+        }
+    }
+    
+    for(auto& p : projectiles)
+    {
+        if (Collision::AABB(player.getComponent<ColliderComponent>().collider, p->getComponent<ColliderComponent>().collider))
+        {
+            std::cout << "Project HIT PLAYER ~DESTROYED" << std::endl;
+            p->destroy();
         }
     }
     
@@ -144,6 +163,11 @@ void Game::render()
     }
     
     for (auto& p : players)
+    {
+        p->draw();
+    }
+    
+    for (auto& p : projectiles)
     {
         p->draw();
     }

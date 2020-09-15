@@ -84,6 +84,10 @@ public:
             if (transform->velocity.x == 0 && transform->velocity.y == 0) {
                 sprite->Play("idle");
             }
+            else
+            {
+                std::cout << transform->position.x << ", " << transform->position.y << std::endl;
+            }
         }
     }
 };
