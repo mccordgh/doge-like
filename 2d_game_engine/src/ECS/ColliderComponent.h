@@ -46,7 +46,7 @@ public:
         
         transform = &entity->getComponent<TransformComponent>();
         
-        texture = TextureManager::LoadTexture("tiles/collision_texture");
+        texture = TextureManager::LoadTexture("assets/tiles/collision_texture.png");
         srcRect = { 0, 0, 32, 32 };
         destRect = { collider.x, collider.y, collider.w, collider.h};
     }

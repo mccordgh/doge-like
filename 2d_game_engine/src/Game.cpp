@@ -19,7 +19,7 @@ SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
 // camera object x, y, width of map, height of map
-SDL_Rect Game::camera = {0, 0, 800, 640};
+SDL_Rect Game::camera = {0, 0, 25*32, 20*32};
 
 AssetManager* Game::assets = new AssetManager(&manager);
 Map* map;
@@ -69,9 +69,9 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
     
-    assets->AddTexture("terrain", "2d_game_engine/assets/tiles/terrain_sheet_test1.png");
-    assets->AddTexture("player", "2d_game_engine/assets/charlie_walk_idle_test1_32x26.png");
-    assets->AddTexture("projectile", "2d_game_engine/assets/projectile_test.png");
+    assets->AddTexture("terrain", "assets/tiles/terrain_sheet_test1.png");
+    assets->AddTexture("player", "assets/charlie_walk_idle_test1_32x26.png");
+//    assets->AddTexture("projectile", "assets/projectile_test.png");
     
     map = new Map("terrain", 3, 32);
     map->LoadMap("assets/tiles/doggo_island_test1.map", 25, 20);
@@ -82,7 +82,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     player.addComponent<ColliderComponent>("player");
     player.addGroup(groupPlayers);
     
-    assets->CreateProjectile("projectile", Vector2D(350, 1100), Vector2D(2, 0), 200, 2);
+//    assets->CreateProjectile("projectile", Vector2D(350, 1100), Vector2D(2, 0), 200, 2);
 }
 
 auto& colliders(manager.getGroup(Game::groupColliders));
