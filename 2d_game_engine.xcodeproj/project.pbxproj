@@ -33,14 +33,10 @@
 /* Begin PBXFileReference section */
 		9618AC1C24FDEBCA00CA5CEA /* collision_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collision_texture.png; sourceTree = "<group>"; };
 		96249B2D24EC6BB50099BED8 /* Animation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
-		96249B2F24EC732A0099BED8 /* player_anims.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_anims.png; sourceTree = "<group>"; };
 		9630B81025105F0E0092FAA3 /* AssetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetManager.h; sourceTree = "<group>"; };
 		9630B811251060060092FAA3 /* AssetManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AssetManager.cpp; sourceTree = "<group>"; };
 		9630B81425106A3D0092FAA3 /* ProjectileComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjectileComponent.h; sourceTree = "<group>"; };
 		9630B81525106B790092FAA3 /* projectile_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectile_test.png; sourceTree = "<group>"; };
-		964548F924ECF5EC0072AD6D /* map1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = map1.txt; sourceTree = "<group>"; };
-		964548FA24ECF8670072AD6D /* terrain_sheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terrain_sheet.png; sourceTree = "<group>"; };
-		964548FB24ECF9DD0072AD6D /* p16x16.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = p16x16.map; sourceTree = "<group>"; };
 		968CAB6724E9FDFC00D2BDC6 /* ECS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ECS.cpp; sourceTree = "<group>"; };
 		96A735D724C804C600F0E181 /* 2d_game_engine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 2d_game_engine; sourceTree = BUILT_PRODUCTS_DIR; };
 		96A735DA24C804C600F0E181 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -53,6 +49,10 @@
 		96DD04BF24E0F2F900E55C41 /* GameObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
 		96DD04C224E1197300E55C41 /* Map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
 		96DD04C324E11E9500E55C41 /* Map.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
+		96FC36DA25170609007D414B /* sword_1_40x16t.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sword_1_40x16t.png; path = 2d_game_engine/assets/sword_1_40x16t.png; sourceTree = SOURCE_ROOT; };
+		96FC36DD25170833007D414B /* charlie_walk_idle_test1_32x26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = charlie_walk_idle_test1_32x26.png; sourceTree = "<group>"; };
+		96FC36DF251708F2007D414B /* terrain_sheet_test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terrain_sheet_test1.png; sourceTree = "<group>"; };
+		96FC36E0251708F2007D414B /* doggo_island_test1.map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = doggo_island_test1.map.txt; sourceTree = "<group>"; };
 		96FF623A24E2423E00AB516A /* SpriteComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteComponent.h; sourceTree = "<group>"; };
 		96FF623B24E2423E00AB516A /* ECS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECS.h; sourceTree = "<group>"; };
 		96FF623C24E2423E00AB516A /* Components.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Components.h; sourceTree = "<group>"; };
@@ -104,7 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				968CAB6124E9F55300D2BDC6 /* tiles */,
-				96249B2F24EC732A0099BED8 /* player_anims.png */,
+				96FC36DA25170609007D414B /* sword_1_40x16t.png */,
+				96FC36DD25170833007D414B /* charlie_walk_idle_test1_32x26.png */,
 				9630B81525106B790092FAA3 /* projectile_test.png */,
 			);
 			path = assets;
@@ -113,10 +114,9 @@
 		968CAB6124E9F55300D2BDC6 /* tiles */ = {
 			isa = PBXGroup;
 			children = (
-				964548FA24ECF8670072AD6D /* terrain_sheet.png */,
-				964548FB24ECF9DD0072AD6D /* p16x16.map */,
+				96FC36E0251708F2007D414B /* doggo_island_test1.map.txt */,
+				96FC36DF251708F2007D414B /* terrain_sheet_test1.png */,
 				9618AC1C24FDEBCA00CA5CEA /* collision_texture.png */,
-				964548F924ECF5EC0072AD6D /* map1.txt */,
 			);
 			path = tiles;
 			sourceTree = "<group>";

@@ -21,7 +21,7 @@ SDL_Texture* TextureManager::LoadTexture(const char* fullpath)
 //    strcat(fullpath, spriteExtension);
     
     SDL_Surface* tempSurface = IMG_Load(fullpath);
-    //std::cout << "IMG_Load Error: " << IMG_GetError() << std::endl << std::endl;
+    std::cout << "IMG_Load Error: " << IMG_GetError() << std::endl << std::endl;
 
     SDL_Texture* texture = SDL_CreateTextureFromSurface(Game::renderer, tempSurface);
     

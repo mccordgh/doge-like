@@ -69,14 +69,14 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
     
-    assets->AddTexture("terrain", "assets/tiles/terrain_sheet.png");
-    assets->AddTexture("player", "assets/player_anims.png");
-    assets->AddTexture("projectile", "assets/projectile_test.png");
+    assets->AddTexture("terrain", "2d_game_engine/assets/tiles/terrain_sheet_test1.png");
+    assets->AddTexture("player", "2d_game_engine/assets/charlie_walk_idle_test1_32x26.png");
+    assets->AddTexture("projectile", "2d_game_engine/assets/projectile_test.png");
     
     map = new Map("terrain", 3, 32);
-    map->LoadMap("assets/tiles/map1.txt", 25, 20);
+    map->LoadMap("assets/tiles/doggo_island_test1.map", 25, 20);
 
-    player.addComponent<TransformComponent>(2);
+    player.addComponent<TransformComponent>(300, 1200, 32, 26, 2);
     player.addComponent<SpriteComponent>("player", true);
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("player");
