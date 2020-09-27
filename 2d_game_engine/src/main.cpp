@@ -9,7 +9,7 @@ int main(int argc, const char * argv[]) {
     int frameTime;
     
     game = new Game();
-    game->init("McEngine C++", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, false);
+    game->init("Dogelike C++", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, false);
     
     while (game->running())
     {

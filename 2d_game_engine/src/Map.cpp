@@ -9,8 +9,8 @@
 #include "Map.h"
 #include "Game.hpp"
 #include <fstream>
-#include "ECS.h"
-#include "Components.h"
+#include "ECS/ECS.h"
+#include "ECS/Components.h"
 
 extern Manager manager;
 

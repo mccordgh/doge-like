@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "Game.hpp"
+#include "../Game.hpp"
 #include "ECS.h"
 #include "Components.h"
 
