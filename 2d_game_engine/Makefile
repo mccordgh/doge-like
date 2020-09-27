@@ -4,17 +4,18 @@
 
 # Compiler settings - Can be customized.
 CC = g++
-CXXFLAGS = -std=c++11 -Wall $(sdl-config --cflags) -g
-LDFLAGS = $(sdl-config --libs)
+CXXFLAGS = -std=c++11 -Wall -g
+LDFLAGS = -lSDL2 -lSDL2_image -lGL -lGLEW
 
 # Makefile settings - Can be customized.
-APPNAME = dogelike
+APPNAME = dogelike 
 EXT = .cpp
 SRCDIR = src
+ECSDIR = ECS
 OBJDIR = obj
 
 ############## Do not change anything from here downwards! #############
-SRC = $(wildcard $(SRCDIR)/*$(EXT))
+SRC = $(wildcard $(SRCDIR)/*$(EXT))  $(wildcard $(SRCDIR)/$(ECSDIR)/*$(EXT))
 OBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)/%.o)
 DEP = $(OBJ:$(OBJDIR)/%.o=%.d)
 # UNIX-based OS variables & settings
@@ -44,6 +45,7 @@ $(APPNAME): $(OBJ)
 
 # Building rule for .o files and its .c/.cpp in combination with all .h
 $(OBJDIR)/%.o: $(SRCDIR)/%$(EXT)
+	@mkdir -p $(OBJDIR)/$(ECSDIR)
 	$(CC) $(CXXFLAGS) -o $@ -c $<
 
 ################### Cleaning rules for Unix-based OS ###################
