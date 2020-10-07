@@ -3,3 +3,5 @@
 This is me attempting to make a 2d game engine in c++ leveraging all the awesomeness that is SDL2.
 
 I'm using XCode on a mac for this project as of now.
+
+Just kidding visual studio code now on Linux and soon windows/mac :)

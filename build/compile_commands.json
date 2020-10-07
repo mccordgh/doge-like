@@ -1,0 +1,47 @@
+[
+{
+  "directory": "/home/mccordinator/dev/cpp/games/doge-like/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/mccordinator/dev/cpp/games/doge-like/src -I/home/mccordinator/dev/cpp/games/doge-like/src/ECS   -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -O2 -g -DNDEBUG   -o CMakeFiles/doge-like.dir/src/main.cpp.o -c /home/mccordinator/dev/cpp/games/doge-like/src/main.cpp",
+  "file": "/home/mccordinator/dev/cpp/games/doge-like/src/main.cpp"
+},
+{
+  "directory": "/home/mccordinator/dev/cpp/games/doge-like/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/mccordinator/dev/cpp/games/doge-like/src -I/home/mccordinator/dev/cpp/games/doge-like/src/ECS   -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -O2 -g -DNDEBUG   -o CMakeFiles/doge-like.dir/src/AssetManager.cpp.o -c /home/mccordinator/dev/cpp/games/doge-like/src/AssetManager.cpp",
+  "file": "/home/mccordinator/dev/cpp/games/doge-like/src/AssetManager.cpp"
+},
+{
+  "directory": "/home/mccordinator/dev/cpp/games/doge-like/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/mccordinator/dev/cpp/games/doge-like/src -I/home/mccordinator/dev/cpp/games/doge-like/src/ECS   -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -O2 -g -DNDEBUG   -o CMakeFiles/doge-like.dir/src/Collision.cpp.o -c /home/mccordinator/dev/cpp/games/doge-like/src/Collision.cpp",
+  "file": "/home/mccordinator/dev/cpp/games/doge-like/src/Collision.cpp"
+},
+{
+  "directory": "/home/mccordinator/dev/cpp/games/doge-like/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/mccordinator/dev/cpp/games/doge-like/src -I/home/mccordinator/dev/cpp/games/doge-like/src/ECS   -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -O2 -g -DNDEBUG   -o CMakeFiles/doge-like.dir/src/Game.cpp.o -c /home/mccordinator/dev/cpp/games/doge-like/src/Game.cpp",
+  "file": "/home/mccordinator/dev/cpp/games/doge-like/src/Game.cpp"
+},
+{
+  "directory": "/home/mccordinator/dev/cpp/games/doge-like/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/mccordinator/dev/cpp/games/doge-like/src -I/home/mccordinator/dev/cpp/games/doge-like/src/ECS   -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -O2 -g -DNDEBUG   -o CMakeFiles/doge-like.dir/src/GameObject.cpp.o -c /home/mccordinator/dev/cpp/games/doge-like/src/GameObject.cpp",
+  "file": "/home/mccordinator/dev/cpp/games/doge-like/src/GameObject.cpp"
+},
+{
+  "directory": "/home/mccordinator/dev/cpp/games/doge-like/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/mccordinator/dev/cpp/games/doge-like/src -I/home/mccordinator/dev/cpp/games/doge-like/src/ECS   -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -O2 -g -DNDEBUG   -o CMakeFiles/doge-like.dir/src/Map.cpp.o -c /home/mccordinator/dev/cpp/games/doge-like/src/Map.cpp",
+  "file": "/home/mccordinator/dev/cpp/games/doge-like/src/Map.cpp"
+},
+{
+  "directory": "/home/mccordinator/dev/cpp/games/doge-like/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/mccordinator/dev/cpp/games/doge-like/src -I/home/mccordinator/dev/cpp/games/doge-like/src/ECS   -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -O2 -g -DNDEBUG   -o CMakeFiles/doge-like.dir/src/TextureManager.cpp.o -c /home/mccordinator/dev/cpp/games/doge-like/src/TextureManager.cpp",
+  "file": "/home/mccordinator/dev/cpp/games/doge-like/src/TextureManager.cpp"
+},
+{
+  "directory": "/home/mccordinator/dev/cpp/games/doge-like/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/mccordinator/dev/cpp/games/doge-like/src -I/home/mccordinator/dev/cpp/games/doge-like/src/ECS   -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -O2 -g -DNDEBUG   -o CMakeFiles/doge-like.dir/src/Vector2D.cpp.o -c /home/mccordinator/dev/cpp/games/doge-like/src/Vector2D.cpp",
+  "file": "/home/mccordinator/dev/cpp/games/doge-like/src/Vector2D.cpp"
+},
+{
+  "directory": "/home/mccordinator/dev/cpp/games/doge-like/build",
+  "command": "/bin/g++-9   -I/usr/include/SDL2 -I/home/mccordinator/dev/cpp/games/doge-like/src -I/home/mccordinator/dev/cpp/games/doge-like/src/ECS   -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -O2 -g -DNDEBUG   -o CMakeFiles/doge-like.dir/src/ECS/ECS.cpp.o -c /home/mccordinator/dev/cpp/games/doge-like/src/ECS/ECS.cpp",
+  "file": "/home/mccordinator/dev/cpp/games/doge-like/src/ECS/ECS.cpp"
+}
+]
