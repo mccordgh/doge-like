@@ -32,25 +32,31 @@ public:
             {
                 case SDLK_w:
                     transform->velocity.y = -1;
+
+                    sprite->spriteFlip = SDL_FLIP_NONE;
+                    sprite->Play("walk_up");
                     break;
                     
                 case SDLK_s:
                     transform->velocity.y = 1;
+
+                    sprite->spriteFlip = SDL_FLIP_NONE;
+                    sprite->Play("walk_down");
                     break;
                     
                 case SDLK_a:
                     transform->velocity.x = -1;
-                    sprite->spriteFlip = SDL_FLIP_HORIZONTAL;
 
+                    sprite->spriteFlip = SDL_FLIP_NONE;
+                    sprite->Play("walk_left");
                     break;
                     
                 case SDLK_d:
                     transform->velocity.x = 1;
+                    
+                    sprite->Play("walk_left");
+                    sprite->spriteFlip = SDL_FLIP_HORIZONTAL;
                     break;
-            }
-            
-            if (transform->velocity.x != 0 || transform->velocity.y != 0) {
-                sprite->Play("walk");
             }
         }
         
@@ -68,8 +74,6 @@ public:
                    
                 case SDLK_a:
                     transform->velocity.x = 0;
-                    sprite->spriteFlip = SDL_FLIP_NONE;
-                    
                     break;
                    
                 case SDLK_d:
@@ -80,8 +84,9 @@ public:
                     Game::isRunning = false;
                     break;
             }
-            
+
             if (transform->velocity.x == 0 && transform->velocity.y == 0) {
+                sprite->spriteFlip = SDL_FLIP_NONE;
                 sprite->Play("idle");
             }
         }

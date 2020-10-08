@@ -14,9 +14,11 @@ CMakeFiles/doge-like.dir/src/AssetManager.cpp.o
  /home/mccordinator/dev/cpp/games/doge-like/src/ECS/TileComponent.h
  /home/mccordinator/dev/cpp/games/doge-like/src/ECS/TransformComponent.h
  /home/mccordinator/dev/cpp/games/doge-like/src/Game.hpp
+ /home/mccordinator/dev/cpp/games/doge-like/src/GameConstants.h
  /home/mccordinator/dev/cpp/games/doge-like/src/TextureManager.h
  /home/mccordinator/dev/cpp/games/doge-like/src/Vector2D.h
 CMakeFiles/doge-like.dir/src/Collision.cpp.o
+ ../src/GameConstants.h
  /home/mccordinator/dev/cpp/games/doge-like/src/AssetManager.h
  /home/mccordinator/dev/cpp/games/doge-like/src/Collision.cpp
  /home/mccordinator/dev/cpp/games/doge-like/src/Collision.h
@@ -33,6 +35,7 @@ CMakeFiles/doge-like.dir/src/Collision.cpp.o
  /home/mccordinator/dev/cpp/games/doge-like/src/TextureManager.h
  /home/mccordinator/dev/cpp/games/doge-like/src/Vector2D.h
 CMakeFiles/doge-like.dir/src/ECS/ECS.cpp.o
+ ../src/GameConstants.h
  /home/mccordinator/dev/cpp/games/doge-like/src/ECS/ECS.cpp
  /home/mccordinator/dev/cpp/games/doge-like/src/ECS/ECS.h
 CMakeFiles/doge-like.dir/src/Game.cpp.o
@@ -53,6 +56,7 @@ CMakeFiles/doge-like.dir/src/Game.cpp.o
  /home/mccordinator/dev/cpp/games/doge-like/src/ECS/ECS.h
  /home/mccordinator/dev/cpp/games/doge-like/src/Game.cpp
  /home/mccordinator/dev/cpp/games/doge-like/src/Game.hpp
+ /home/mccordinator/dev/cpp/games/doge-like/src/GameConstants.h
  /home/mccordinator/dev/cpp/games/doge-like/src/Map.h
  /home/mccordinator/dev/cpp/games/doge-like/src/TextureManager.h
  /home/mccordinator/dev/cpp/games/doge-like/src/Vector2D.h
@@ -60,11 +64,13 @@ CMakeFiles/doge-like.dir/src/GameObject.cpp.o
  /home/mccordinator/dev/cpp/games/doge-like/src/AssetManager.h
  /home/mccordinator/dev/cpp/games/doge-like/src/ECS/ECS.h
  /home/mccordinator/dev/cpp/games/doge-like/src/Game.hpp
+ /home/mccordinator/dev/cpp/games/doge-like/src/GameConstants.h
  /home/mccordinator/dev/cpp/games/doge-like/src/GameObject.cpp
  /home/mccordinator/dev/cpp/games/doge-like/src/GameObject.h
  /home/mccordinator/dev/cpp/games/doge-like/src/TextureManager.h
  /home/mccordinator/dev/cpp/games/doge-like/src/Vector2D.h
 CMakeFiles/doge-like.dir/src/Map.cpp.o
+ ../src/GameConstants.h
  /home/mccordinator/dev/cpp/games/doge-like/src/AssetManager.h
  /home/mccordinator/dev/cpp/games/doge-like/src/ECS/Animation.h
  /home/mccordinator/dev/cpp/games/doge-like/src/ECS/ColliderComponent.h
@@ -81,6 +87,7 @@ CMakeFiles/doge-like.dir/src/Map.cpp.o
  /home/mccordinator/dev/cpp/games/doge-like/src/TextureManager.h
  /home/mccordinator/dev/cpp/games/doge-like/src/Vector2D.h
 CMakeFiles/doge-like.dir/src/TextureManager.cpp.o
+ ../src/GameConstants.h
  /home/mccordinator/dev/cpp/games/doge-like/src/AssetManager.h
  /home/mccordinator/dev/cpp/games/doge-like/src/ECS/ECS.h
  /home/mccordinator/dev/cpp/games/doge-like/src/Game.hpp
@@ -91,6 +98,7 @@ CMakeFiles/doge-like.dir/src/Vector2D.cpp.o
  /home/mccordinator/dev/cpp/games/doge-like/src/Vector2D.cpp
  /home/mccordinator/dev/cpp/games/doge-like/src/Vector2D.h
 CMakeFiles/doge-like.dir/src/main.cpp.o
+ ../src/GameConstants.h
  /home/mccordinator/dev/cpp/games/doge-like/src/AssetManager.h
  /home/mccordinator/dev/cpp/games/doge-like/src/ECS/ECS.h
  /home/mccordinator/dev/cpp/games/doge-like/src/Game.hpp

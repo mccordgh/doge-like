@@ -10,6 +10,7 @@
 
 #include "Components.h"
 #include "../Vector2D.h"
+#include "GameConstants.h"
 
 class TransformComponent : public Component
 {
@@ -17,11 +18,11 @@ public:
     Vector2D position;
     Vector2D velocity;
     
-    int height = 32;
-    int width = 32;
-    int scale = 1;
+    int height = GameConstants::STANDARD_TILE_SIZE;
+    int width = GameConstants::STANDARD_TILE_SIZE;
+    int scale = GameConstants::STANDARD_TILE_SCALE;
     
-    int speed = 3;
+    int speed = GameConstants::STANDARD_MOVE_SPEED;
     
     TransformComponent()
     {
@@ -31,8 +32,9 @@ public:
     
     TransformComponent(int sc)
     {
-        position.x = 300;
-        position.y = 1200;
+        // Magic numbers are spawn points
+        position.x = GameConstants::PLAYER_SPAWN_X * GameConstants::STANDARD_TILE_SCALE;
+        position.y = GameConstants::PLAYER_SPAWN_Y * GameConstants::STANDARD_TILE_SCALE;
         scale = sc;
     }
     

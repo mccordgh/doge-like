@@ -13,9 +13,11 @@ CMakeFiles/doge-like.dir/src/AssetManager.cpp.o: ../src/ECS/SpriteComponent.h
 CMakeFiles/doge-like.dir/src/AssetManager.cpp.o: ../src/ECS/TileComponent.h
 CMakeFiles/doge-like.dir/src/AssetManager.cpp.o: ../src/ECS/TransformComponent.h
 CMakeFiles/doge-like.dir/src/AssetManager.cpp.o: ../src/Game.hpp
+CMakeFiles/doge-like.dir/src/AssetManager.cpp.o: ../src/GameConstants.h
 CMakeFiles/doge-like.dir/src/AssetManager.cpp.o: ../src/TextureManager.h
 CMakeFiles/doge-like.dir/src/AssetManager.cpp.o: ../src/Vector2D.h
 
+CMakeFiles/doge-like.dir/src/Collision.cpp.o: ../src/GameConstants.h
 CMakeFiles/doge-like.dir/src/Collision.cpp.o: ../src/AssetManager.h
 CMakeFiles/doge-like.dir/src/Collision.cpp.o: ../src/Collision.cpp
 CMakeFiles/doge-like.dir/src/Collision.cpp.o: ../src/Collision.h
@@ -32,6 +34,7 @@ CMakeFiles/doge-like.dir/src/Collision.cpp.o: ../src/Game.hpp
 CMakeFiles/doge-like.dir/src/Collision.cpp.o: ../src/TextureManager.h
 CMakeFiles/doge-like.dir/src/Collision.cpp.o: ../src/Vector2D.h
 
+CMakeFiles/doge-like.dir/src/ECS/ECS.cpp.o: ../src/GameConstants.h
 CMakeFiles/doge-like.dir/src/ECS/ECS.cpp.o: ../src/ECS/ECS.cpp
 CMakeFiles/doge-like.dir/src/ECS/ECS.cpp.o: ../src/ECS/ECS.h
 
@@ -52,6 +55,7 @@ CMakeFiles/doge-like.dir/src/Game.cpp.o: ../src/Collision.h
 CMakeFiles/doge-like.dir/src/Game.cpp.o: ../src/ECS/ECS.h
 CMakeFiles/doge-like.dir/src/Game.cpp.o: ../src/Game.cpp
 CMakeFiles/doge-like.dir/src/Game.cpp.o: ../src/Game.hpp
+CMakeFiles/doge-like.dir/src/Game.cpp.o: ../src/GameConstants.h
 CMakeFiles/doge-like.dir/src/Game.cpp.o: ../src/Map.h
 CMakeFiles/doge-like.dir/src/Game.cpp.o: ../src/TextureManager.h
 CMakeFiles/doge-like.dir/src/Game.cpp.o: ../src/Vector2D.h
@@ -59,11 +63,13 @@ CMakeFiles/doge-like.dir/src/Game.cpp.o: ../src/Vector2D.h
 CMakeFiles/doge-like.dir/src/GameObject.cpp.o: ../src/AssetManager.h
 CMakeFiles/doge-like.dir/src/GameObject.cpp.o: ../src/ECS/ECS.h
 CMakeFiles/doge-like.dir/src/GameObject.cpp.o: ../src/Game.hpp
+CMakeFiles/doge-like.dir/src/GameObject.cpp.o: ../src/GameConstants.h
 CMakeFiles/doge-like.dir/src/GameObject.cpp.o: ../src/GameObject.cpp
 CMakeFiles/doge-like.dir/src/GameObject.cpp.o: ../src/GameObject.h
 CMakeFiles/doge-like.dir/src/GameObject.cpp.o: ../src/TextureManager.h
 CMakeFiles/doge-like.dir/src/GameObject.cpp.o: ../src/Vector2D.h
 
+CMakeFiles/doge-like.dir/src/Map.cpp.o: ../src/GameConstants.h
 CMakeFiles/doge-like.dir/src/Map.cpp.o: ../src/AssetManager.h
 CMakeFiles/doge-like.dir/src/Map.cpp.o: ../src/ECS/Animation.h
 CMakeFiles/doge-like.dir/src/Map.cpp.o: ../src/ECS/ColliderComponent.h
@@ -80,6 +86,7 @@ CMakeFiles/doge-like.dir/src/Map.cpp.o: ../src/Map.h
 CMakeFiles/doge-like.dir/src/Map.cpp.o: ../src/TextureManager.h
 CMakeFiles/doge-like.dir/src/Map.cpp.o: ../src/Vector2D.h
 
+CMakeFiles/doge-like.dir/src/TextureManager.cpp.o: ../src/GameConstants.h
 CMakeFiles/doge-like.dir/src/TextureManager.cpp.o: ../src/AssetManager.h
 CMakeFiles/doge-like.dir/src/TextureManager.cpp.o: ../src/ECS/ECS.h
 CMakeFiles/doge-like.dir/src/TextureManager.cpp.o: ../src/Game.hpp
@@ -90,6 +97,7 @@ CMakeFiles/doge-like.dir/src/TextureManager.cpp.o: ../src/Vector2D.h
 CMakeFiles/doge-like.dir/src/Vector2D.cpp.o: ../src/Vector2D.cpp
 CMakeFiles/doge-like.dir/src/Vector2D.cpp.o: ../src/Vector2D.h
 
+CMakeFiles/doge-like.dir/src/main.cpp.o: ../src/GameConstants.h
 CMakeFiles/doge-like.dir/src/main.cpp.o: ../src/AssetManager.h
 CMakeFiles/doge-like.dir/src/main.cpp.o: ../src/ECS/ECS.h
 CMakeFiles/doge-like.dir/src/main.cpp.o: ../src/Game.hpp

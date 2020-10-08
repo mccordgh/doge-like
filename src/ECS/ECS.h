@@ -15,6 +15,8 @@
 #include <bitset>
 #include <array>
 
+#include "GameConstants.h"
+
 class Component;
 class Entity;
 class Manager;
@@ -37,8 +39,8 @@ template <typename T> inline ComponentID getComponentTypeID() noexcept
     return typeID;
 }
 
-constexpr std::size_t maxComponents = 32;
-constexpr std::size_t maxGroups = 32;
+constexpr std::size_t maxComponents = GameConstants::GROUP_MAX_SIZE;
+constexpr std::size_t maxGroups = GameConstants::GROUP_MAX_SIZE;
 
 using ComponentBitSet = std::bitset<maxComponents>;
 using GroupBitSet = std::bitset<maxGroups>;

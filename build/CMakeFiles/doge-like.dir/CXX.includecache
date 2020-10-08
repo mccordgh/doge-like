@@ -45,6 +45,8 @@ bitset
 -
 array
 -
+GameConstants.h
+../src/ECS/GameConstants.h
 
 ../src/ECS/KeyboardController.h
 ../Game.hpp
@@ -85,6 +87,8 @@ Components.h
 ../src/ECS/Components.h
 ../Vector2D.h
 ../src/Vector2D.h
+GameConstants.h
+../src/ECS/GameConstants.h
 
 ../src/Game.hpp
 SDL2/SDL.h
@@ -97,6 +101,8 @@ vector
 -
 AssetManager.h
 ../src/AssetManager.h
+
+../src/GameConstants.h
 
 ../src/TextureManager.h
 Game.hpp
@@ -111,6 +117,8 @@ AssetManager.h
 /home/mccordinator/dev/cpp/games/doge-like/src/AssetManager.h
 ECS/Components.h
 /home/mccordinator/dev/cpp/games/doge-like/src/ECS/Components.h
+GameConstants.h
+/home/mccordinator/dev/cpp/games/doge-like/src/GameConstants.h
 
 /home/mccordinator/dev/cpp/games/doge-like/src/AssetManager.h
 map
@@ -160,10 +168,6 @@ TileComponent.h
 ProjectileComponent.h
 /home/mccordinator/dev/cpp/games/doge-like/src/ECS/ProjectileComponent.h
 
-/home/mccordinator/dev/cpp/games/doge-like/src/ECS/ECS.cpp
-ECS.h
-/home/mccordinator/dev/cpp/games/doge-like/src/ECS/ECS.h
-
 /home/mccordinator/dev/cpp/games/doge-like/src/ECS/ECS.h
 iostream
 -
@@ -177,6 +181,8 @@ bitset
 -
 array
 -
+GameConstants.h
+/home/mccordinator/dev/cpp/games/doge-like/src/ECS/GameConstants.h
 
 /home/mccordinator/dev/cpp/games/doge-like/src/ECS/KeyboardController.h
 ../Game.hpp
@@ -217,6 +223,8 @@ Components.h
 /home/mccordinator/dev/cpp/games/doge-like/src/ECS/Components.h
 ../Vector2D.h
 /home/mccordinator/dev/cpp/games/doge-like/src/Vector2D.h
+GameConstants.h
+/home/mccordinator/dev/cpp/games/doge-like/src/ECS/GameConstants.h
 
 /home/mccordinator/dev/cpp/games/doge-like/src/Game.cpp
 Components.h
@@ -231,6 +239,8 @@ Vector2D.h
 /home/mccordinator/dev/cpp/games/doge-like/src/Vector2D.h
 Collision.h
 /home/mccordinator/dev/cpp/games/doge-like/src/Collision.h
+GameConstants.h
+/home/mccordinator/dev/cpp/games/doge-like/src/GameConstants.h
 
 /home/mccordinator/dev/cpp/games/doge-like/src/Game.hpp
 SDL2/SDL.h
@@ -244,15 +254,7 @@ vector
 AssetManager.h
 /home/mccordinator/dev/cpp/games/doge-like/src/AssetManager.h
 
-/home/mccordinator/dev/cpp/games/doge-like/src/GameObject.cpp
-GameObject.h
-/home/mccordinator/dev/cpp/games/doge-like/src/GameObject.h
-TextureManager.h
-/home/mccordinator/dev/cpp/games/doge-like/src/TextureManager.h
-
-/home/mccordinator/dev/cpp/games/doge-like/src/GameObject.h
-Game.hpp
-/home/mccordinator/dev/cpp/games/doge-like/src/Game.hpp
+/home/mccordinator/dev/cpp/games/doge-like/src/GameConstants.h
 
 /home/mccordinator/dev/cpp/games/doge-like/src/Map.cpp
 Map.h
@@ -270,23 +272,11 @@ ECS/Components.h
 string
 -
 
-/home/mccordinator/dev/cpp/games/doge-like/src/TextureManager.cpp
-TextureManager.h
-/home/mccordinator/dev/cpp/games/doge-like/src/TextureManager.h
-
 /home/mccordinator/dev/cpp/games/doge-like/src/TextureManager.h
 Game.hpp
 /home/mccordinator/dev/cpp/games/doge-like/src/Game.hpp
-
-/home/mccordinator/dev/cpp/games/doge-like/src/Vector2D.cpp
-Vector2D.h
-/home/mccordinator/dev/cpp/games/doge-like/src/Vector2D.h
 
 /home/mccordinator/dev/cpp/games/doge-like/src/Vector2D.h
 iostream
 -
-
-/home/mccordinator/dev/cpp/games/doge-like/src/main.cpp
-Game.hpp
-/home/mccordinator/dev/cpp/games/doge-like/src/Game.hpp
 

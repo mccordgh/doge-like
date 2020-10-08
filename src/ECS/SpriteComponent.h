@@ -33,12 +33,16 @@ public:
     {
         animated = isAnimated;
         
-        Animation idle = Animation(0, 4, 200);
-        Animation walk = Animation(1, 4, 200);
+        Animation idle = Animation(0, 2, GameConstants::STANDARD_ANIMATION_SPEED);
+        Animation walk_down = Animation(0, 2, GameConstants::STANDARD_ANIMATION_SPEED);
+        Animation walk_up = Animation(1, 2, GameConstants::STANDARD_ANIMATION_SPEED);
+        Animation walk_left = Animation(2, 2, GameConstants::STANDARD_ANIMATION_SPEED);
         
         animations.emplace("idle", idle);
-        animations.emplace("walk", walk);
-        
+        animations.emplace("walk_down", walk_down);
+        animations.emplace("walk_up", walk_up);
+        animations.emplace("walk_left", walk_left);
+
         Play("idle");
         
         setTexture(id);
@@ -95,5 +99,5 @@ private:
     
     bool animated = false;
     int frames = 0;
-    int speed = 100;
+    int speed = GameConstants::STANDARD_ANIMATION_SPEED;
 };

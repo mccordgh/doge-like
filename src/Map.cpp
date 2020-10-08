@@ -27,20 +27,26 @@ void Map::LoadMap(std::string path, int sizeX, int sizeY)
     std::fstream mapFile;
     mapFile.open(path);
     
-    int srcX, srcY;
+    // int srcX, srcY;
+    int tileNum;
     
     for (int y = 0; y < sizeY; y += 1)
     {
         for (int x = 0; x < sizeX; x += 1)
         {
             mapFile.get(c);
-            srcY = atoi(&c) * tileSize;
+            tileNum = atoi(&c) * tileSize;
+            // mapFile.get(c);
+            // srcY = atoi(&c) * tileSize;
             
-            mapFile.get(c);
-            srcX = atoi(&c) * tileSize;
+            // mapFile.get(c);
+            // srcX = atoi(&c) * tileSize;
             
-            AddTile(srcX, srcY, x * scaledSize, y * scaledSize);
+            // AddTile(srcX, srcY, x * scaledSize, y * scaledSize);
             
+            // All tiles are just in a straight line so x/y is 0 for now
+            AddTile(tileNum, 0, x * scaledSize, y * scaledSize);
+
             // ignoring comma after each tile character and newline char after each line
             mapFile.ignore();
         }

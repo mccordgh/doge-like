@@ -8,6 +8,7 @@
 
 #include "GameObject.h"
 #include "TextureManager.h"
+#include "GameConstants.h"
 
 GameObject::GameObject(const char* textureSheet, int x, int y)
 {
@@ -21,13 +22,13 @@ GameObject::~GameObject() {}
 
 void GameObject::Update()
 {
-    srcRect.h = 32;
-    srcRect.w = 32;
+    srcRect.h = GameConstants::STANDARD_TILE_SIZE;
+    srcRect.w = GameConstants::STANDARD_TILE_SIZE;
     srcRect.x = 0;
     srcRect.y = 0;
     
-    destRect.h = srcRect.h * 2;
-    destRect.w = srcRect.w * 2;
+    destRect.h = srcRect.h * GameConstants::STANDARD_TILE_SCALE;
+    destRect.w = srcRect.w * GameConstants::STANDARD_TILE_SCALE;
     destRect.x = xpos;
     destRect.y = ypos;
 }

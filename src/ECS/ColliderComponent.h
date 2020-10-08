@@ -47,7 +47,7 @@ public:
         transform = &entity->getComponent<TransformComponent>();
         
         texture = TextureManager::LoadTexture("assets/tiles/collision_texture.png");
-        srcRect = { 0, 0, 32, 32 };
+        srcRect = { 0, 0, GameConstants::STANDARD_TILE_SIZE, GameConstants::STANDARD_TILE_SIZE };
         destRect = { collider.x, collider.y, collider.w, collider.h};
     }
     
@@ -74,5 +74,5 @@ public:
     }
     
 private:
-    bool drawTexture = true;
+    bool drawTexture = false;
 };

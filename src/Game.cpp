@@ -12,14 +12,19 @@
 #include "Map.h"
 #include "Vector2D.h"
 #include "Collision.h"
+#include "GameConstants.h"
 
 Manager manager;
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
-// camera object x, y, width of map, height of map
-SDL_Rect Game::camera = {0, 0, 25*32, 20*32};
+// camera object x, y, width of map, height of map (width & height hardcoded to 25, 20 for now)
+const int mapWidthInTiles = 25;
+const int mapHeightInTiles = 20;
+const int mapWidth = mapWidthInTiles * (GameConstants::STANDARD_TILE_SIZE * GameConstants::STANDARD_TILE_SCALE);
+const int mapHeight = mapHeightInTiles * (GameConstants::STANDARD_TILE_SIZE * GameConstants::STANDARD_TILE_SCALE);
+SDL_Rect Game::camera = {0, 0, mapWidth, mapHeight};
 
 AssetManager* Game::assets = new AssetManager(&manager);
 Map* map;
@@ -31,7 +36,7 @@ bool Game::isRunning = false;
 Game::Game() {}
 Game::~Game() {}
 
-// TODO FIX GAME CAMERA ITS OFF SOMEHOW THE MATH OR SOMETHING??
+// IF CAMERA BOUNDS SEEM OFF ITS MOST LIKELY DUE TO A SCALING ISSUE
 
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
@@ -69,14 +74,22 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
     
-    assets->AddTexture("terrain", "assets/tiles/terrain_sheet_test1.png");
-    assets->AddTexture("player", "assets/charlie_walk_idle_test1_32x26.png");
+    assets->AddTexture("terrain", "assets/tiles/grass_and_wall.png");
+    assets->AddTexture("player", "assets/ff_adventure_knight.png");
 //    assets->AddTexture("projectile", "assets/projectile_test.png");
     
-    map = new Map("terrain", 3, 32);
-    map->LoadMap("assets/tiles/doggo_island_test1.map", 25, 20);
+    // Magic number for scale because somethign weird is going on with Map
+    map = new Map("terrain", GameConstants::STANDARD_MAP_SCALE, GameConstants::STANDARD_TILE_SIZE);
+    map->LoadMap("assets/tiles/simple_1.map", mapWidthInTiles, mapHeightInTiles);
 
-    player.addComponent<TransformComponent>(300, 1200, 32, 26, 2);
+    // magic numbers are just spawn points right now
+    player.addComponent<TransformComponent>(
+        GameConstants::PLAYER_SPAWN_X * GameConstants::STANDARD_TILE_SCALE,
+        GameConstants::PLAYER_SPAWN_Y * GameConstants::STANDARD_TILE_SCALE,
+        GameConstants::STANDARD_TILE_SIZE,
+        GameConstants::STANDARD_TILE_SIZE,
+        GameConstants::STANDARD_TILE_SCALE
+    );
     player.addComponent<SpriteComponent>("player", true);
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("player");
@@ -132,8 +145,9 @@ void Game::update()
         }
     }
     
-    camera.x = player.getComponent<TransformComponent>().position.x - 400; // 400 is half map width
-    camera.y = player.getComponent<TransformComponent>().position.y - 320; // 320 is half map height
+    // keep camera centered on player
+    camera.x = player.getComponent<TransformComponent>().position.x - (mapWidth / 2); // half map width
+    camera.y = player.getComponent<TransformComponent>().position.y - (mapHeight / 2); // half map height
     
     if (camera.x < 0) camera.x = 0;
     if (camera.x > camera.w) camera.x = camera.w;
