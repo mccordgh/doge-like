@@ -1,4 +1,4 @@
-# 2d_game_engine_sdl2_cpp
+# Possibly some kind of rogue-like in c++ who knows what it will be kthx :)
 
 This is me attempting to make a 2d game engine in c++ leveraging all the awesomeness that is SDL2.
 
