@@ -1,4 +1,4 @@
-# Possibly some kind of rogue-like in c++ who knows what it will be kthx :)
+# Possibly some kind of rogue-like in c++ who knows what it will be it originally had a doggo as the main character but that changed maybe it changes back who knows ok bye :)
 
 This is me attempting to make a 2d game engine in c++ leveraging all the awesomeness that is SDL2.
 
