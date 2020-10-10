@@ -20,7 +20,7 @@ void AssetManager::CreateProjectile(std::string id, Vector2D pos, Vector2D veloc
 {
     auto& projectile(manager->addEntity());
 
-    projectile.addComponent<TransformComponent>(pos.x, pos.y, GameConstants::STANDARD_TILE_SIZE, GameConstants::STANDARD_TILE_SIZE, GameConstants::STANDARD_TILE_SCALE);
+    projectile.addComponent<TransformComponent>(pos.x, pos.y, CONSTANTS_STANDARD_TILE_SIZE, CONSTANTS_STANDARD_TILE_SIZE, CONSTANTS_STANDARD_TILE_SCALE);
     projectile.addComponent<SpriteComponent>(id, false);
     projectile.addComponent<ProjectileComponent>(velocity, range, speed);
     projectile.addComponent<ColliderComponent>("projectile");

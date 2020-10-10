@@ -1,7 +1,15 @@
-# Possibly some kind of rogue-like in c++ who knows what it will be it originally had a doggo as the main character but that changed maybe it changes back who knows ok bye :)
+#C++ Game with SDL2
 
-This is me attempting to make a 2d game engine in c++ leveraging all the awesomeness that is SDL2.
+##Notes to self:
+###When changing platforms change these vscode settings:
+  - In CmakeLists.txt uncomment current platform (Mac, Linux, Windows), comment out other platforms.
+  - Bottom Right of VSCode change the C/C++ Configuration to match your platform (Mac, Linux, Windows)
 
-I'm was using XCode on a mac for this project...
-
-But then I reconfigured it all in visual studio code now on Linux and soon windows/mac hoping to get some cross-platform compiling going :)
+###Compiling:
+  - VSCode Cmake Tools extension.
+    - Set your Kit to:
+      - Mac: ~Clang 11.0.3
+      - Linux: GCC9
+      - Windows: Not setup yet
+    - Click "Build"
+    - Click the Play button
