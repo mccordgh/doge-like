@@ -1,5 +1,0 @@
-/home/mccordinator/dev/cpp/games/doge-like/build/CMakeFiles/edit_cache.dir
-/home/mccordinator/dev/cpp/games/doge-like/build/CMakeFiles/package_source.dir
-/home/mccordinator/dev/cpp/games/doge-like/build/CMakeFiles/rebuild_cache.dir
-/home/mccordinator/dev/cpp/games/doge-like/build/CMakeFiles/package.dir
-/home/mccordinator/dev/cpp/games/doge-like/build/CMakeFiles/doge-like.dir

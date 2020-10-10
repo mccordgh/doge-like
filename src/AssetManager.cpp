@@ -19,7 +19,7 @@ AssetManager::~AssetManager()
 void AssetManager::CreateProjectile(std::string id, Vector2D pos, Vector2D velocity, int range, int speed)
 {
     auto& projectile(manager->addEntity());
-    
+
     projectile.addComponent<TransformComponent>(pos.x, pos.y, GameConstants::STANDARD_TILE_SIZE, GameConstants::STANDARD_TILE_SIZE, GameConstants::STANDARD_TILE_SCALE);
     projectile.addComponent<SpriteComponent>(id, false);
     projectile.addComponent<ProjectileComponent>(velocity, range, speed);

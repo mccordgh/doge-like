@@ -14,6 +14,6 @@ public:
 
     static const int STANDARD_MAP_SCALE = 4;
 
-    static const int PLAYER_SPAWN_Y = STANDARD_TILE_SIZE * 4;
-    static const int PLAYER_SPAWN_X = STANDARD_TILE_SIZE * 4;
+    static const int PLAYER_SPAWN_Y = GameConstants::STANDARD_TILE_SIZE * 5;
+    static const int PLAYER_SPAWN_X = GameConstants::STANDARD_TILE_SIZE * 5;
 };

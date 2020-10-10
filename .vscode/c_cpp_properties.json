@@ -3,7 +3,7 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**",
+                "${workspaceFolder}/src",
                 "/lib/x86_64-linux-gnu",
                 "${workspaceFolder}/src/ECS"
             ],
@@ -13,6 +13,19 @@
             "cppStandard": "gnu++14",
             "intelliSenseMode": "gcc-x64",
             "configurationProvider": "ms-vscode.cmake-tools"
+        },
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/src",
+                "${workspaceFolder}/src/ECS"
+            ],
+            "defines": [],
+            "configurationProvider": "ms-vscode.cmake-tools",
+            "intelliSenseMode": "clang-x64",
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
         }
     ],
     "version": 4

@@ -15,23 +15,24 @@
 class ProjectileComponent : public Component
 {
 public:
-    ProjectileComponent(Vector2D vel, int rng, int spd): range(rng), speed(spd), velocity(vel)
+    // ProjectileComponent(Vector2D vel, int rng, int spd): range(rng), speed(spd), velocity(vel)
+    ProjectileComponent(Vector2D vel, int rng, int spd): velocity(vel), range(rng), speed(spd)
     {}
-    
+
     ~ProjectileComponent() {};
-    
+
     void init() override
     {
         transform = &entity->getComponent<TransformComponent>();
         transform->velocity = velocity;
-        
+
         // std::cout << "Project INITIALIZED" << std::endl;
     }
-    
+
     void update() override
     {
         distance += speed;
-        
+
         // If it reached max range then destroy
         if (distance > range)
         {
@@ -39,7 +40,7 @@ public:
             entity->destroy();
             return;
         }
-        
+
         // Check if projectile has gone offscreen
         if (transform->position.x > (Game::camera.x + Game::camera.w + transform->width)
             || transform->position.x < Game::camera.x
@@ -50,7 +51,7 @@ public:
             entity->destroy();
         }
     }
-    
+
 private:
     TransformComponent* transform;
 
