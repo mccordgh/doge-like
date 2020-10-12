@@ -5,8 +5,14 @@
 //  Created by Matthew mccord on 8/9/20.
 //  Copyright © 2020 MCCORDINATOR. All rights reserved.
 //
+#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
+
+#include <iostream>
+#include <experimental/filesystem>
 
 #include "TextureManager.h"
+
+namespace fs = std::experimental::filesystem;
 
 const char* assetsDir = "assets/";
 const char* spriteExtension = ".png";
@@ -26,9 +32,7 @@ SDL_Texture* TextureManager::LoadTexture(const char* fullpath)
     
     if (!imgError.empty()) {
         std::cout << "IMG_Load Error: " << imgError << std::endl << std::endl;
-        std::cout << "IMG_Load Error: " << imgError << std::endl << std::endl;
-        std::cout << "IMG_Load Error: " << imgError << std::endl << std::endl;
-        std::cout << "IMG_Load Error: " << imgError << std::endl << std::endl;
+        std::cout << "Current path is " << fs::current_path() << '\n';
     }
     
     SDL_Texture* texture = SDL_CreateTextureFromSurface(Game::renderer, tempSurface);

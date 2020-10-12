@@ -6,7 +6,7 @@
 //  Copyright © 2020 MCCORDINATOR. All rights reserved.
 //
 
-#include "Components.h"
+#include "ECS/Components.h"
 #include "Game.hpp"
 #include "TextureManager.h"
 #include "Map.h"

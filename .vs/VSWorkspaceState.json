@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\cmake",
+    "\\pyxel_files",
+    "\\src",
+    "\\src\\ECS"
+  ],
+  "SelectedNode": "\\src\\Game.cpp",
+  "PreviewInSolutionExplorer": false
+}
