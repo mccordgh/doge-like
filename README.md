@@ -5,57 +5,37 @@
   - In CmakeLists.txt uncomment current platform (Mac, Linux, Windows), comment out other platforms.
   - Bottom Right of VSCode change the C/C++ Configuration to match your platform (Mac, Linux, Windows)
 
-###Compiling:
+###Compiling: aka how I got this to compile for the first time on each OS and this might be outdated by now who knows :)
   - VSCode Cmake Tools extension.
     - Set your Kit to:
-      - Mac: ~Clang 11.0.3
+      - Mac: Clang 11.0.3
       - Linux: GCC9
-      - Windows: Not setup yet
+      - Windows: Visual Studio Community 2019 Release - amd64
     - Click "Build"
     - Click the Play button
 
-###Dependencies:
   Linux:
-    - install sdl2 and sdl2_image
+    - install sdl2 and sdl2_image (sudo apt install ...)
+    - open project folder in vscode
+    - Make sure C++ and CMake Tools extensions are installed
+    - Set CMake Tools Kit to GCC9
+    - Cross fingers, Build, & Play  
 
   Mac:
     - install sdl2 and sdl2_image (i used brew)
+    - open project folder in vscode
+    - Make sure C++ and CMake Tools extensions are installed
+    - Set CMake Tools Kit to Clang ~11.0.3
+    - Cross fingers, Build, & Play  
 
-  Windows:
-    - install MinGW to C:\MinGW
-    - extract sdl2 and sdl2_image files to c:\mingw_dev_lib\
+  Windows: (The windows is kind of a frankenstein but I _believe_ that vcpkg is handling libraries so)
+    - Install vcpkg following these instructions: https://docs.microsoft.com/en-us/cpp/build/vcpkg?view=vs-2019
+    - Run vcpkg integrate install
+    - Install sdl2:x64-windows, sdl2-image:x64-windows, sdl2-gfx:x64-windows, sdl2-mixer:x64-windows, sdl2-net:x64-windows, sdl2-ttf:x64-windows
+    - open project folder in vscode
+    - Set Kit to Visual Studio Community 2019 Release - amd64
+    - Cross fingers, Build, & Play  
 
-##vcpkg stuff:
+##vcpkg stuff on Windows (should be already setup):
 
 CMake projects should use: "-DCMAKE_TOOLCHAIN_FILE=C:/Users/mattm/dev/vcpkg/scripts/buildsystems/vcpkg.cmake"
-
-The package sdl2:x86-windows provides CMake targets:
-
-    find_package(SDL2 CONFIG REQUIRED)
-    target_link_libraries(main PRIVATE SDL2::SDL2 SDL2::SDL2main)
-
-The package sdl2-gfx:x86-windows provides CMake targets:
-
-    find_package(sdl2-gfx CONFIG REQUIRED)
-    target_link_libraries(main PRIVATE SDL2::SDL2_gfx)
-
-The package sdl2-image:x86-windows provides CMake targets:
-
-    find_package(sdl2-image CONFIG REQUIRED)
-    target_link_libraries(main PRIVATE SDL2::SDL2_image)
-
-The package sdl2-mixer:x86-windows provides CMake targets:
-
-    find_package(sdl2-mixer CONFIG REQUIRED)
-    target_link_libraries(main PRIVATE SDL2::SDL2_mixer)
-
-The package sdl2-net:x86-windows provides CMake targets:
-
-    find_package(sdl2-net CONFIG REQUIRED)
-    target_link_libraries(main PRIVATE SDL2::SDL2_net)
-
-The package sdl2-ttf:x86-windows provides CMake targets:
-
-    find_package(sdl2-ttf CONFIG REQUIRED)
-    target_link_libraries(main PRIVATE SDL2::SDL2_ttf)
-
