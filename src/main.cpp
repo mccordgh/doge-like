@@ -2,7 +2,7 @@
 
 Game *game = nullptr;
 
-int main(int argc, char *argv[])
+int main()
 {
     const int FPS = 60;
     const int frameDelay = 1000 / FPS;
