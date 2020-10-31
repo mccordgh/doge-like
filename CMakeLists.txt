@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.16.3 FATAL_ERROR)
 
 project(doge-like VERSION 0.1.0)
 
+# UNIX AND NOT APPLE = LINUX :)
 if(UNIX AND NOT APPLE)
   SET(COVERAGE_COMPILE_FLAGS "-I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -std=c++11 -Wall -Wextra -pedantic")
   SET(COVERAGE_LINK_FLAGS "-L/usr/lib/x86_64-linux-gnu -lSDL2 -lSDL2_image")
