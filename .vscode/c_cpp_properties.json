@@ -5,6 +5,11 @@
             "includePath": [
                 "${workspaceFolder}/src",
                 "${workspaceFolder}/src/ECS",
+                "${workspaceFolder}/src/entities",
+                "${workspaceFolder}/src/gfx",
+                "${workspaceFolder}/src/states",
+                "${workspaceFolder}/src/utils",
+                "${workspaceFolder}/src/worlds",
                 "/lib/x86_64-linux-gnu"
             ],
             "defines": [],
@@ -19,6 +24,11 @@
             "includePath": [
                 "${workspaceFolder}/src",
                 "${workspaceFolder}/src/ECS",
+                "${workspaceFolder}/src/entities",
+                "${workspaceFolder}/src/gfx",
+                "${workspaceFolder}/src/states",
+                "${workspaceFolder}/src/utils",
+                "${workspaceFolder}/src/worlds",
                 "C:/mingw_dev_lib/x86_64-w64-mingw32/include/**",
                 "C:/mingw_dev_lib/SDL2_image-devel-2.0.5-mingw/SDL2_image-2.0.5/x86_64-w64-mingw32/include"
             ],
@@ -33,7 +43,12 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/src",
-                "${workspaceFolder}/src/ECS"
+                "${workspaceFolder}/src/ECS",
+                "${workspaceFolder}/src/entities",
+                "${workspaceFolder}/src/gfx",
+                "${workspaceFolder}/src/states",
+                "${workspaceFolder}/src/utils",
+                "${workspaceFolder}/src/worlds"
             ],
             "defines": [],
             "configurationProvider": "ms-vscode.cmake-tools",

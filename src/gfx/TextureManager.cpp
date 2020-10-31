@@ -22,20 +22,20 @@ SDL_Texture* TextureManager::LoadTexture(const char* fullpath)
 //    strcpy(fullpath, assetsDir);
 //    strcat(fullpath, fileName);
 //    strcat(fullpath, spriteExtension);
-    
+
     SDL_Surface* tempSurface = IMG_Load(fullpath);
-    
+
     std::string imgError = IMG_GetError();
-    
+
     if (!imgError.empty()) {
         std::cout << "IMG_Load Error: " << imgError << std::endl << std::endl;
     }
-    
+
     SDL_Texture* texture = SDL_CreateTextureFromSurface(Game::renderer, tempSurface);
-    
+
     SDL_FreeSurface(tempSurface);
 //    delete[] fullpath;
-    
+
     return texture;
 }
 

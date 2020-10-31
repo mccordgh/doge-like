@@ -13,7 +13,7 @@ int main()
     int frameTime;
 
     game = new Game();
-    game->init("Dogelike C++", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, false);
+    game->init("Roguelike C++", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, false);
 
     // probably need to write a better gameloop????
     while (game->running())
@@ -35,5 +35,5 @@ int main()
     game->clean();
     delete game;
 
-    return 0;
+    return EXIT_SUCCESS;
 }

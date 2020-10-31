@@ -33,17 +33,27 @@ include_directories(
   ${SDL2_INCLUDE_DIRS}
   ${SDL2_IMAGE_INCLUDE_DIRS}
   ${PROJECT_SOURCE_DIR}/src
-  ${PROJECT_SOURCE_DIR}/src/ECS)
+  ${PROJECT_SOURCE_DIR}/src/ECS
+  ${PROJECT_SOURCE_DIR}/src/entities
+  ${PROJECT_SOURCE_DIR}/src/gfx
+  ${PROJECT_SOURCE_DIR}/src/states
+  ${PROJECT_SOURCE_DIR}/src/utils
+  ${PROJECT_SOURCE_DIR}/src/worlds
+)
 
 add_executable(doge-like    src/main.cpp
-                            src/AssetManager.cpp
-                            src/Collision.cpp
                             src/Game.cpp
-                            src/GameObject.cpp
-                            src/Map.cpp
-                            src/TextureManager.cpp
-                            src/Vector2D.cpp
-                            src/ECS/ECS.cpp)
+                            src/ECS/ECS.cpp
+                            src/entities/GameObject.cpp
+                            src/gfx/AssetManager.cpp
+                            src/gfx/TextureManager.cpp
+                            src/states/GameState.cpp
+                            src/states/StateManager.cpp
+                            src/utils/Collision.cpp
+                            src/utils/Map.cpp
+                            src/utils/Vector2D.cpp
+                            src/worlds/World.cpp
+)
 
 if(UNIX AND NOT APPLE)
   target_link_libraries(doge-like ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})

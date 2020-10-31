@@ -9,7 +9,7 @@
 #pragma once
 
 #include "Components.h"
-#include "../Vector2D.h"
+#include "Vector2D.h"
 #include "GameConstants.h"
 
 class TransformComponent : public Component

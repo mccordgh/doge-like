@@ -25,6 +25,7 @@ const int mapHeightInTiles = 20;
 const int mapWidth = mapWidthInTiles * (CONSTANTS_STANDARD_TILE_SIZE * CONSTANTS_STANDARD_TILE_SCALE);
 const int mapHeight = mapHeightInTiles * (CONSTANTS_STANDARD_TILE_SIZE * CONSTANTS_STANDARD_TILE_SCALE);
 
+// IF CAMERA BOUNDS SEEM OFF ITS MOST LIKELY DUE TO A SCALING ISSUE
 SDL_Rect Game::camera = {0, 0, mapWidth, mapHeight};
 
 AssetManager* Game::assets = new AssetManager(&manager);
@@ -36,8 +37,6 @@ bool Game::isRunning = false;
 
 Game::Game() {}
 Game::~Game() {}
-
-// IF CAMERA BOUNDS SEEM OFF ITS MOST LIKELY DUE TO A SCALING ISSUE
 
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {

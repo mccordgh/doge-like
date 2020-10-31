@@ -10,7 +10,7 @@
 
 #include "ECS.h"
 #include "Components.h"
-#include "../Vector2D.h"
+#include "Vector2D.h"
 
 class ProjectileComponent : public Component
 {

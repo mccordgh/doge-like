@@ -15,7 +15,7 @@
 #include <bitset>
 #include <array>
 
-#include "../GameConstants.h"
+#include "GameConstants.h"
 
 class Component;
 class Entity;
