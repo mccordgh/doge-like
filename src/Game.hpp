@@ -12,10 +12,8 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 #include <vector>
+#include "StateManager.h"
 #include "AssetManager.h"
-
-class AssetManager;
-class ColliderComponent;
 
 class Game
 {
@@ -27,7 +25,7 @@ public:
 
     void handleEvents();
     void update();
-    void render();
+    void draw();
     void clean();
 
     bool running() { return isRunning; }
@@ -39,15 +37,7 @@ public:
     // camera object maybe move to its own class
     static SDL_Rect camera;
     static AssetManager* assets;
-
-    enum groupLabels : std::size_t
-    {
-        groupColliders,
-        groupEnemies,
-        groupMap,
-        groupPlayers,
-        groupProjectiles,
-    };
+    static StateManager* stateManager;
 
 private:
     SDL_Window *window;

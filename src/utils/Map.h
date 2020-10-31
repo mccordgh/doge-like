@@ -8,19 +8,22 @@
 
 #pragma once
 #include <string>
+#include "World.h"
+
+class World;
 
 class Map
 {
 public:
     Map(std::string texId, int ms, int tsize);
     ~Map();
-    
-    void AddTile(int srcX, int srcY, int xpos, int ypos);
-    void LoadMap(std::string path, int sizeX, int sizeY);
-    
+
+    void AddTile(int srcX, int srcY, int xpos, int ypos, Group groupMap);
+    void LoadMap(std::string path, int sizeX, int sizeY, Group groupColliders, Group groupMap);
+
 private:
     std::string textureId;
-    
+
     int mapScale;
     int tileSize;
     int scaledSize;

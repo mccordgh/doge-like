@@ -22,7 +22,7 @@ int main()
 
         game->handleEvents();
         game->update();
-        game->render();
+        game->draw();
 
         frameTime = SDL_GetTicks() - frameStart;
 

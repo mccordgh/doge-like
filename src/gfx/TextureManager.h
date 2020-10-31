@@ -8,8 +8,6 @@
 
 #pragma once
 
-#include "Game.hpp"
-
 class TextureManager
 {
 public:

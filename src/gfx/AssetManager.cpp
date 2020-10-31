@@ -16,16 +16,16 @@ AssetManager::AssetManager(Manager* man): manager(man)
 AssetManager::~AssetManager()
 {}
 
-void AssetManager::CreateProjectile(std::string id, Vector2D pos, Vector2D velocity, int range, int speed)
-{
-    auto& projectile(manager->addEntity());
+// void AssetManager::CreateProjectile(std::string id, Vector2D pos, Vector2D velocity, int range, int speed)
+// {
+//     auto& projectile(manager->addEntity());
 
-    projectile.addComponent<TransformComponent>(pos.x, pos.y, CONSTANTS_STANDARD_TILE_SIZE, CONSTANTS_STANDARD_TILE_SIZE, CONSTANTS_STANDARD_TILE_SCALE);
-    projectile.addComponent<SpriteComponent>(id, false);
-    projectile.addComponent<ProjectileComponent>(velocity, range, speed);
-    projectile.addComponent<ColliderComponent>("projectile");
-    projectile.addGroup(Game::groupProjectiles);
-}
+//     projectile.addComponent<TransformComponent>(pos.x, pos.y, CONSTANTS_STANDARD_TILE_SIZE, CONSTANTS_STANDARD_TILE_SIZE, CONSTANTS_STANDARD_TILE_SCALE);
+//     projectile.addComponent<SpriteComponent>(id, false);
+//     projectile.addComponent<ProjectileComponent>(velocity, range, speed);
+//     projectile.addComponent<ColliderComponent>("projectile");
+//     projectile.addGroup(groupProjectiles);
+// }
 
 void AssetManager::AddTexture(std::string id, const char *path)
 {

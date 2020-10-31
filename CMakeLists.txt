@@ -38,8 +38,7 @@ include_directories(
   ${PROJECT_SOURCE_DIR}/src/gfx
   ${PROJECT_SOURCE_DIR}/src/states
   ${PROJECT_SOURCE_DIR}/src/utils
-  ${PROJECT_SOURCE_DIR}/src/worlds
-)
+  ${PROJECT_SOURCE_DIR}/src/worlds)
 
 add_executable(doge-like    src/main.cpp
                             src/Game.cpp
@@ -47,13 +46,10 @@ add_executable(doge-like    src/main.cpp
                             src/entities/GameObject.cpp
                             src/gfx/AssetManager.cpp
                             src/gfx/TextureManager.cpp
-                            src/states/GameState.cpp
-                            src/states/StateManager.cpp
                             src/utils/Collision.cpp
                             src/utils/Map.cpp
                             src/utils/Vector2D.cpp
-                            src/worlds/World.cpp
-)
+                            src/worlds/World.cpp)
 
 if(UNIX AND NOT APPLE)
   target_link_libraries(doge-like ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})

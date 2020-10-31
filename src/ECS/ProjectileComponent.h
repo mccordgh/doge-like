@@ -11,6 +11,7 @@
 #include "ECS.h"
 #include "Components.h"
 #include "Vector2D.h"
+#include "Game.hpp"
 
 class ProjectileComponent : public Component
 {

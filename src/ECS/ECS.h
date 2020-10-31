@@ -130,6 +130,9 @@ private:
 class Manager
 {
 public:
+    Manager() {};
+    ~Manager() {};
+
     void update()
     {
         for (auto& e : entities) e->update();
@@ -174,13 +177,13 @@ public:
         return groupedEntities[mGroup];
     }
 
-    Entity& addEntity()
+    Entity* addEntity()
     {
         Entity* e = new Entity(*this);
         std::unique_ptr<Entity> uPtr{ e };
 
         entities.emplace_back(std::move(uPtr));
-        return *e;
+        return e;
     }
 
 private:
