@@ -16,17 +16,12 @@
 class Game
 {
 public:
-    Game() {};
-    ~Game() {};
+    static void init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
 
-    void init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
-
-    void handleEvents();
-    void update();
-    void draw();
-    void clean();
-
-    bool running() { return isRunning; }
+    static void handleEvents();
+    static void update();
+    static void draw();
+    static void clean();
 
     static SDL_Renderer *renderer;
     static SDL_Event event;
@@ -38,5 +33,5 @@ public:
     static StateManager* stateManager;
 
 private:
-    SDL_Window *window = nullptr;
+    static SDL_Window *window;
 };

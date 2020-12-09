@@ -119,44 +119,37 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\AssetManager.cpp" />
-    <ClCompile Include="src\Collision.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\ECS\Animation.cpp" />
-    <ClCompile Include="src\ecs\ECS.cpp" />
     <ClCompile Include="src\ECS\ColliderComponent.cpp" />
+    <ClCompile Include="src\ECS\ECS.cpp" />
     <ClCompile Include="src\ECS\KeyboardController.cpp" />
     <ClCompile Include="src\ECS\SpriteComponent.cpp" />
     <ClCompile Include="src\ECS\TileComponent.cpp" />
     <ClCompile Include="src\ECS\TransformComponent.cpp" />
     <ClCompile Include="src\entities\GameObject.cpp" />
-    <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\gfx\AssetManager.cpp" />
     <ClCompile Include="src\gfx\TextureManager.cpp" />
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Map.cpp" />
     <ClCompile Include="src\states\State.cpp" />
     <ClCompile Include="src\states\StateManager.cpp" />
-    <ClCompile Include="src\TextureManager.cpp" />
     <ClCompile Include="src\utils\Collision.cpp" />
     <ClCompile Include="src\utils\Map.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />
-    <ClCompile Include="src\Vector2D.cpp" />
     <ClCompile Include="src\worlds\World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\ecs\Animation.h" />
-    <ClInclude Include="src\ecs\ColliderComponent.h" />
-    <ClInclude Include="src\ecs\Components.h" />
-    <ClInclude Include="src\ecs\ECS.h" />
-    <ClInclude Include="src\ecs\KeyboardController.h" />
-    <ClInclude Include="src\ecs\ProjectileComponent.h" />
-    <ClInclude Include="src\ecs\SpriteComponent.h" />
-    <ClInclude Include="src\ecs\TileComponent.h" />
-    <ClInclude Include="src\ecs\TransformComponent.h" />
-    <ClInclude Include="src\entities\GameObject.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\GameConstants.h" />
+    <ClInclude Include="src\ECS\Animation.h" />
+    <ClInclude Include="src\ECS\ColliderComponent.h" />
+    <ClInclude Include="src\ECS\Components.h" />
+    <ClInclude Include="src\ECS\ECS.h" />
+    <ClInclude Include="src\ECS\KeyboardController.h" />
+    <ClInclude Include="src\ECS\SpriteComponent.h" />
+    <ClInclude Include="src\ECS\TileComponent.h" />
+    <ClInclude Include="src\ECS\TransformComponent.h" />
+    <ClInclude Include="src\entities\GameObject.h" />
     <ClInclude Include="src\gfx\AssetManager.h" />
     <ClInclude Include="src\gfx\TextureManager.h" />
     <ClInclude Include="src\states\State.h" />

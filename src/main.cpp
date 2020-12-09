@@ -2,8 +2,6 @@
 
 #include "Game.h"
 
-Game *game = nullptr;
-
 int main()
 {
     const int FPS = 60;
@@ -12,17 +10,16 @@ int main()
     Uint32 frameStart;
     int frameTime;
 
-    game = new Game();
-    game->init("Roguelike C++", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, false);
+    Game::init("Roguelike C++", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, false);
 
     // probably need to write a better gameloop????
-    while (game->running())
+    while (Game::isRunning)
     {
         frameStart = SDL_GetTicks();
 
-        game->handleEvents();
-        game->update();
-        game->draw();
+        Game::handleEvents();
+        Game::update();
+        Game::draw();
 
         frameTime = SDL_GetTicks() - frameStart;
 
@@ -32,8 +29,7 @@ int main()
         }
     }
 
-    game->clean();
-    delete game;
+    Game::clean();
 
     return EXIT_SUCCESS;
 }

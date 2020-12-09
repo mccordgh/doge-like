@@ -14,7 +14,7 @@ Manager* manager = new Manager();
 
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
-    isRunning = false;
+    Game::isRunning = false;
     int flags = 0;
 
     if (fullscreen)
@@ -27,31 +27,31 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     {
         std::cout << "SDL2 Subsystems Initialized" << std::endl;
 
-        window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
-        renderer = SDL_CreateRenderer(window, -1, 0);
+        Game::window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
+        Game::renderer = SDL_CreateRenderer(window, -1, 0);
 
-        if (renderer)
+        if (Game::renderer)
         {
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
         }
 
-        if (!window || !renderer) throw;
+        if (!Game::window || !Game::renderer) throw;
 
-        isRunning = true;
+        Game::isRunning = true;
     } else {
         // SDL Did not initialize correctly if we hit this else
-        isRunning = false;
+        Game::isRunning = false;
 
         return;
     }
 
-    camera = {0, 0, CONSTANTS_MAP_WIDTH, CONSTANTS_MAP_HEIGHT};
+    Game::camera = {0, 0, CONSTANTS_MAP_WIDTH, CONSTANTS_MAP_HEIGHT};
 
     World* world = new World(manager);
     State* state = new State(world);
 
-    stateManager = new StateManager(state);
-    stateManager->setState(state);
+    Game::stateManager = new StateManager(state);
+    Game::stateManager->setState(state);
 }
 
 void Game::handleEvents()
@@ -71,20 +71,20 @@ void Game::handleEvents()
 
 void Game::update()
 {
-    stateManager->update();
+    Game::stateManager->update();
 }
 
 void Game::draw()
 {
-    stateManager->draw(renderer);
+    Game::stateManager->draw(renderer);
 }
 
 void Game::clean()
 {
-    delete stateManager;
+    delete Game::stateManager;
 
-    SDL_DestroyWindow(window);
-    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(Game::window);
+    SDL_DestroyRenderer(Game::renderer);
 
     SDL_Quit();
 
