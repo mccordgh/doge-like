@@ -5,14 +5,17 @@
 //  Created by Matthew mccord on 8/9/20.
 //  Copyright © 2020 MCCORDINATOR. All rights reserved.
 //
-#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
+
+//#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
 
 #include <iostream>
-
+//#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include "TextureManager.h"
+#include "Game.h"
 
-const char* assetsDir = "assets/";
-const char* spriteExtension = ".png";
+//const char* assetsDir = "assets/";
+//const char* spriteExtension = ".png";
 
 SDL_Texture* TextureManager::LoadTexture(const char* fullpath)
 {
@@ -28,7 +31,7 @@ SDL_Texture* TextureManager::LoadTexture(const char* fullpath)
     std::string imgError = IMG_GetError();
 
     if (!imgError.empty()) {
-        std::cout << "IMG_Load Error: " << imgError << std::endl << std::endl;
+        std::cout << "!!!!! IMG_Load Error: " << imgError << std::endl << std::endl;
     }
 
     SDL_Texture* texture = SDL_CreateTextureFromSurface(Game::renderer, tempSurface);

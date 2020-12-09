@@ -22,6 +22,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{B4096D81-0891-4CD1-8705-EBED055F657C}</ProjectGuid>
     <Keyword>ManagedCProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -110,21 +111,40 @@
       </EntryPointSymbol>
       <SubSystem>Windows</SubSystem>
     </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\mattm\dev\cpp\games\doge-like\src</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <ShowIncludes>false</ShowIncludes>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\AssetManager.cpp" />
     <ClCompile Include="src\Collision.cpp" />
+    <ClCompile Include="src\ECS\Animation.cpp" />
     <ClCompile Include="src\ecs\ECS.cpp" />
+    <ClCompile Include="src\ECS\ColliderComponent.cpp" />
+    <ClCompile Include="src\ECS\KeyboardController.cpp" />
+    <ClCompile Include="src\ECS\SpriteComponent.cpp" />
+    <ClCompile Include="src\ECS\TileComponent.cpp" />
+    <ClCompile Include="src\ECS\TransformComponent.cpp" />
+    <ClCompile Include="src\entities\GameObject.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
+    <ClCompile Include="src\gfx\AssetManager.cpp" />
+    <ClCompile Include="src\gfx\TextureManager.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Map.cpp" />
+    <ClCompile Include="src\states\State.cpp" />
+    <ClCompile Include="src\states\StateManager.cpp" />
     <ClCompile Include="src\TextureManager.cpp" />
+    <ClCompile Include="src\utils\Collision.cpp" />
+    <ClCompile Include="src\utils\Map.cpp" />
+    <ClCompile Include="src\utils\Vector2D.cpp" />
     <ClCompile Include="src\Vector2D.cpp" />
+    <ClCompile Include="src\worlds\World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\AssetManager.h" />
-    <ClInclude Include="src\Collision.h" />
     <ClInclude Include="src\ecs\Animation.h" />
     <ClInclude Include="src\ecs\ColliderComponent.h" />
     <ClInclude Include="src\ecs\Components.h" />
@@ -134,12 +154,25 @@
     <ClInclude Include="src\ecs\SpriteComponent.h" />
     <ClInclude Include="src\ecs\TileComponent.h" />
     <ClInclude Include="src\ecs\TransformComponent.h" />
-    <ClInclude Include="src\Game.hpp" />
+    <ClInclude Include="src\entities\GameObject.h" />
+    <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\GameConstants.h" />
-    <ClInclude Include="src\GameObject.h" />
-    <ClInclude Include="src\Map.h" />
-    <ClInclude Include="src\TextureManager.h" />
-    <ClInclude Include="src\Vector2D.h" />
+    <ClInclude Include="src\gfx\AssetManager.h" />
+    <ClInclude Include="src\gfx\TextureManager.h" />
+    <ClInclude Include="src\states\State.h" />
+    <ClInclude Include="src\states\StateManager.h" />
+    <ClInclude Include="src\utils\Collision.h" />
+    <ClInclude Include="src\utils\Map.h" />
+    <ClInclude Include="src\utils\Vector2D.h" />
+    <ClInclude Include="src\worlds\World.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
+    <None Include="CMakeSettings_backup.json" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

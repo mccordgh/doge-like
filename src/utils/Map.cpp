@@ -6,20 +6,18 @@
 //  Copyright © 2020 MCCORDINATOR. All rights reserved.
 //
 
-#include "Map.h"
-#include "Game.hpp"
 #include <fstream>
-#include "ECS/ECS.h"
+
+#include "Map.h"
 #include "ECS/Components.h"
 
+// global probably bad :)
 extern Manager manager;
 
 Map::Map(std::string texId, int ms, int tsize) : textureId(texId), mapScale(ms), tileSize(tsize)
 {
     scaledSize = ms * tsize;
 }
-
-Map::~Map() {}
 
 void Map::LoadMap(std::string path, int sizeX, int sizeY, Group groupColliders, Group groupMap)
 {

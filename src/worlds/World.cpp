@@ -1,12 +1,14 @@
 #include "World.h"
-#include "Vector2D.h"
-#include "Components.h"
-#include "Collision.h"
+#include "utils/Vector2D.h"
+#include "ECS/Components.h"
+#include "utils/Collision.h"
+#include "utils/Map.h"
 
-World::World(Manager* man): manager(man)
+
+World::World(Manager* man) : manager(man)
 {
-  this->init();
-}
+    this->init();
+};
 
 void World::init()
 {
@@ -14,13 +16,11 @@ void World::init()
     Game::assets->AddTexture("player", "assets/ff_adventure_knight.png");
 //    assets->AddTexture("projectile", "assets/projectile_test.png");
 
-    // Magic number for scale because somethign weird is going on with Map
     Map* map = new Map("terrain", CONSTANTS_STANDARD_MAP_SCALE, CONSTANTS_STANDARD_TILE_SIZE);
     map->LoadMap("assets/tiles/simple_1.map", CONSTANTS_MAP_WIDTH_IN_TILES, CONSTANTS_MAP_HEIGHT_IN_TILES, groupColliders, groupMap);
 
     player = manager->addEntity();
 
-    // magic numbers are just spawn points right now
     player->addComponent<TransformComponent>(
         CONSTANTS_PLAYER_SPAWN_X * CONSTANTS_STANDARD_TILE_SCALE,
         CONSTANTS_PLAYER_SPAWN_Y * CONSTANTS_STANDARD_TILE_SCALE,

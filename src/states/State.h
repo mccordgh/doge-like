@@ -1,20 +1,14 @@
 #pragma once
 
-#include "World.h"
+#include "worlds/World.h"
 
 class State
 {
   public:
-    State(World* w): world(w) {};
+    State(World* w);
 
-    void update() {
-      world->update();
-    };
-
-    void draw(SDL_Renderer* renderer)
-    {
-      world->draw(renderer);
-    };
+    void update();
+    void draw(SDL_Renderer* renderer);
 
   private:
     World* world;

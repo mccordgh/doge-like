@@ -7,8 +7,7 @@
 //
 
 #include "AssetManager.h"
-#include "ECS/Components.h"
-#include "GameConstants.h"
+#include "TextureManager.h"
 
 AssetManager::AssetManager(Manager* man): manager(man)
 {}

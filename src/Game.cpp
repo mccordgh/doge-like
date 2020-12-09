@@ -6,11 +6,9 @@
 //  Copyright © 2020 MCCORDINATOR. All rights reserved.
 //
 
-#include "Game.hpp"
-#include "GameConstants.h"
-#include "World.h"
-#include "State.h"
-#include "StateManager.h"
+#include "Game.h"
+#include "worlds/World.h"
+#include "states/State.h"
 
 Manager* manager = new Manager();
 
@@ -30,20 +28,14 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         std::cout << "SDL2 Subsystems Initialized" << std::endl;
 
         window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
-
-        if (window)
-        {
-            std::cout << "Window created!" << std::endl;
-        }
-
         renderer = SDL_CreateRenderer(window, -1, 0);
 
         if (renderer)
         {
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-
-            std::cout << "Renderer created!" << std::endl;
         }
+
+        if (!window || !renderer) throw;
 
         isRunning = true;
     } else {
@@ -62,7 +54,8 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     stateManager->setState(state);
 }
 
-void Game::handleEvents() {
+void Game::handleEvents()
+{
     SDL_PollEvent(&event);
 
     switch (event.type)

@@ -4,29 +4,14 @@
 
 class StateManager
 {
-  public:
+public:
     StateManager(State* state);
 
-    void update()
-    {
-      currentState->update();
-    };
+    void update();
+    void draw(SDL_Renderer* renderer);
+    State* getState();
+    void setState(State* state);
 
-    void draw(SDL_Renderer* renderer)
-    {
-      currentState->draw(renderer);
-    };
-
-    State getState()
-    {
-      return *currentState;
-    };
-
-    void setState(State* state)
-    {
-      currentState = state;
-    };
-
-  private:
+private:
     State* currentState;
 };

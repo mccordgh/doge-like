@@ -7,8 +7,7 @@
 //
 
 #include "GameObject.h"
-#include "TextureManager.h"
-#include "GameConstants.h"
+#include "gfx/TextureManager.h"
 
 GameObject::GameObject(const char* textureSheet, int x, int y)
 {

@@ -1,6 +1,6 @@
 #define SDL_MAIN_HANDLED
 
-#include "Game.hpp"
+#include "Game.h"
 
 Game *game = nullptr;
 

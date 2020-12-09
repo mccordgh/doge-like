@@ -7,16 +7,14 @@
 //
 
 #pragma once
-#include <string>
-#include "World.h"
 
-class World;
+#include <string>
+#include "ECS/ECS.h"
 
 class Map
 {
 public:
     Map(std::string texId, int ms, int tsize);
-    ~Map();
 
     void AddTile(int srcX, int srcY, int xpos, int ypos, Group groupMap);
     void LoadMap(std::string path, int sizeX, int sizeY, Group groupColliders, Group groupMap);
