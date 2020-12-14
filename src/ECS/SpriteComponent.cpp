@@ -9,20 +9,33 @@
 #pragma once
 
 #include "SpriteComponent.h"
-#include "Game.h"
 #include "gfx/TextureManager.h"
+#include "Manager.h"
 
+extern Manager* GameManager;
 
 SpriteComponent::SpriteComponent() = default;
 
+void SpriteComponent::initValues(bool isAnimated)
+{
+    animIndex = 0;
+    bool animated = isAnimated;
+    int frames = 0;
+    int speed = CONSTANTS_STANDARD_ANIMATION_SPEED;
+
+    SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;
+}
+
 SpriteComponent::SpriteComponent(std::string id)
 {
+    initValues(false);
+
     setTexture(id);
 }
 
 SpriteComponent::SpriteComponent(std::string id, bool isAnimated)
 {
-    animated = isAnimated;
+    initValues(isAnimated);
 
     Animation idle = Animation(0, 2, CONSTANTS_STANDARD_ANIMATION_SPEED);
     Animation walk_down = Animation(0, 2, CONSTANTS_STANDARD_ANIMATION_SPEED);
@@ -43,7 +56,7 @@ SpriteComponent::~SpriteComponent() {}
 
 void SpriteComponent::setTexture(std::string id)
 {
-    texture = Game::assets->GetTexture(id);
+    texture = GameManager->getGame()->assets->GetTexture(id);
 }
 
 void SpriteComponent::init()
@@ -64,8 +77,10 @@ void SpriteComponent::update()
 
     srcRect.y = animIndex * transform->height;
 
-    destRect.x = static_cast<int>(transform->position.x) - Game::camera.x;
-    destRect.y = static_cast<int>(transform->position.y) - Game::camera.y;
+    SDL_Rect camera = GameManager->getGame()->camera;
+
+    destRect.x = static_cast<int>(transform->position.x) - camera.x;
+    destRect.y = static_cast<int>(transform->position.y) - camera.y;
     destRect.w = transform->width * transform->scale;
     destRect.h = transform->height * transform->scale;
 }

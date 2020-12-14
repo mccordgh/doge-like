@@ -10,11 +10,18 @@
 #include "worlds/World.h"
 #include "states/State.h"
 
-Manager* manager = new Manager();
+Game::Game()
+{
+    isRunning = false;
+};
+
+Game::~Game() {};
+
+bool Game::running() { return isRunning; }
 
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
-    Game::isRunning = false;
+    isRunning = false;
     int flags = 0;
 
     if (fullscreen)
@@ -27,31 +34,31 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     {
         std::cout << "SDL2 Subsystems Initialized" << std::endl;
 
-        Game::window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
-        Game::renderer = SDL_CreateRenderer(window, -1, 0);
+        window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
+        renderer = SDL_CreateRenderer(window, -1, 0);
 
-        if (Game::renderer)
+        if (renderer)
         {
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
         }
 
-        if (!Game::window || !Game::renderer) throw;
+        if (!window || !renderer) throw;
 
-        Game::isRunning = true;
+        isRunning = true;
     } else {
         // SDL Did not initialize correctly if we hit this else
-        Game::isRunning = false;
+        isRunning = false;
 
         return;
     }
 
-    Game::camera = {0, 0, CONSTANTS_MAP_WIDTH, CONSTANTS_MAP_HEIGHT};
+    camera = {0, 0, CONSTANTS_MAP_WIDTH, CONSTANTS_MAP_HEIGHT};
 
-    World* world = new World(manager);
+    World* world = new World();
     State* state = new State(world);
 
-    Game::stateManager = new StateManager(state);
-    Game::stateManager->setState(state);
+    stateManager = new StateManager(state);
+    stateManager->setState(state);
 }
 
 void Game::handleEvents()
@@ -71,20 +78,20 @@ void Game::handleEvents()
 
 void Game::update()
 {
-    Game::stateManager->update();
+    stateManager->update();
 }
 
 void Game::draw()
 {
-    Game::stateManager->draw(renderer);
+    stateManager->draw(renderer);
 }
 
 void Game::clean()
 {
-    delete Game::stateManager;
+    delete stateManager;
 
-    SDL_DestroyWindow(Game::window);
-    SDL_DestroyRenderer(Game::renderer);
+    SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(renderer);
 
     SDL_Quit();
 

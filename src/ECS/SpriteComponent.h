@@ -12,16 +12,16 @@
 #include <map>
 #include "TransformComponent.h"
 #include "Animation.h"
-#include "Game.h"
+#include "SDL2/SDL.h"
 
 class SpriteComponent : public Component
 {
 public:
-    int animIndex = 0;
+    int animIndex;
 
     std::map<const char*, Animation> animations;
 
-    SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;
+    SDL_RendererFlip spriteFlip;
 
     SpriteComponent();
     SpriteComponent(std::string id);
@@ -38,13 +38,15 @@ public:
     void Play(const char* animName);
 
 private:
+    void initValues(bool isAnimated);
+
     TransformComponent *transform;
 
     SDL_Texture *texture;
     SDL_Rect destRect;
     SDL_Rect srcRect;
 
-    bool animated = false;
-    int frames = 0;
-    int speed = CONSTANTS_STANDARD_ANIMATION_SPEED;
+    bool animated;
+    int frames;
+    int speed;
 };

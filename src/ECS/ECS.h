@@ -17,6 +17,7 @@
 
 #include "GameConstants.h"
 
+class Game;
 class Component;
 class Entity;
 class Manager;
@@ -73,28 +74,10 @@ public:
 private:
     Manager& manager;
 
-    bool active = true;
+    bool active;
     std::vector<std::unique_ptr<Component>> components;
 
     ComponentArray componentArray;
     ComponentBitSet componentBitSet;
     GroupBitSet groupBitset;
-};
-
-class Manager
-{
-public:
-    void update();
-    void draw();
-    void refresh();
-
-    void AddToGroup(Entity* mEntity, Group mGroup);
-
-    std::vector<Entity*>& getGroup(Group mGroup);
-
-    Entity* addEntity();
-
-private:
-    std::vector<std::unique_ptr<Entity>> entities;
-    std::array<std::vector<Entity*>, maxGroups> groupedEntities;
 };

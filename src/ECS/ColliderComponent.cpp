@@ -13,10 +13,15 @@
 #include "ColliderComponent.h"
 #include "TransformComponent.h"
 #include "gfx/TextureManager.h"
+#include "Manager.h"
+
+extern Manager* GameManager; 
 
 ColliderComponent::ColliderComponent(std::string t)
 {
     tag = t;
+
+    drawTexture = true;
 }
 
 ColliderComponent::ColliderComponent(std::string t, int xpos, int ypos, int size)
@@ -26,6 +31,8 @@ ColliderComponent::ColliderComponent(std::string t, int xpos, int ypos, int size
     collider.x = xpos;
     collider.y = ypos;
     collider.h = collider.w = size;
+
+    drawTexture = true;
 }
 
 void ColliderComponent::init()
@@ -44,7 +51,7 @@ void ColliderComponent::init()
 void ColliderComponent::update()
 {
     // we want to run for entities like player, enemy, etc but not static tiles
-    if (tag != "terrain")
+    if (tag != "terrain" && transform != nullptr)
     {
         collider.x = static_cast<int>(transform->position.x);
         collider.y = static_cast<int>(transform->position.y);
@@ -52,8 +59,8 @@ void ColliderComponent::update()
         collider.h = transform->height * transform->scale;
     }
 
-    destRect.x = collider.x - Game::camera.x;
-    destRect.y = collider.y - Game::camera.y;
+    destRect.x = collider.x - GameManager->getGame()->camera.x;
+    destRect.y = collider.y - GameManager->getGame()->camera.y;
 }
 
 void ColliderComponent::draw()

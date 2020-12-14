@@ -9,8 +9,8 @@
 #pragma once
 
 #include <string>
-#include "TransformComponent.h"
-#include "Game.h"
+#include <SDL2/SDL.h>
+#include "ECS/TransformComponent.h"
 
 class ColliderComponent : public Component
 {
@@ -31,5 +31,5 @@ public:
     void draw() override;
 
 private:
-    bool drawTexture = false;
+    bool drawTexture;
 };

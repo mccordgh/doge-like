@@ -1,6 +1,10 @@
 #define SDL_MAIN_HANDLED
 
-#include "Game.h"
+#include "Manager.h"
+
+Manager* GameManager = new Manager();
+
+Game* game = GameManager->createGame();
 
 int main()
 {
@@ -10,16 +14,16 @@ int main()
     Uint32 frameStart;
     int frameTime;
 
-    Game::init("Roguelike C++", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, false);
+    game->init("Roguelike C++", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, false);
 
     // probably need to write a better gameloop????
-    while (Game::isRunning)
+    while (game->isRunning)
     {
         frameStart = SDL_GetTicks();
 
-        Game::handleEvents();
-        Game::update();
-        Game::draw();
+        game->handleEvents();
+        game->update();
+        game->draw();
 
         frameTime = SDL_GetTicks() - frameStart;
 
@@ -29,7 +33,7 @@ int main()
         }
     }
 
-    Game::clean();
+    game->clean();
 
     return EXIT_SUCCESS;
 }

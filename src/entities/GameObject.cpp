@@ -8,6 +8,9 @@
 
 #include "GameObject.h"
 #include "gfx/TextureManager.h"
+#include "Manager.h"
+
+extern Manager* GameManager;
 
 GameObject::GameObject(const char* textureSheet, int x, int y)
 {
@@ -34,5 +37,5 @@ void GameObject::Update()
 
 void GameObject::Render()
 {
-    SDL_RenderCopy(Game::renderer, objTexture, &srcRect, &destRect);
+    SDL_RenderCopy(GameManager->getGame()->renderer, objTexture, &srcRect, &destRect);
 }

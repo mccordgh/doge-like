@@ -6,7 +6,8 @@
 class World
 {
 public:
-    World(Manager* man);
+    World();
+    ~World();
 
     void update();
     void draw(SDL_Renderer* renderer);
@@ -21,7 +22,6 @@ public:
     };
 
 private:
-    Manager* manager;
     Entity* player;
 
     std::vector<Entity*> colliders;

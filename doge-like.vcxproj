@@ -131,6 +131,7 @@
     <ClCompile Include="src\entities\GameObject.cpp" />
     <ClCompile Include="src\gfx\AssetManager.cpp" />
     <ClCompile Include="src\gfx\TextureManager.cpp" />
+    <ClCompile Include="src\Manager.cpp" />
     <ClCompile Include="src\states\State.cpp" />
     <ClCompile Include="src\states\StateManager.cpp" />
     <ClCompile Include="src\utils\Collision.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="src\entities\GameObject.h" />
     <ClInclude Include="src\gfx\AssetManager.h" />
     <ClInclude Include="src\gfx\TextureManager.h" />
+    <ClInclude Include="src\Manager.h" />
     <ClInclude Include="src\states\State.h" />
     <ClInclude Include="src\states\StateManager.h" />
     <ClInclude Include="src\utils\Collision.h" />

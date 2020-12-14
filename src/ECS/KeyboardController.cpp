@@ -7,7 +7,9 @@
 //
 
 #include "KeyboardController.h"
-#include "Game.h"
+#include "Manager.h"
+
+extern Manager* GameManager;
 
 TransformComponent* transform;
 SpriteComponent* sprite;
@@ -20,9 +22,11 @@ void KeyboardController::init()
 
 void KeyboardController::update()
 {
-    if (Game::event.type == SDL_KEYDOWN)
+    SDL_Event event = GameManager->getGame()->event;
+
+    if (event.type == SDL_KEYDOWN)
     {
-        switch (Game::event.key.keysym.sym)
+        switch (event.key.keysym.sym)
         {
         case SDLK_w:
             transform->velocity.y = -1;
@@ -54,9 +58,9 @@ void KeyboardController::update()
         }
     }
 
-    if (Game::event.type == SDL_KEYUP)
+    if (event.type == SDL_KEYUP)
     {
-        switch (Game::event.key.keysym.sym)
+        switch (event.key.keysym.sym)
         {
         case SDLK_w:
             transform->velocity.y = 0;
@@ -75,7 +79,7 @@ void KeyboardController::update()
             break;
 
         case SDLK_ESCAPE:
-            Game::isRunning = false;
+            GameManager->getGame()->isRunning = false;
             break;
         }
 

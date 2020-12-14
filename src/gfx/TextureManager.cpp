@@ -12,7 +12,9 @@
 //#include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "TextureManager.h"
-#include "Game.h"
+#include "Manager.h"
+
+extern Manager* GameManager;
 
 //const char* assetsDir = "assets/";
 //const char* spriteExtension = ".png";
@@ -34,7 +36,7 @@ SDL_Texture* TextureManager::LoadTexture(const char* fullpath)
         std::cout << "!!!!! IMG_Load Error: " << imgError << std::endl << std::endl;
     }
 
-    SDL_Texture* texture = SDL_CreateTextureFromSurface(Game::renderer, tempSurface);
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(GameManager->getGame()->renderer, tempSurface);
 
     SDL_FreeSurface(tempSurface);
 //    delete[] fullpath;
@@ -44,6 +46,6 @@ SDL_Texture* TextureManager::LoadTexture(const char* fullpath)
 
 void TextureManager::Draw(SDL_Texture* tex, SDL_Rect src, SDL_Rect dest, SDL_RendererFlip flip)
 {
-    SDL_RenderCopyEx(Game::renderer, tex, &src, &dest, 0, NULL, flip);
+    SDL_RenderCopyEx(GameManager->getGame()->renderer, tex, &src, &dest, 0, NULL, flip);
 }
 

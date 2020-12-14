@@ -9,8 +9,8 @@
 #pragma once
 
 #include "ECS/ECS.h"
-#include "Game.h"
 #include "utils/Vector2D.h"
+#include "SDL2/SDL.h"
 
 class TileComponent : public Component
 {

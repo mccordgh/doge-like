@@ -10,9 +10,9 @@
 
 #include "Map.h"
 #include "ECS/Components.h"
+#include "Manager.h"
 
-// global probably bad :)
-extern Manager manager;
+extern Manager* GameManager;
 
 Map::Map(std::string texId, int ms, int tsize) : textureId(texId), mapScale(ms), tileSize(tsize)
 {
@@ -62,7 +62,7 @@ void Map::LoadMap(std::string path, int sizeX, int sizeY, Group groupColliders, 
             // 1 is collider 0 is nothing
             if (c == '1')
             {
-                Entity* tcol = manager.addEntity();
+                Entity* tcol = GameManager->addEntity();
 
                 tcol->addComponent<ColliderComponent>("terrain", x * scaledSize, y * scaledSize, scaledSize);
                 tcol->addGroup(groupColliders);
@@ -78,7 +78,7 @@ void Map::LoadMap(std::string path, int sizeX, int sizeY, Group groupColliders, 
 
 void Map::AddTile(int srcX, int srcY, int xpos, int ypos, Group groupMap)
 {
-    Entity* tile = manager.addEntity();
+    Entity* tile = GameManager->addEntity();
 
     tile->addComponent<TileComponent>(srcX, srcY, xpos, ypos, tileSize, mapScale, textureId);
     tile->addGroup(groupMap);

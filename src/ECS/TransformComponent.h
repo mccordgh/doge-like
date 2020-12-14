@@ -17,11 +17,11 @@ public:
     Vector2D position;
     Vector2D velocity;
 
-    int height = CONSTANTS_STANDARD_TILE_SIZE;
-    int width = CONSTANTS_STANDARD_TILE_SIZE;
-    int scale = CONSTANTS_STANDARD_TILE_SCALE;
+    int height;
+    int width;
+    int scale;
 
-    int speed = CONSTANTS_STANDARD_MOVE_SPEED;
+    int speed;
 
     TransformComponent();
     TransformComponent(int sc);
@@ -30,4 +30,7 @@ public:
 
     void init() override;
     void update() override;
+
+private:
+    void initValues();
 };

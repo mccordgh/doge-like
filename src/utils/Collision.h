@@ -8,9 +8,8 @@
 
 #pragma once
 
-#include "Game.h"
-
 class ColliderComponent;
+struct SDL_Rect;
 
 class Collision
 {
