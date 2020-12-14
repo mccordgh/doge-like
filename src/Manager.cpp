@@ -58,7 +58,7 @@ std::vector<Entity*>& Manager::getGroup(Group mGroup)
 
 Entity* Manager::addEntity()
 {
-    Entity* e = new Entity(*this);
+    Entity* e = new Entity();
     std::unique_ptr<Entity> uPtr{ e };
 
     entities.emplace_back(std::move(uPtr));

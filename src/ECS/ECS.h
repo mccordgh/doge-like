@@ -53,7 +53,7 @@ public:
 class Entity
 {
 public:
-    Entity(Manager& mManager);
+    Entity();
 
     void update();
     void draw();
@@ -66,14 +66,10 @@ public:
     void delGroup(Group mGroup);
 
     template <typename T> bool hasComponent() const;
-
     template <typename T, typename... TArgs> T& addComponent(TArgs&&... mArgs);
-
     template <typename T> T& getComponent() const;
 
 private:
-    Manager& manager;
-
     bool active;
     std::vector<std::unique_ptr<Component>> components;
 

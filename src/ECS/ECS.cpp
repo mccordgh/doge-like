@@ -46,7 +46,7 @@ Component::~Component() {}
 
 
 /* ENTITY */
-Entity::Entity(Manager& mManager) : manager(mManager), active(true) {}
+Entity::Entity() : active(true) {}
 
 void Entity::update()
 {
@@ -85,18 +85,18 @@ template <typename T> bool Entity::hasComponent() const
 template <typename T, typename... TArgs>
 T& Entity::addComponent(TArgs&&... mArgs)
 {
-    T* c(new T(std::forward<TArgs>(mArgs)...));
-    c->entity = this;
+    T* newComponent (new T(std::forward<TArgs>(mArgs)...));
+    newComponent->entity = this;
 
-    std::unique_ptr<Component> uPtr{ c };
+    std::unique_ptr<Component> uPtr{ newComponent };
     components.emplace_back(std::move(uPtr));
 
-    componentArray[getComponentTypeID<T>()] = c;
+    componentArray[getComponentTypeID<T>()] = newComponent;
     componentBitSet[getComponentTypeID<T>()] = true;
 
-    c->init();
+    newComponent->init();
 
-    return *c;
+    return newComponent;
 }
 
 template <typename T> T& Entity::getComponent() const

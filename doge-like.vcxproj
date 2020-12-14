@@ -109,7 +109,7 @@
       <ShowProgress>LinkVerbose</ShowProgress>
       <EntryPointSymbol>
       </EntryPointSymbol>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
     </Link>
     <ClCompile>
       <AdditionalIncludeDirectories>C:\Users\mattm\dev\cpp\games\doge-like\src</AdditionalIncludeDirectories>

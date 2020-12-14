@@ -9,11 +9,9 @@
 #include "AssetManager.h"
 #include "TextureManager.h"
 
-AssetManager::AssetManager(Manager* man): manager(man)
-{}
+AssetManager::AssetManager() {};
 
-AssetManager::~AssetManager()
-{}
+AssetManager::~AssetManager() {};
 
 // void AssetManager::CreateProjectile(std::string id, Vector2D pos, Vector2D velocity, int range, int speed)
 // {
