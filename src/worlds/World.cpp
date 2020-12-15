@@ -4,6 +4,7 @@
 #include "utils/Collision.h"
 #include "utils/Map.h"
 #include "Manager.h"
+#include "ECS/ECS.h"
 
 extern Manager* GameManager;
 

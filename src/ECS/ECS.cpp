@@ -24,19 +24,19 @@ class Manager;
 
 /* COMPONENT */
 // keeps track of ID incrementation
-inline ComponentID getNewComponentTypeID()
-{
-    static ComponentID lastID = 0u;
+//inline ComponentID getNewComponentTypeID()
+//{
+//    static ComponentID lastID = 0u;
+//
+//    return lastID++;
+//}
 
-    return lastID++;
-}
-
-template <typename T> inline ComponentID getComponentTypeID() noexcept
-{
-    static ComponentID typeID = getNewComponentTypeID();
-
-    return typeID;
-}
+//template <typename T> inline ComponentID getComponentTypeID() noexcept
+//{
+//    static ComponentID typeID = getNewComponentTypeID();
+//
+//    return typeID;
+//}
 
 void Component::init() {}
 void Component::update() {}
@@ -77,31 +77,31 @@ void Entity::delGroup(Group mGroup)
     groupBitset[mGroup] = false;
 }
 
-template <typename T> bool Entity::hasComponent() const
-{
-    return componentBitSet[getComponentTypeID<T>()];
-}
-
-template <typename T, typename... TArgs>
-T& Entity::addComponent(TArgs&&... mArgs)
-{
-    T* newComponent (new T(std::forward<TArgs>(mArgs)...));
-    newComponent->entity = this;
-
-    std::unique_ptr<Component> uPtr{ newComponent };
-    components.emplace_back(std::move(uPtr));
-
-    componentArray[getComponentTypeID<T>()] = newComponent;
-    componentBitSet[getComponentTypeID<T>()] = true;
-
-    newComponent->init();
-
-    return newComponent;
-}
-
-template <typename T> T& Entity::getComponent() const
-{
-    auto ptr(componentArray[getComponentTypeID<T>()]);
-
-    return *static_cast<T*>(ptr);
-}
+//template <typename T> bool Entity::hasComponent() const
+//{
+//    return componentBitSet[getComponentTypeID<T>()];
+//}
+//
+//template <typename T, typename... TArgs>
+//T& Entity::addComponent(TArgs&&... mArgs)
+//{
+//    T* newComponent(new T(std::forward<TArgs>(mArgs)...));
+//    newComponent->entity = this;
+//
+//    std::unique_ptr<Component> uPtr{ newComponent };
+//    components.emplace_back(std::move(uPtr));
+//
+//    componentArray[getComponentTypeID<T>()] = newComponent;
+//    componentBitSet[getComponentTypeID<T>()] = true;
+//
+//    newComponent->init();
+//
+//    return *newComponent;
+//}
+//
+//template <typename T> T& Entity::getComponent() const
+//{
+//    auto ptr(componentArray[getComponentTypeID<T>()]);
+//
+//    return *static_cast<T*>(ptr);
+//}

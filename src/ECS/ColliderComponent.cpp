@@ -51,7 +51,7 @@ void ColliderComponent::init()
 void ColliderComponent::update()
 {
     // we want to run for entities like player, enemy, etc but not static tiles
-    if (tag != "terrain" && transform != nullptr)
+    if (tag != "terrain")
     {
         collider.x = static_cast<int>(transform->position.x);
         collider.y = static_cast<int>(transform->position.y);
