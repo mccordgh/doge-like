@@ -9,13 +9,6 @@
 #include "AssetManager.h"
 #include "TextureManager.h"
 
-AssetManager::AssetManager()
-{
-
-};
-
-AssetManager::~AssetManager() {};
-
 // void AssetManager::CreateProjectile(std::string id, Vector2D pos, Vector2D velocity, int range, int speed)
 // {
 //     auto& projectile(manager->addEntity());
@@ -27,11 +20,31 @@ AssetManager::~AssetManager() {};
 //     projectile.addGroup(groupProjectiles);
 // }
 
+AssetManager::AssetManager() {};
+
+AssetManager::~AssetManager() {};
+
 void AssetManager::AddTexture(std::string id, const char *path)
 {
     SDL_Texture* tex = TextureManager::LoadTexture(path);
 
-    textures.emplace(id, tex);
+   /* try
+    {
+        textures[id] = tex;
+    }
+    catch (const std::exception &e)
+    {*/
+      /*  std::unordered_map<std::string, SDL_Texture*> loadTextures;
+
+        loadTextures[id] = tex;
+
+        textures = loadTextures;*/
+    //}
+
+    
+
+    textures.try_emplace(id, tex);
+    //textures.insert({ id, tex });
 }
 
 SDL_Texture* AssetManager::GetTexture(std::string id)

@@ -8,18 +8,16 @@
 
 #pragma once
 
-#include <map>
-//#include <string>
-//#include "utils/Vector2D.h"
+#include <unordered_map>
 #include <SDL2/SDL.h>
-#include "ECS/ECS.h"
+#include <iostream>
+//#include "ECS/ECS.h"
 
 class AssetManager
 {
 public:
     AssetManager();
     ~AssetManager();
-
     //game objects
     //void CreateProjectile(std::string id, Vector2D pos, Vector2D velocity, int range, int speed);
 
@@ -29,5 +27,5 @@ public:
     SDL_Texture* GetTexture(std::string id);
 
 private:
-    std::map<std::string, SDL_Texture*> textures;
+    std::unordered_map<std::string, SDL_Texture*> textures;
 };

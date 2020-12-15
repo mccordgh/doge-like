@@ -116,6 +116,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <ShowIncludes>false</ShowIncludes>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -164,7 +165,7 @@
   <ItemGroup>
     <None Include=".gitignore" />
     <None Include="CMakeSettings_backup.json" />
-    <None Include="README.md" />
+    <None Include="README_old.md" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />

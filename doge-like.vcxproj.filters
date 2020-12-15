@@ -138,7 +138,7 @@
   <ItemGroup>
     <None Include=".gitignore" />
     <None Include="CMakeSettings_backup.json" />
-    <None Include="README.md" />
+    <None Include="README_old.md" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />
