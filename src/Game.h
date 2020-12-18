@@ -34,7 +34,8 @@ public:
 
     // camera object maybe move to its own class
     SDL_Rect camera;
-    AssetManager* assets;
+    static AssetManager* assets;
+
     StateManager* stateManager;
 
 private:

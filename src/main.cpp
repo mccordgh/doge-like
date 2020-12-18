@@ -1,10 +1,12 @@
 #define SDL_MAIN_HANDLED
 
 #include "Manager.h"
+#include "Game.h"
 
-Manager* GameManager = new Manager();
+Game* game;
+AssetManager* Game::assets;
 
-Game* game = GameManager->createGame();
+Manager* GameManager = new Manager(game);
 
 int main()
 {

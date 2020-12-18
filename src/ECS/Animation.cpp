@@ -10,7 +10,9 @@
 
 #include "Animation.h"
 
-Animation::Animation() {};
+Animation::Animation() {
+    throw;
+};
 
 Animation::Animation(int i, int f, int s)
 {

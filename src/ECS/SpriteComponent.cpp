@@ -16,7 +16,7 @@ extern Manager* GameManager;
 
 SpriteComponent::SpriteComponent() = default;
 
-void SpriteComponent::initValues(bool isAnimated)
+void SpriteComponent::setValues(bool isAnimated)
 {
     animIndex = 0;
     bool animated = isAnimated;
@@ -28,14 +28,14 @@ void SpriteComponent::initValues(bool isAnimated)
 
 SpriteComponent::SpriteComponent(std::string id)
 {
-    initValues(false);
+    setValues(false);
 
     setTexture(id);
 }
 
 SpriteComponent::SpriteComponent(std::string id, bool isAnimated)
 {
-    initValues(isAnimated);
+    setValues(isAnimated);
 
     Animation idle = Animation(0, 2, CONSTANTS_STANDARD_ANIMATION_SPEED);
     Animation walk_down = Animation(0, 2, CONSTANTS_STANDARD_ANIMATION_SPEED);
@@ -56,7 +56,7 @@ SpriteComponent::~SpriteComponent() {}
 
 void SpriteComponent::setTexture(std::string id)
 {
-    texture = GameManager->getGame()->assets->GetTexture(id);
+    texture = Game::assets->GetTexture(id);
 }
 
 void SpriteComponent::init()

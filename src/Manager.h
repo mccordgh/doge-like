@@ -5,11 +5,10 @@
 class Manager
 {
 public:
-    Manager();
+    Manager::Manager(Game* g);
     ~Manager();
 
     Game* getGame();
-    Game* createGame();
 
     void update();
     void draw();

@@ -38,7 +38,7 @@ public:
     void Play(const char* animName);
 
 private:
-    void initValues(bool isAnimated);
+    void setValues(bool isAnimated);
 
     TransformComponent *transform;
 

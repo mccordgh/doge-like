@@ -18,6 +18,7 @@ class AssetManager
 public:
     AssetManager();
     ~AssetManager();
+    
     //game objects
     //void CreateProjectile(std::string id, Vector2D pos, Vector2D velocity, int range, int speed);
 

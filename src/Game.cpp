@@ -98,3 +98,4 @@ void Game::clean()
     std::cout << "Game Cleaned" << std::endl;
     std::cin.get();
 }
+

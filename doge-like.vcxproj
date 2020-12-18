@@ -120,6 +120,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\gfx\AssetManager.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\ECS\Animation.cpp" />
@@ -130,7 +131,6 @@
     <ClCompile Include="src\ECS\TileComponent.cpp" />
     <ClCompile Include="src\ECS\TransformComponent.cpp" />
     <ClCompile Include="src\entities\GameObject.cpp" />
-    <ClCompile Include="src\gfx\AssetManager.cpp" />
     <ClCompile Include="src\gfx\TextureManager.cpp" />
     <ClCompile Include="src\Manager.cpp" />
     <ClCompile Include="src\states\State.cpp" />

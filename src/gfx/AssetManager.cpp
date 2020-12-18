@@ -26,25 +26,7 @@ AssetManager::~AssetManager() {};
 
 void AssetManager::AddTexture(std::string id, const char *path)
 {
-    SDL_Texture* tex = TextureManager::LoadTexture(path);
-
-   /* try
-    {
-        textures[id] = tex;
-    }
-    catch (const std::exception &e)
-    {*/
-      /*  std::unordered_map<std::string, SDL_Texture*> loadTextures;
-
-        loadTextures[id] = tex;
-
-        textures = loadTextures;*/
-    //}
-
-    
-
-    textures.try_emplace(id, tex);
-    //textures.insert({ id, tex });
+    textures.try_emplace(id, TextureManager::LoadTexture(path));
 }
 
 SDL_Texture* AssetManager::GetTexture(std::string id)

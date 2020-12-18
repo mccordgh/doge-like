@@ -24,7 +24,7 @@ TileComponent::~TileComponent()
 
 TileComponent::TileComponent(int srcX, int srcY, int xpos, int ypos, int tileSize, int tileScale, std::string id)
 {
-    texture = GameManager->getGame()->assets->GetTexture(id);
+    texture = Game::assets->GetTexture(id);
 
     position.x = xpos;
     position.y = ypos;

@@ -17,8 +17,8 @@ World::~World() {};
 
 void World::init()
 {
-    GameManager->getGame()->assets->AddTexture("terrain", "assets/tiles/grass_and_wall.png");
-    GameManager->getGame()->assets->AddTexture("player", "assets/ff_adventure_knight.png");
+    Game::assets->AddTexture("terrain", "assets/tiles/grass_and_wall.png");
+    Game::assets->AddTexture("player", "assets/ff_adventure_knight.png");
 //    assets->AddTexture("projectile", "assets/projectile_test.png");
 
     Map* map = new Map("terrain", CONSTANTS_STANDARD_MAP_SCALE, CONSTANTS_STANDARD_TILE_SIZE);

@@ -14,6 +14,8 @@
 #include "TextureManager.h"
 #include "Manager.h"
 
+#include <direct.h>
+
 extern Manager* GameManager;
 
 //const char* assetsDir = "assets/";
@@ -27,6 +29,11 @@ SDL_Texture* TextureManager::LoadTexture(const char* fullpath)
 //    strcpy(fullpath, assetsDir);
 //    strcat(fullpath, fileName);
 //    strcat(fullpath, spriteExtension);
+
+    char buff[FILENAME_MAX];
+    getcwd(buff, FILENAME_MAX);
+    std::string currentDir(buff);
+    std::cout << currentDir << std::endl;
 
     SDL_Surface* tempSurface = IMG_Load(fullpath);
 
