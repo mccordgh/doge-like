@@ -3,8 +3,8 @@
 #include "Manager.h"
 #include "Game.h"
 
-Game* game;
-AssetManager* Game::assets;
+Game* game = new Game();
+AssetManager* Game::assets = new AssetManager();
 
 Manager* GameManager = new Manager(game);
 
