@@ -10,18 +10,18 @@
 #include "worlds/World.h"
 #include "states/State.h"
 
-Game::Game()
-{
-    isRunning = false;
-};
+AssetManager* Game::assets = new AssetManager();
 
-Game::~Game() {};
+bool Game::isRunning = false;
+
+SDL_Rect Game::camera = { 0, 0, CONSTANTS_MAP_WIDTH, CONSTANTS_MAP_HEIGHT };
+SDL_Renderer* Game::renderer = nullptr;
+SDL_Event Game::event;
 
 bool Game::running() { return isRunning; }
 
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
-    isRunning = false;
     int flags = 0;
 
     if (fullscreen)
@@ -51,8 +51,6 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
         return;
     }
-
-    camera = {0, 0, CONSTANTS_MAP_WIDTH, CONSTANTS_MAP_HEIGHT};
 
     World* world = new World();
     State* state = new State(world);

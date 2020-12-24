@@ -16,9 +16,6 @@
 class Game
 {
 public:
-    Game();
-    ~Game();
-
     void init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
 
     void handleEvents();
@@ -28,16 +25,16 @@ public:
 
     bool running();
 
-    SDL_Renderer *renderer;
-    SDL_Event event;
-    bool isRunning;
+    static SDL_Renderer *renderer;
+    static SDL_Event event;
+    static bool isRunning;
 
     // camera object maybe move to its own class
-    SDL_Rect camera;
+    static SDL_Rect camera;
     static AssetManager* assets;
 
-    StateManager* stateManager;
-
 private:
+    StateManager* stateManager;
+    
     SDL_Window *window;
 };

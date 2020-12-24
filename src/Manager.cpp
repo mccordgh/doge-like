@@ -1,9 +1,7 @@
 #include "Manager.h"
 
-Manager::Manager(Game* g): game(g) {};
+Manager::Manager() {};
 Manager::~Manager() {};
-
-Game* Manager::getGame() { return game; };
 
 void Manager::update()
 {

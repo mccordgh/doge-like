@@ -5,10 +5,8 @@
 class Manager
 {
 public:
-    Manager::Manager(Game* g);
+    Manager();
     ~Manager();
-
-    Game* getGame();
 
     void update();
     void draw();
@@ -23,6 +21,4 @@ public:
 private:
     std::vector<std::unique_ptr<Entity>> entities;
     std::array<std::vector<Entity*>, maxGroups> groupedEntities;
-
-    Game* game;
 };

@@ -59,8 +59,8 @@ void ColliderComponent::update()
         collider.h = transform->height * transform->scale;
     }
 
-    destRect.x = collider.x - GameManager->getGame()->camera.x;
-    destRect.y = collider.y - GameManager->getGame()->camera.y;
+    destRect.x = collider.x - Game::camera.x;
+    destRect.y = collider.y - Game::camera.y;
 }
 
 void ColliderComponent::draw()

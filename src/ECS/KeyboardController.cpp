@@ -22,7 +22,7 @@ void KeyboardController::init()
 
 void KeyboardController::update()
 {
-    SDL_Event event = GameManager->getGame()->event;
+    SDL_Event event = Game::event;
 
     if (event.type == SDL_KEYDOWN)
     {
@@ -79,7 +79,7 @@ void KeyboardController::update()
             break;
 
         case SDLK_ESCAPE:
-            GameManager->getGame()->isRunning = false;
+            Game::isRunning = false;
             break;
         }
 

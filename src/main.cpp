@@ -3,10 +3,8 @@
 #include "Manager.h"
 #include "Game.h"
 
-Game* game = new Game();
-AssetManager* Game::assets = new AssetManager();
-
-Manager* GameManager = new Manager(game);
+Manager* GameManager = new Manager();
+Game* game = nullptr;
 
 int main()
 {
@@ -16,10 +14,11 @@ int main()
     Uint32 frameStart;
     int frameTime;
 
+    game = new Game();
     game->init("Roguelike C++", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, false);
 
     // probably need to write a better gameloop????
-    while (game->isRunning)
+    while (game->running())
     {
         frameStart = SDL_GetTicks();
 
