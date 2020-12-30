@@ -76,32 +76,3 @@ void Entity::delGroup(Group mGroup)
 {
     groupBitset[mGroup] = false;
 }
-
-//template <typename T> bool Entity::hasComponent() const
-//{
-//    return componentBitSet[getComponentTypeID<T>()];
-//}
-//
-//template <typename T, typename... TArgs>
-//T& Entity::addComponent(TArgs&&... mArgs)
-//{
-//    T* newComponent(new T(std::forward<TArgs>(mArgs)...));
-//    newComponent->entity = this;
-//
-//    std::unique_ptr<Component> uPtr{ newComponent };
-//    components.emplace_back(std::move(uPtr));
-//
-//    componentArray[getComponentTypeID<T>()] = newComponent;
-//    componentBitSet[getComponentTypeID<T>()] = true;
-//
-//    newComponent->init();
-//
-//    return *newComponent;
-//}
-//
-//template <typename T> T& Entity::getComponent() const
-//{
-//    auto ptr(componentArray[getComponentTypeID<T>()]);
-//
-//    return *static_cast<T*>(ptr);
-//}

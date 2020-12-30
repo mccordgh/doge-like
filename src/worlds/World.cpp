@@ -75,19 +75,18 @@ void World::update()
   }
 
   // keep camera centered on player
-  SDL_Rect camera = Game::camera;
+  SDL_Rect &camera = Game::camera;
 
-  camera.x = player->getComponent<TransformComponent>().position.x - (CONSTANTS_MAP_WIDTH / 2); // half map width
-  camera.y = player->getComponent<TransformComponent>().position.y - (CONSTANTS_MAP_HEIGHT / 2); // half map height
+  TransformComponent playerT = player->getComponent<TransformComponent>();
+  int playerCenterX = playerT.position.x + (playerT.width / 2);
+  int playerCenterY = playerT.position.y + (playerT.height / 2);
+
+  camera.x = playerCenterX - (CONSTANTS_GAME_WINDOW_WIDTH / 2);
+  camera.y = playerCenterY - (CONSTANTS_GAME_WINDOW_HEIGHT / 2);
 
   if (camera.x < 0)
   {
       camera.x = 0;
-  }
-
-  if (camera.x > camera.w)
-  {
-      camera.x = camera.w;
   }
 
   if (camera.y < 0)
@@ -95,13 +94,21 @@ void World::update()
       camera.y = 0;
   }
 
-  if (camera.y > camera.h)
+  int endOfMapHorizontal = CONSTANTS_MAP_WIDTH - camera.w;
+  if (camera.x > endOfMapHorizontal)
   {
-      camera.y = camera.h;
+      camera.x = endOfMapHorizontal;
+  }
+
+  int endOfMapVertical = CONSTANTS_MAP_HEIGHT - camera.h;
+  if (camera.y > endOfMapVertical)
+  {
+      camera.y = endOfMapVertical;
   }
 };
 
-void World::draw(SDL_Renderer* renderer){
+void World::draw(SDL_Renderer* renderer)
+{
    // clear renderer
     SDL_RenderClear(renderer);
 

@@ -15,7 +15,7 @@ int main()
     int frameTime;
 
     game = new Game();
-    game->init("Roguelike C++", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, false);
+    game->init("Roguelike C++", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, CONSTANTS_GAME_WINDOW_WIDTH, CONSTANTS_GAME_WINDOW_HEIGHT, false);
 
     // probably need to write a better gameloop????
     while (game->running())

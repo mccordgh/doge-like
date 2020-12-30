@@ -110,7 +110,6 @@ public:
         return *static_cast<T*>(ptr);
     }
 
-
 private:
     bool active;
     std::vector<std::unique_ptr<Component>> components;

@@ -14,7 +14,7 @@ AssetManager* Game::assets = new AssetManager();
 
 bool Game::isRunning = false;
 
-SDL_Rect Game::camera = { 0, 0, CONSTANTS_MAP_WIDTH, CONSTANTS_MAP_HEIGHT };
+SDL_Rect Game::camera = { 0, 0, CONSTANTS_GAME_WINDOW_WIDTH, CONSTANTS_GAME_WINDOW_HEIGHT };
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
