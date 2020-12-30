@@ -120,6 +120,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\gfx\AssetManager.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Game.cpp" />
@@ -141,6 +142,7 @@
     <ClCompile Include="src\worlds\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\GameConstants.h" />
     <ClInclude Include="src\ECS\Animation.h" />

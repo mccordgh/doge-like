@@ -40,10 +40,8 @@ TileComponent::TileComponent(int srcX, int srcY, int xpos, int ypos, int tileSiz
 
 void TileComponent::update()
 {
-    SDL_Rect camera = Game::camera;
-
-    destRect.x = position.x - camera.x;
-    destRect.y = position.y - camera.y;
+    destRect.x = position.x - Game::camera->xPosition();
+    destRect.y = position.y - Game::camera->yPosition();
 }
 
 void TileComponent::draw()

@@ -44,67 +44,39 @@ void World::init()
     projectiles = GameManager->getGroup(groupProjectiles);
     tiles = GameManager->getGroup(groupMap);
 
+    Game::camera->centerOnEntity(player);
+
   //    Game::assets->CreateProjectile("projectile", Vector2D(350, 1100), Vector2D(2, 0), 200, 2);
 }
 
 void World::update()
 {
-  SDL_Rect playerCollider = player->getComponent<ColliderComponent>().collider;
-  Vector2D playerPos = player->getComponent<TransformComponent>().position;
+    SDL_Rect playerCollider = player->getComponent<ColliderComponent>().collider;
+    Vector2D playerPos = player->getComponent<TransformComponent>().position;
 
-  GameManager->refresh();
-  GameManager->update();
+    GameManager->refresh();
+    GameManager->update();
 
-  for (auto& c : colliders)
-  {
-      SDL_Rect cCollider = c->getComponent<ColliderComponent>().collider;
+    for (auto& c : colliders)
+    {
+        SDL_Rect cCollider = c->getComponent<ColliderComponent>().collider;
 
-      if (Collision::AABB(cCollider, playerCollider))
-      {
-          player->getComponent<TransformComponent>().position = playerPos;
-      }
-  }
+        if (Collision::AABB(cCollider, playerCollider))
+        {
+            player->getComponent<TransformComponent>().position = playerPos;
+        }
+    }
 
-  for(auto& p : projectiles)
-  {
-      if (Collision::AABB(player->getComponent<ColliderComponent>().collider, p->getComponent<ColliderComponent>().collider))
-      {
-          // std::cout << "Project HIT PLAYER ~DESTROYED" << std::endl;
-          p->destroy();
-      }
-  }
+    for(auto& p : projectiles)
+    {
+        if (Collision::AABB(player->getComponent<ColliderComponent>().collider, p->getComponent<ColliderComponent>().collider))
+        {
+            // std::cout << "Project HIT PLAYER ~DESTROYED" << std::endl;
+            p->destroy();
+        }
+    }
 
-  // keep camera centered on player
-  SDL_Rect &camera = Game::camera;
-
-  TransformComponent playerT = player->getComponent<TransformComponent>();
-  int playerCenterX = playerT.position.x + (playerT.width / 2);
-  int playerCenterY = playerT.position.y + (playerT.height / 2);
-
-  camera.x = playerCenterX - (CONSTANTS_GAME_WINDOW_WIDTH / 2);
-  camera.y = playerCenterY - (CONSTANTS_GAME_WINDOW_HEIGHT / 2);
-
-  if (camera.x < 0)
-  {
-      camera.x = 0;
-  }
-
-  if (camera.y < 0)
-  {
-      camera.y = 0;
-  }
-
-  int endOfMapHorizontal = CONSTANTS_MAP_WIDTH - camera.w;
-  if (camera.x > endOfMapHorizontal)
-  {
-      camera.x = endOfMapHorizontal;
-  }
-
-  int endOfMapVertical = CONSTANTS_MAP_HEIGHT - camera.h;
-  if (camera.y > endOfMapVertical)
-  {
-      camera.y = endOfMapVertical;
-  }
+    Game::camera->update();
 };
 
 void World::draw(SDL_Renderer* renderer)

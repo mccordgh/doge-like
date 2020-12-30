@@ -12,6 +12,7 @@
 #include <SDL2/SDL_image.h>
 #include "states/StateManager.h"
 #include "gfx/AssetManager.h"
+#include "Camera.h"
 
 class Game
 {
@@ -29,8 +30,7 @@ public:
     static SDL_Event event;
     static bool isRunning;
 
-    // camera object maybe move to its own class
-    static SDL_Rect camera;
+    static Camera* camera;
     static AssetManager* assets;
 
 private:

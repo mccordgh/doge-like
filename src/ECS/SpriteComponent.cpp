@@ -77,10 +77,8 @@ void SpriteComponent::update()
 
     srcRect.y = animIndex * transform->height;
 
-    SDL_Rect camera = Game::camera;
-
-    destRect.x = static_cast<int>(transform->position.x) - camera.x;
-    destRect.y = static_cast<int>(transform->position.y) - camera.y;
+    destRect.x = static_cast<int>(transform->position.x) - Game::camera->xPosition();
+    destRect.y = static_cast<int>(transform->position.y) - Game::camera->yPosition();
     destRect.w = transform->width * transform->scale;
     destRect.h = transform->height * transform->scale;
 }

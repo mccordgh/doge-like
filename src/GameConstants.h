@@ -7,7 +7,7 @@ static const int& CONSTANTS_GROUP_MAX_SIZE = 32;
 
 static const int& CONSTANTS_STANDARD_ANIMATION_SPEED = 200;
 
-static const int& CONSTANTS_STANDARD_MOVE_SPEED = 3;
+static const int& CONSTANTS_STANDARD_MOVE_SPEED = 4;
 
 static const int& CONSTANTS_STANDARD_MAP_SCALE = 4;
 
