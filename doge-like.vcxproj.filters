@@ -140,11 +140,15 @@
     <ClInclude Include="src\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\libs\json.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
     <None Include="CMakeSettings_backup.json" />
     <None Include="README_old.md" />
+    <None Include="assets\tiles\test_exported_load_map.json" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />

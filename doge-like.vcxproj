@@ -156,6 +156,7 @@
     <ClInclude Include="src\entities\GameObject.h" />
     <ClInclude Include="src\gfx\AssetManager.h" />
     <ClInclude Include="src\gfx\TextureManager.h" />
+    <ClInclude Include="src\libs\json.hpp" />
     <ClInclude Include="src\Manager.h" />
     <ClInclude Include="src\states\State.h" />
     <ClInclude Include="src\states\StateManager.h" />
@@ -166,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
+    <None Include="assets\tiles\test_exported_load_map.json" />
     <None Include="CMakeSettings_backup.json" />
     <None Include="README_old.md" />
   </ItemGroup>

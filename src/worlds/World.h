@@ -2,6 +2,7 @@
 
 #include <SDL2/SDL.h>
 #include "ECS/ECS.h"
+#include "utils/Map.h"
 
 class World
 {
@@ -28,7 +29,8 @@ private:
     std::vector<Entity*> enemies;
     std::vector<Entity*> players;
     std::vector<Entity*> projectiles;
-    std::vector<Entity*> tiles;
+    //std::vector<Entity*> tiles;
+    std::vector<Layer*> layers;
 
     void init();
 };
