@@ -3,6 +3,9 @@
 #include "Camera.h"
 #include "SDL2/SDL.h"
 #include "ECS/TransformComponent.h"
+#include "Manager.h"
+
+extern Manager* GameManager;
 
 // its ok that target is uninitialized because we will set it before the first update()
 Camera::Camera(int x, int y, int w, int h)
@@ -60,13 +63,13 @@ void Camera::update()
         cam.y = 0;
     }
 
-    int endOfMapHorizontal = (CONSTANTS_MAP_WIDTH - cam.w) + 1;
+    int endOfMapHorizontal = (GameManager->mapWidth() - cam.w) + 1;
     if (cam.x > endOfMapHorizontal)
     {
         cam.x = endOfMapHorizontal;
     }
 
-    int endOfMapVertical = (CONSTANTS_MAP_HEIGHT - cam.h) + 1;
+    int endOfMapVertical = (GameManager->mapHeight() - cam.h) + 1;
     if (cam.y > endOfMapVertical)
     {
         cam.y = endOfMapVertical;

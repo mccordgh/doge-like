@@ -26,7 +26,7 @@ Layer::~Layer() {};
 Layer::Layer(string n, int num) : name(n), number(num)
 {};
 
-void Layer::AddTile(string tileSheetId, int srcX, int srcY, int xpos, int ypos, int tileSize, int mapScale, Group groupMap)
+void Layer::AddTile(string tileSheetId, int srcX, int srcY, int xpos, int ypos, int tileSize, int mapScale)
 {
     Entity* tile = GameManager->addEntity();
 
@@ -40,13 +40,68 @@ vector<Entity*> Layer::getTiles()
     return tiles;
 }
 
-Map::Map(string texId, int ms, int tsize) : textureId(texId), mapScale(ms), tileSize(tsize)
+Map::Map(string texId, int ms) : textureId(texId), mapScale(ms)
+{}
+
+void Map::LoadTiledJsonMap(string path)
 {
-    scaledSize = ms * tsize;
+    ifstream mapFile(path);
+    json mapJson;
+    mapFile >> mapJson;
+
+    int tileRows = static_cast<int>(mapJson["height"].get<double>());
+    int tileColumns = static_cast<int>(mapJson["width"].get<double>());
+
+    int tileHeight = static_cast<int>(mapJson["tileheight"].get<double>());
+    int tileWidth = static_cast<int>(mapJson["tilewidth"].get<double>());
+
+    tileSize = tileWidth;
+    scaledSize = mapScale * tileSize;
+
+    int mapWidth = tileColumns * scaledSize;
+    int mapHeight = tileRows * scaledSize;
+    GameManager->setMapSize(mapWidth, mapHeight);
+
+    auto jsonLayers = mapJson["layers"];
+
+    for (auto& jsonLayer : jsonLayers)
+    {
+        string name = jsonLayer["name"].get<string>();
+        int number = static_cast<int>(jsonLayer["id"].get<double>());
+
+        Layer* newLayer = new Layer { name, number };
+
+        vector<int> data = jsonLayer["data"];
+
+        int tileY = 0;
+        int tileX = 0;
+        for (int i = 0; i < data.size(); ++i)
+        {
+            int tileX = i % tileColumns;
+            bool moveToNextRow = tileX == 0 && i != 0;
+
+            if (moveToNextRow)
+            {
+                tileY++;
+                tileX = 0;
+            }
+
+            int tileId = data[i];
+
+            // Tiled puts the id as 0 if no tile is present, so we need to offset by -1 so that 1 will be our first tile.
+            int srcX = (tileId - 1) * tileSize;
+            int srcY = 0;
+            int xpos = tileX * scaledSize;
+            int ypos = tileY * scaledSize;
+
+            newLayer->AddTile(textureId, srcX, srcY, xpos, ypos, tileSize, mapScale);
+        }
+
+        layers.emplace_back(newLayer);
+    }
 }
 
-//  JSON MAP LOADER
-void Map::LoadJsonMap(string path, Group groupColliders, Group groupMap)
+void Map::LoadPyxelJsonMap(string path)
 {
     ifstream mapFile(path);
     json mapJson;
@@ -57,6 +112,8 @@ void Map::LoadJsonMap(string path, Group groupColliders, Group groupMap)
 
     int tileHeight = static_cast<int>(mapJson["tileheight"].get<double>());
     int tileWidth = static_cast<int>(mapJson["tilewidth"].get<double>());
+
+    GameManager->setMapSize(tileColumns * tileWidth * scaledSize, tileRows * tileHeight * scaledSize);
 
     auto jsonLayers = mapJson["layers"];
 
@@ -79,13 +136,13 @@ void Map::LoadJsonMap(string path, Group groupColliders, Group groupMap)
             // all second layer tiles will be the semi transparent thing in 2, 0 tilesheet
             if (layerCount == 1)
             {
-                newLayer->AddTile(textureId, tileSize * count, 0, t["x"] * scaledSize, t["y"] * scaledSize, tileHeight, mapScale, groupMap);
+                newLayer->AddTile(textureId, tileSize * count, 0, t["x"] * scaledSize, t["y"] * scaledSize, tileHeight, mapScale);
             }
             else
             {
                 if (rand() % 2)
                 {
-                    newLayer->AddTile(textureId, tileSize * 2, 0, t["x"] * scaledSize, t["y"] * scaledSize, tileHeight, mapScale, groupMap);
+                    newLayer->AddTile(textureId, tileSize * 2, 0, t["x"] * scaledSize, t["y"] * scaledSize, tileHeight, mapScale);
                 }
             }
 
@@ -99,8 +156,6 @@ void Map::LoadJsonMap(string path, Group groupColliders, Group groupMap)
 
         layers.emplace_back(newLayer);
     }
-
-    return;
 }
 
 vector<Layer*> Map::getLayers()

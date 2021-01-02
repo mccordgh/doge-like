@@ -32,8 +32,8 @@ TransformComponent::TransformComponent(int sc)
     initValues();
 
     // spawn points
-    position.x = CONSTANTS_PLAYER_SPAWN_X * CONSTANTS_STANDARD_TILE_SCALE;
-    position.y = CONSTANTS_PLAYER_SPAWN_Y * CONSTANTS_STANDARD_TILE_SCALE;
+    position.x = 200;
+    position.y = 200;
     scale = sc;
 }
 

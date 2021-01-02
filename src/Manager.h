@@ -12,6 +12,10 @@ public:
     void draw();
     void refresh();
 
+    void setMapSize(int width, int height);
+    int mapHeight();
+    int mapWidth();
+
     void AddToGroup(Entity* mEntity, Group mGroup);
 
     std::vector<Entity*>& getGroup(Group mGroup);
@@ -21,4 +25,7 @@ public:
 private:
     std::vector<std::unique_ptr<Entity>> entities;
     std::array<std::vector<Entity*>, maxGroups> groupedEntities;
+
+    int currentMapHeight;
+    int currentMapWidth;
 };

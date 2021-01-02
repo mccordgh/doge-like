@@ -37,6 +37,22 @@ void Manager::refresh()
         std::end(entities));
 }
 
+void Manager::setMapSize(int width, int height)
+{
+    currentMapWidth = width;
+    currentMapHeight = height;
+}
+
+int Manager::mapHeight()
+{
+    return currentMapHeight;
+}
+
+int Manager::mapWidth()
+{
+    return currentMapWidth;
+}
+
 void Manager::AddToGroup(Entity* mEntity, Group mGroup)
 {
     groupedEntities[mGroup].emplace_back(mEntity);

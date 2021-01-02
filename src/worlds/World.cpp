@@ -8,14 +8,15 @@
 
 extern Manager* GameManager;
 
-World::World()
+World::World(int playerSpawnX, int playerSpawnY)
 {
-    this->init();
+    this->init(playerSpawnX, playerSpawnY);
 };
 
+World::World() {};
 World::~World() {};
 
-void World::init()
+void World::init(int playerSpawnX, int playerSpawnY)
 {
     //Game::assets->AddTexture("terrain", "assets/tiles/grass_and_wall.png");
     Game::assets->AddTexture("terrain", "assets/tiles/grass_and_wall_with_borders.png");
@@ -25,14 +26,15 @@ void World::init()
 
 //    assets->AddTexture("projectile", "assets/projectile_test.png");
 
-    Map* map = new Map("terrain", CONSTANTS_STANDARD_MAP_SCALE, CONSTANTS_STANDARD_TILE_SIZE);
-    map->LoadJsonMap("assets/tiles/test_exported_load_map.json", groupColliders, groupMap);
+    Map* map = new Map("terrain", CONSTANTS_STANDARD_MAP_SCALE);
+    //map->LoadPyxelJsonMap("assets/tiles/test_exported_load_map.json", groupColliders, groupMap);
+    map->LoadTiledJsonMap("assets/tiles/tiled_test.json");
 
     player = GameManager->addEntity();
 
     player->addComponent<TransformComponent>(
-        CONSTANTS_PLAYER_SPAWN_X * CONSTANTS_STANDARD_TILE_SCALE,
-        CONSTANTS_PLAYER_SPAWN_Y * CONSTANTS_STANDARD_TILE_SCALE,
+        playerSpawnX,
+        playerSpawnY,
         CONSTANTS_STANDARD_TILE_SIZE,
         CONSTANTS_STANDARD_TILE_SIZE,
         CONSTANTS_STANDARD_TILE_SCALE
@@ -71,14 +73,14 @@ void World::update()
         }
     }
 
-    for(auto& p : projectiles)
-    {
-        if (Collision::AABB(player->getComponent<ColliderComponent>().collider, p->getComponent<ColliderComponent>().collider))
-        {
-            // std::cout << "Project HIT PLAYER ~DESTROYED" << std::endl;
-            p->destroy();
-        }
-    }
+    //for(auto& p : projectiles)
+    //{
+    //    if (Collision::AABB(player->getComponent<ColliderComponent>().collider, p->getComponent<ColliderComponent>().collider))
+    //    {
+    //        // std::cout << "Project HIT PLAYER ~DESTROYED" << std::endl;
+    //        p->destroy();
+    //    }
+    //}
 
     Game::camera->update();
 };

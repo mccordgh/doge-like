@@ -7,6 +7,8 @@
 class World
 {
 public:
+    World(int playerSpawnX, int playerSpawnY);
+
     World();
     ~World();
 
@@ -32,5 +34,5 @@ private:
     //std::vector<Entity*> tiles;
     std::vector<Layer*> layers;
 
-    void init();
+    void init(int playerSpawnX, int playerSpawnY);
 };

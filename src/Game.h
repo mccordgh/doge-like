@@ -35,6 +35,6 @@ public:
 
 private:
     StateManager* stateManager;
-    
+
     SDL_Window *window;
 };
