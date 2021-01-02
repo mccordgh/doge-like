@@ -19,11 +19,11 @@ SpriteComponent::SpriteComponent() = default;
 void SpriteComponent::setValues(bool isAnimated)
 {
     animIndex = 0;
-    bool animated = isAnimated;
-    int frames = 0;
-    int speed = CONSTANTS_STANDARD_ANIMATION_SPEED;
+    animated = isAnimated;
+    frames = 0;
+    speed = CONSTANTS_STANDARD_ANIMATION_SPEED;
 
-    SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;
+    spriteFlip = SDL_FLIP_NONE;
 }
 
 SpriteComponent::SpriteComponent(std::string id)

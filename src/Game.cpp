@@ -53,7 +53,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         return;
     }
 
-    World* world = new World(200, 200);
+    World* world = new World(800, 800);
     State* state = new State(world);
 
     stateManager = new StateManager(state);

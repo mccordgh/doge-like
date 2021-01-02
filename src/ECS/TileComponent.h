@@ -21,10 +21,14 @@ public:
     Vector2D position;
 
     TileComponent();
-    TileComponent(int srcX, int srcY, int xpos, int ypos, int tileSize, int tileScale, std::string id);
+    TileComponent(int srcX, int srcY, int xpos, int ypos, int tileSize, int tileScale, std::string id, double paraX, double paraY);
 
     ~TileComponent();
 
     void update() override;
     void draw() override;
+
+private:
+    double parallaxX;
+    double parallaxY;
 };

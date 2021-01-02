@@ -22,7 +22,7 @@ public:
 
     ~Layer();
 
-    void AddTile(string tileSheetId, int srcX, int srcY, int xpos, int ypos, int tileSize, int mapScale);
+    void AddTile(string tileSheetId, int srcX, int srcY, int xpos, int ypos, int tileSize, int mapScale, double parallaxX, double parallaxY);
 
     string name;
     int number;

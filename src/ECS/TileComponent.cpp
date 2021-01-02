@@ -22,7 +22,7 @@ TileComponent::~TileComponent()
     SDL_DestroyTexture(texture);
 }
 
-TileComponent::TileComponent(int srcX, int srcY, int xpos, int ypos, int tileSize, int tileScale, std::string id)
+TileComponent::TileComponent(int srcX, int srcY, int xpos, int ypos, int tileSize, int tileScale, std::string id, double paraX, double paraY)
 {
     texture = Game::assets->GetTexture(id);
 
@@ -36,12 +36,15 @@ TileComponent::TileComponent(int srcX, int srcY, int xpos, int ypos, int tileSiz
     destRect.x = xpos;
     destRect.y = ypos;
     destRect.w = destRect.h = tileSize * tileScale;
+
+    parallaxX = paraX;
+    parallaxY = paraY;
 }
 
 void TileComponent::update()
 {
-    destRect.x = position.x - Game::camera->xPosition();
-    destRect.y = position.y - Game::camera->yPosition();
+    destRect.x = position.x - (Game::camera->xPosition() * parallaxX);
+    destRect.y = position.y - (Game::camera->yPosition() * parallaxY);
 }
 
 void TileComponent::draw()
