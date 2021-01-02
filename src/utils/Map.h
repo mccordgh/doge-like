@@ -17,7 +17,9 @@ public:
     Map(std::string texId, int ms, int tsize);
 
     void AddTile(int srcX, int srcY, int xpos, int ypos, Group groupMap);
-    void LoadMap(std::string path, int sizeX, int sizeY, Group groupColliders, Group groupMap);
+
+    void LoadMap(std::string path, Group groupColliders, Group groupMap);
+    //void LoadMap(std::string path, int sizeX, int sizeY, Group groupColliders, Group groupMap);
 
 private:
     std::string textureId;

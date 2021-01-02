@@ -22,7 +22,8 @@ void World::init()
 //    assets->AddTexture("projectile", "assets/projectile_test.png");
 
     Map* map = new Map("terrain", CONSTANTS_STANDARD_MAP_SCALE, CONSTANTS_STANDARD_TILE_SIZE);
-    map->LoadMap("assets/tiles/simple_1.map", CONSTANTS_MAP_WIDTH_IN_TILES, CONSTANTS_MAP_HEIGHT_IN_TILES, groupColliders, groupMap);
+    //map->LoadMap("assets/tiles/simple_1.map", CONSTANTS_MAP_WIDTH_IN_TILES, CONSTANTS_MAP_HEIGHT_IN_TILES, groupColliders, groupMap);
+    map->LoadMap("assets/tiles/doggo_island.pmap", groupColliders, groupMap);
 
     player = GameManager->addEntity();
 
