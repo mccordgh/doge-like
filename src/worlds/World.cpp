@@ -19,12 +19,13 @@ void World::init()
 {
     //Game::assets->AddTexture("terrain", "assets/tiles/grass_and_wall.png");
     Game::assets->AddTexture("terrain", "assets/tiles/grass_and_wall_with_borders.png");
+    //Game::assets->AddTexture("terrain", "assets/tiles/testing_tiles_draw_and_dont_overlap.png");
+
     Game::assets->AddTexture("player", "assets/ff_adventure_knight.png");
+
 //    assets->AddTexture("projectile", "assets/projectile_test.png");
 
     Map* map = new Map("terrain", CONSTANTS_STANDARD_MAP_SCALE, CONSTANTS_STANDARD_TILE_SIZE);
-    //map->LoadMap("assets/tiles/simple_1.map", CONSTANTS_MAP_WIDTH_IN_TILES, CONSTANTS_MAP_HEIGHT_IN_TILES, groupColliders, groupMap);
-    //map->LoadMap("assets/tiles/doggo_island.pmap", groupColliders, groupMap);
     map->LoadJsonMap("assets/tiles/test_exported_load_map.json", groupColliders, groupMap);
 
     player = GameManager->addEntity();

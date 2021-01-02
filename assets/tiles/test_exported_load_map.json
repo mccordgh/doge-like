@@ -1,6 +1,6 @@
 {
     "tileshigh": 20,
-    "tileheight": 32,
+    "tileheight": 16,
     "tileswide": 25,
     "layers": [
         {
@@ -8016,5 +8016,5 @@
             "number": 1
         }
     ],
-    "tilewidth": 32
+    "tilewidth": 16
 }

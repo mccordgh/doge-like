@@ -31,9 +31,8 @@ void Layer::AddTile(string tileSheetId, int srcX, int srcY, int xpos, int ypos, 
     Entity* tile = GameManager->addEntity();
 
     tile->addComponent<TileComponent>(srcX, srcY, xpos, ypos, tileSize, mapScale, tileSheetId);
-    
+
     tiles.emplace_back(tile);
-    /*  tile->addGroup(groupMap);*/
 }
 
 vector<Entity*> Layer::getTiles()
@@ -60,20 +59,46 @@ void Map::LoadJsonMap(string path, Group groupColliders, Group groupMap)
     int tileWidth = static_cast<int>(mapJson["tilewidth"].get<double>());
 
     auto jsonLayers = mapJson["layers"];
-    auto jsonLayer = jsonLayers[1];
 
-    string name = jsonLayer["name"].get<string>();
-    int number = static_cast<int>(jsonLayer["number"].get<double>());
-    
-    Layer* newLayer = new Layer{ name, number };
-
-    for (auto& t : jsonLayer["tiles"])
+    // remove these dummies later
+    int count = 0;
+    int layerCount = 0;
+    for (auto& jsonLayer : jsonLayers)
     {
-        // TODO: USING HEIGHT FOR THE OVERALL SIZE INSTEAD OF HEIGHT AND WIDTH
-        newLayer->AddTile(textureId, 0, 0, t["x"] * scaledSize, t["y"] * scaledSize, tileHeight, mapScale, groupMap);
-    }
+        layerCount++;
 
-    layers.emplace_back(newLayer);
+        string name = jsonLayer["name"].get<string>();
+        int number = static_cast<int>(jsonLayer["number"].get<double>());
+
+        Layer* newLayer = new Layer{ name, number };
+
+        for (auto& t : jsonLayer["tiles"])
+        {
+            // really dumb way to just test layer 2
+            // all first layer tiles will be the grass at 0, 0 in tilesheet
+            // all second layer tiles will be the semi transparent thing in 2, 0 tilesheet
+            if (layerCount == 1)
+            {
+                newLayer->AddTile(textureId, tileSize * count, 0, t["x"] * scaledSize, t["y"] * scaledSize, tileHeight, mapScale, groupMap);
+            }
+            else
+            {
+                if (rand() % 2)
+                {
+                    newLayer->AddTile(textureId, tileSize * 2, 0, t["x"] * scaledSize, t["y"] * scaledSize, tileHeight, mapScale, groupMap);
+                }
+            }
+
+            count++;
+
+            if (count > 1)
+            {
+                count = 0;
+            }
+        }
+
+        layers.emplace_back(newLayer);
+    }
 
     return;
 }
@@ -82,14 +107,3 @@ vector<Layer*> Map::getLayers()
 {
     return layers;
 }
-
-
-
-//void Map::AddTile(int srcX, int srcY, int xpos, int ypos, Group groupMap)
-//{
-//    Entity* tile = GameManager->addEntity();
-//
-//    tile->addComponent<TileComponent>(srcX, srcY, xpos, ypos, tileSize, mapScale, textureId);
-//    tile->addGroup(groupMap);
-//}
-
