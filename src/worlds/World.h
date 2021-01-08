@@ -1,38 +1,40 @@
 #pragma once
 
 #include <SDL2/SDL.h>
-#include "ECS/ECS.h"
-#include "utils/Map.h"
+#include "utils/Layer.h"
+#include "EntityManager.h"
+#include "Camera.h"
+#include "gfx/AssetManager.h"
 
 class World
 {
 public:
-    World(int playerSpawnX, int playerSpawnY);
-
-    World();
+    World() = delete;
     ~World();
 
-    void update();
-    void draw(SDL_Renderer* renderer);
+    World(SDL_Renderer* rend);
 
-    enum groupLabels : std::size_t
-    {
-        groupColliders,
-        groupEnemies,
-        groupMap,
-        groupPlayers,
-        groupProjectiles,
-    };
+    void init();
+    void update();
+    void draw();
+
+    EntityManager* getEntityManager();
+
+    static AssetManager* assets;
+    static Camera* camera;
+    static EntityManager* entityManager;
+
+    static int mapHeight;
+    static int mapWidth;
 
 private:
-    Entity* player;
-
-    std::vector<Entity*> colliders;
+    // these are all tracked via layers now
+   /* std::vector<Entity*> colliders;
     std::vector<Entity*> enemies;
     std::vector<Entity*> players;
-    std::vector<Entity*> projectiles;
+    std::vector<Entity*> projectiles;*/
     //std::vector<Entity*> tiles;
     std::vector<Layer*> layers;
 
-    void init(int playerSpawnX, int playerSpawnY);
+    SDL_Renderer* renderer;
 };

@@ -1,19 +1,20 @@
-#include "Manager.h"
+#include "EntityManager.h"
+#include "ECS/ECS.h"
 
-Manager::Manager() {};
-Manager::~Manager() {};
+EntityManager::EntityManager() {};
+EntityManager::~EntityManager() {};
 
-void Manager::update()
-{
-    for (auto& e : entities) e->update();
-}
+//void EntityManager::update()
+//{
+//    for (auto& e : entities) e->update();
+//}
 
-void Manager::draw()
-{
-    for (auto& e : entities) e->draw();
-}
+//void EntityManager::draw()
+//{
+//    for (auto& e : entities) e->draw();
+//}
 
-void Manager::refresh()
+void EntityManager::refresh()
 {
 
     for (auto i(0u); i < maxGroups; i += 1)
@@ -37,37 +38,22 @@ void Manager::refresh()
         std::end(entities));
 }
 
-void Manager::setMapSize(int width, int height)
-{
-    currentMapWidth = width;
-    currentMapHeight = height;
-}
-
-int Manager::mapHeight()
-{
-    return currentMapHeight;
-}
-
-int Manager::mapWidth()
-{
-    return currentMapWidth;
-}
-
-void Manager::AddToGroup(Entity* mEntity, Group mGroup)
+void EntityManager::AddToGroup(Entity* mEntity, Group mGroup)
 {
     groupedEntities[mGroup].emplace_back(mEntity);
 }
 
-std::vector<Entity*>& Manager::getGroup(Group mGroup)
+std::vector<Entity*>& EntityManager::getGroup(Group mGroup)
 {
     return groupedEntities[mGroup];
 }
 
-Entity* Manager::addEntity()
+Entity* EntityManager::addEntity()
 {
     Entity* e = new Entity();
     std::unique_ptr<Entity> uPtr{ e };
 
     entities.emplace_back(std::move(uPtr));
+
     return e;
 }

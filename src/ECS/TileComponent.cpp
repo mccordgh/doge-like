@@ -10,10 +10,8 @@
 
 #include "TileComponent.h"
 #include "gfx/TextureManager.h"
-#include "Manager.h"
+#include "Game.h"
 #include "SDL2/SDL.h"
-
-extern Manager* GameManager;
 
 TileComponent::TileComponent() = default;
 
@@ -24,7 +22,7 @@ TileComponent::~TileComponent()
 
 TileComponent::TileComponent(int srcX, int srcY, int xpos, int ypos, int tileSize, int tileScale, std::string id, double paraX, double paraY)
 {
-    texture = Game::assets->GetTexture(id);
+    texture = World::assets->GetTexture(id);
 
     position.x = xpos;
     position.y = ypos;
@@ -43,8 +41,8 @@ TileComponent::TileComponent(int srcX, int srcY, int xpos, int ypos, int tileSiz
 
 void TileComponent::update()
 {
-    destRect.x = position.x - (Game::camera->xPosition() * parallaxX);
-    destRect.y = position.y - (Game::camera->yPosition() * parallaxY);
+    destRect.x = position.x - (World::camera->xPosition() * parallaxX);
+    destRect.y = position.y - (World::camera->yPosition() * parallaxY);
 }
 
 void TileComponent::draw()

@@ -8,9 +8,7 @@
 
 #include "GameObject.h"
 #include "gfx/TextureManager.h"
-#include "Manager.h"
-
-extern Manager* GameManager;
+#include "Game.h"
 
 GameObject::GameObject(const char* textureSheet, int x, int y)
 {

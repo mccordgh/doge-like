@@ -10,9 +10,7 @@
 
 #include "SpriteComponent.h"
 #include "gfx/TextureManager.h"
-#include "Manager.h"
-
-extern Manager* GameManager;
+#include "Game.h"
 
 SpriteComponent::SpriteComponent() = default;
 
@@ -56,7 +54,7 @@ SpriteComponent::~SpriteComponent() {}
 
 void SpriteComponent::setTexture(std::string id)
 {
-    texture = Game::assets->GetTexture(id);
+    texture = World::assets->GetTexture(id);
 }
 
 void SpriteComponent::init()
@@ -77,8 +75,8 @@ void SpriteComponent::update()
 
     srcRect.y = animIndex * transform->height;
 
-    destRect.x = static_cast<int>(transform->position.x) - Game::camera->xPosition();
-    destRect.y = static_cast<int>(transform->position.y) - Game::camera->yPosition();
+    destRect.x = static_cast<int>(transform->position.x) - World::camera->xPosition();
+    destRect.y = static_cast<int>(transform->position.y) - World::camera->yPosition();
     destRect.w = transform->width * transform->scale;
     destRect.h = transform->height * transform->scale;
 }

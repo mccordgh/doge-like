@@ -11,39 +11,18 @@
 
 #include "Map.h"
 #include "ECS/Components.h"
-#include "Manager.h"
+#include "Game.h"
 #include "libs/json.hpp"
 
-extern Manager* GameManager;
+extern EntityManager* GameManager;
 
 using json = nlohmann::json;
 using namespace std;
 
-
-Layer::Layer() {};
-Layer::~Layer() {};
-
-Layer::Layer(string n, int num) : name(n), number(num)
-{};
-
-void Layer::AddTile(string tileSheetId, int srcX, int srcY, int xpos, int ypos, int tileSize, int mapScale, double parallaxX, double parallaxY)
-{
-    Entity* tile = GameManager->addEntity();
-
-    tile->addComponent<TileComponent>(srcX, srcY, xpos, ypos, tileSize, mapScale, tileSheetId, parallaxX, parallaxY);
-
-    tiles.emplace_back(tile);
-}
-
-vector<Entity*> Layer::getTiles()
-{
-    return tiles;
-}
-
 Map::Map(string texId, int ms) : textureId(texId), mapScale(ms)
 {}
 
-void Map::LoadTiledJsonMap(string path)
+unordered_map<string, int> Map::LoadTiledJsonMap(string path)
 {
     ifstream mapFile(path);
     json mapJson;
@@ -60,7 +39,6 @@ void Map::LoadTiledJsonMap(string path)
 
     int mapWidth = tileColumns * scaledSize;
     int mapHeight = tileRows * scaledSize;
-    GameManager->setMapSize(mapWidth, mapHeight);
 
     auto jsonLayers = mapJson["layers"];
 
@@ -78,7 +56,7 @@ void Map::LoadTiledJsonMap(string path)
         parallaxX = parallaxxKeyExists ? jsonLayer["parallaxx"].get<double>() : 1.0;
         parallaxY = parallaxyKeyExists ? jsonLayer["parallaxy"].get<double>() : 1.0;
 
-        Layer* newLayer = new Layer { name, number };
+        Layer* newLayer = new Layer{ name, number };
 
         vector<int> data = jsonLayer["data"];
 
@@ -108,6 +86,26 @@ void Map::LoadTiledJsonMap(string path)
 
         layers.emplace_back(newLayer);
     }
+
+    Entity* player = World::entityManager->addEntity();
+
+    player->addComponent<TransformComponent>(
+        800, //playerSpawnX will come from map data eventually
+        800, //playerSpawnY will come from map data eventually
+        CONSTANTS_STANDARD_TILE_SIZE,
+        CONSTANTS_STANDARD_TILE_SIZE,
+        CONSTANTS_STANDARD_TILE_SCALE
+    );
+    player->addComponent<SpriteComponent>("player", true);
+    player->addComponent<KeyboardController>();
+    player->addComponent<ColliderComponent>("player");
+    player->addGroup(World::entityManager->groupPlayers);
+
+    layers[0]->AddEntity(player);
+
+    World::camera->centerOnEntity(player);
+
+    return unordered_map<string, int>({ {"mapWidth", mapWidth}, {"mapHeight", mapHeight }});
 }
 
 //void Map::LoadPyxelJsonMap(string path)

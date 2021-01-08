@@ -16,11 +16,9 @@
 
 #include "ECS.h"
 #include "GameConstants.h"
-#include "Manager.h"
+#include "Game.h"
 
-extern Manager* GameManager;
-
-class Manager;
+class EntityManager;
 
 /* COMPONENT */
 // keeps track of ID incrementation
@@ -69,7 +67,7 @@ bool Entity::hasGroup(Group mGroup)
 void Entity::addGroup(Group mGroup)
 {
     groupBitset[mGroup] = true;
-    GameManager->AddToGroup(this, mGroup);
+    Game::stateManager->getState()->getWorld()->getEntityManager()->AddToGroup(this, mGroup);
 }
 
 void Entity::delGroup(Group mGroup)

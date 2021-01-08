@@ -42,10 +42,10 @@
 //        }
 //
 //        // Check if projectile has gone offscreen
-//        if (transform->position.x > (Game::camera->xPosition() + Game::camera->width() + transform->width)
-//            || transform->position.x < Game::camera->xPosition()
-//            || transform->position.y > Game::camera->yPosition() + Game::camera->height() + transform->height
-//            || transform->position.y < Game::camera->yPosition())
+//        if (transform->position.x > (World::camera->xPosition() + World::camera->width() + transform->width)
+//            || transform->position.x < World::camera->xPosition()
+//            || transform->position.y > World::camera->yPosition() + World::camera->height() + transform->height
+//            || transform->position.y < World::camera->yPosition())
 //        {
 //            // std::cout << "Project OFFSCREEN ~DESTROYED" << std::endl;
 //            entity->destroy();

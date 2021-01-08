@@ -9,29 +9,12 @@
 #pragma once
 
 #include <string>
-#include <map>
+#include <unordered_map>
 #include "ECS/ECS.h"
+#include "Layer.h"
+#include "worlds/World.h"
 
 using namespace std;
-
-class Layer
-{
-public:
-    Layer();
-    Layer(string n, int num);
-
-    ~Layer();
-
-    void AddTile(string tileSheetId, int srcX, int srcY, int xpos, int ypos, int tileSize, int mapScale, double parallaxX, double parallaxY);
-
-    string name;
-    int number;
-
-    vector<Entity*> getTiles();
-
-private:
-    vector<Entity*> tiles;
-};
 
 class Map
 {
@@ -41,8 +24,8 @@ public:
     //void AddTile(int srcX, int srcY, int xpos, int ypos, Group groupMap);
     //void AddTileToLayer(int layerIndex, int srcX, int srcY, int xpos, int ypos, Group groupMap);
 
-    void LoadPyxelJsonMap(std::string path);
-    void LoadTiledJsonMap(std::string path);
+    //void LoadPyxelJsonMap(std::string path);
+    unordered_map<string, int> LoadTiledJsonMap(std::string path);
     //void LoadMap(std::string path, Group groupColliders, Group groupMap);
     //void LoadMap(std::string path, int sizeX, int sizeY, Group groupColliders, Group groupMap);
 

@@ -3,73 +3,100 @@
 #include "ECS/Components.h"
 #include "utils/Collision.h"
 #include "utils/Map.h"
-#include "Manager.h"
-#include "ECS/ECS.h"
+#include "gfx/AssetManager.h"
+#include "Camera.h"
 
-extern Manager* GameManager;
+int World::mapWidth = 0;
+int World::mapHeight = 0;
 
-World::World(int playerSpawnX, int playerSpawnY)
-{
-    this->init(playerSpawnX, playerSpawnY);
+AssetManager* World::assets = nullptr;
+Camera* World::camera = nullptr;
+EntityManager* World::entityManager = nullptr;
+
+World::World(SDL_Renderer* rend): renderer(rend) {
+    entityManager = new EntityManager();
+    assets = new AssetManager();
+    camera = new Camera(0, 0, CONSTANTS_GAME_WINDOW_WIDTH, CONSTANTS_GAME_WINDOW_HEIGHT);
 };
 
-World::World() {};
 World::~World() {};
 
-void World::init(int playerSpawnX, int playerSpawnY)
+void World::init()
 {
-    //Game::assets->AddTexture("terrain", "assets/tiles/grass_and_wall.png");
-    Game::assets->AddTexture("terrain", "assets/tiles/grass_and_wall_with_borders.png");
-    //Game::assets->AddTexture("terrain", "assets/tiles/testing_tiles_draw_and_dont_overlap.png");
+    //World::assets->AddTexture("terrain", "assets/tiles/grass_and_wall.png");
+    assets->AddTexture("terrain", "assets/tiles/grass_and_wall_with_borders.png");
+    //World::assets->AddTexture("terrain", "assets/tiles/testing_tiles_draw_and_dont_overlap.png");
 
-    Game::assets->AddTexture("player", "assets/ff_adventure_knight.png");
+    assets->AddTexture("player", "assets/ff_adventure_knight.png");
 
 //    assets->AddTexture("projectile", "assets/projectile_test.png");
 
     Map* map = new Map("terrain", CONSTANTS_STANDARD_MAP_SCALE);
     //map->LoadPyxelJsonMap("assets/tiles/test_exported_load_map.json", groupColliders, groupMap);
-    map->LoadTiledJsonMap("assets/tiles/tiled_test.json");
+    unordered_map<string, int> mapDimensions = map->LoadTiledJsonMap("assets/tiles/tiled_test.json");
+    mapHeight = mapDimensions["mapHeight"];
+    mapWidth = mapDimensions["mapWidth"];
 
-    player = GameManager->addEntity();
-
-    player->addComponent<TransformComponent>(
-        playerSpawnX,
-        playerSpawnY,
-        CONSTANTS_STANDARD_TILE_SIZE,
-        CONSTANTS_STANDARD_TILE_SIZE,
-        CONSTANTS_STANDARD_TILE_SCALE
-    );
-    player->addComponent<SpriteComponent>("player", true);
-    player->addComponent<KeyboardController>();
-    player->addComponent<ColliderComponent>("player");
-    player->addGroup(groupPlayers);
-
-    colliders = GameManager->getGroup(groupColliders);
-    enemies = GameManager->getGroup(groupEnemies);
-    players = GameManager->getGroup(groupPlayers);
-    projectiles = GameManager->getGroup(groupProjectiles);
     layers = map->getLayers();
 
-    Game::camera->centerOnEntity(player);
+    //Entity* player = entityManager->addEntity();
 
-  //    Game::assets->CreateProjectile("projectile", Vector2D(350, 1100), Vector2D(2, 0), 200, 2);
+    //player->addComponent<TransformComponent>(
+    //    playerSpawnX,
+    //    playerSpawnY,
+    //    CONSTANTS_STANDARD_TILE_SIZE,
+    //    CONSTANTS_STANDARD_TILE_SIZE,
+    //    CONSTANTS_STANDARD_TILE_SCALE
+    //);
+    //player->addComponent<SpriteComponent>("player", true);
+    //player->addComponent<KeyboardController>();
+    //player->addComponent<ColliderComponent>("player");
+    //player->addGroup(groupPlayers);
+
+   /* colliders = entityManager->getGroup(groupColliders);
+    enemies = entityManager->getGroup(groupEnemies);
+    players = entityManager->getGroup(groupPlayers);
+    projectiles = entityManager->getGroup(groupProjectiles);*/
+
+  //    World::assets->CreateProjectile("projectile", Vector2D(350, 1100), Vector2D(2, 0), 200, 2);
 }
 
 void World::update()
 {
-    SDL_Rect playerCollider = player->getComponent<ColliderComponent>().collider;
-    Vector2D playerPos = player->getComponent<TransformComponent>().position;
+    entityManager->refresh();
 
-    GameManager->refresh();
-    GameManager->update();
-
-    for (auto& c : colliders)
+    for (Layer* layer : layers)
     {
-        SDL_Rect cCollider = c->getComponent<ColliderComponent>().collider;
-
-        if (Collision::AABB(cCollider, playerCollider))
+        for (auto& tile : layer->getTiles())
         {
-            player->getComponent<TransformComponent>().position = playerPos;
+            tile->update();
+        }
+
+   /*     for (auto& c : layer->getColliders())
+        {
+            c->update();
+        }*/
+
+        for (auto& e : layer->getEntities())
+        {
+            Vector2D ePos = e->getComponent<TransformComponent>().position;
+
+            e->update();
+
+            if (e->hasComponent<TransformComponent>() && e->hasComponent<ColliderComponent>())
+            {
+                SDL_Rect eCollider = e->getComponent<ColliderComponent>().collider;
+
+                for (auto& c : entityManager->getGroup(entityManager->groupColliders))
+                {
+                    SDL_Rect cCollider = c->getComponent<ColliderComponent>().collider;
+
+                    if (Collision::AABB(cCollider, eCollider))
+                    {
+                        e->getComponent<TransformComponent>().position = ePos;
+                    }
+                }
+            }
         }
     }
 
@@ -82,10 +109,10 @@ void World::update()
     //    }
     //}
 
-    Game::camera->update();
+    camera->update();
 };
 
-void World::draw(SDL_Renderer* renderer)
+void World::draw()
 {
    // clear renderer
     SDL_RenderClear(renderer);
@@ -96,28 +123,47 @@ void World::draw(SDL_Renderer* renderer)
         {
             tile->draw();
         }
-    }
 
-    for (auto& c : colliders)
-    {
-        c->draw();
-    }
+      /*  for (auto& c : layer->getColliders())
+        {
+            c->draw();
+        }
 
-    for (auto& e : enemies)
-    {
-        e->draw();
-    }
+        for (auto& e : layer->getEnemies())
+        {
+            e->draw();
+        }*/
 
-    for (auto& p : players)
-    {
-        p->draw();
-    }
+        for (auto& e : layer->getEntities())
+        {
+            e->draw();
+        }
 
-    for (auto& p : projectiles)
-    {
-        p->draw();
+        // We can bring this back if we have more than one player entity in game
+       /* for (auto& p : layer->getPlayers())
+        {
+            p->draw();
+        }*/
+        //layer->getPlayer()->draw();
+
+        // Bring this back when projectiles are re-introduced
+        /*for (auto& p : layer->getProjectiles())
+        {
+            p->draw();
+        }*/
     }
 
     // present everything
     SDL_RenderPresent(renderer);
 };
+
+EntityManager* World::getEntityManager()
+{
+    return entityManager;
+}
+
+//void World::setMapSize(int width, int height)
+//{
+//    currentMapWidth = width;
+//    currentMapHeight = height;
+//}

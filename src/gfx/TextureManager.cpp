@@ -12,11 +12,8 @@
 //#include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "TextureManager.h"
-#include "Manager.h"
-
+#include "Game.h"
 #include <direct.h>
-
-extern Manager* GameManager;
 
 //const char* assetsDir = "assets/";
 //const char* spriteExtension = ".png";

@@ -10,8 +10,13 @@ void State::update()
     world->update();
 };
 
-void State::draw(SDL_Renderer* renderer)
+void State::draw()
 {
-    world->draw(renderer);
+    world->draw();
 };
+
+World* State::getWorld()
+{
+    return world;
+}
 

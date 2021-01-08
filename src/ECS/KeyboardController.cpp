@@ -7,9 +7,7 @@
 //
 
 #include "KeyboardController.h"
-#include "Manager.h"
-
-extern Manager* GameManager;
+#include "Game.h"
 
 TransformComponent* transform;
 SpriteComponent* sprite;

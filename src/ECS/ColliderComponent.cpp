@@ -13,9 +13,7 @@
 #include "ColliderComponent.h"
 #include "TransformComponent.h"
 #include "gfx/TextureManager.h"
-#include "Manager.h"
-
-extern Manager* GameManager; 
+#include "Game.h"
 
 ColliderComponent::ColliderComponent(std::string t)
 {
@@ -59,8 +57,8 @@ void ColliderComponent::update()
         collider.h = transform->height * transform->scale;
     }
 
-    destRect.x = collider.x - Game::camera->xPosition();
-    destRect.y = collider.y - Game::camera->yPosition();
+    destRect.x = collider.x - World::camera->xPosition();
+    destRect.y = collider.y - World::camera->yPosition();
 }
 
 void ColliderComponent::draw()

@@ -7,8 +7,10 @@ class State
   public:
     State(World* w);
 
+    World* getWorld();
+
     void update();
-    void draw(SDL_Renderer* renderer);
+    void draw();
 
   private:
     World* world;

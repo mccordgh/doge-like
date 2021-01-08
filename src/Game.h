@@ -11,8 +11,6 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "states/StateManager.h"
-#include "gfx/AssetManager.h"
-#include "Camera.h"
 
 class Game
 {
@@ -26,15 +24,12 @@ public:
 
     bool running();
 
+    static StateManager* stateManager;
+
     static SDL_Renderer *renderer;
     static SDL_Event event;
     static bool isRunning;
 
-    static Camera* camera;
-    static AssetManager* assets;
-
 private:
-    StateManager* stateManager;
-
     SDL_Window *window;
 };

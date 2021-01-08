@@ -2,16 +2,25 @@
 
 #include "StateManager.h"
 
-StateManager::StateManager(State* state) : currentState(state) {};
+StateManager::StateManager()
+{
+    currentState = nullptr;
+};
 
 void StateManager::update()
 {
-    currentState->update();
+    if (currentState != nullptr)
+    {
+        currentState->update();
+    }
 };
 
-void StateManager::draw(SDL_Renderer* renderer)
+void StateManager::draw()
 {
-    currentState->draw(renderer);
+    if (currentState != nullptr)
+    {
+        currentState->draw();
+    }
 };
 
 State* StateManager::getState()

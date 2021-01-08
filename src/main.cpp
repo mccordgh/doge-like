@@ -1,9 +1,7 @@
 #define SDL_MAIN_HANDLED
 
-#include "Manager.h"
 #include "Game.h"
 
-Manager* GameManager = new Manager();
 Game* game = nullptr;
 
 int main()

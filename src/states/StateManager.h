@@ -5,10 +5,10 @@
 class StateManager
 {
 public:
-    StateManager(State* state);
+    StateManager();
 
     void update();
-    void draw(SDL_Renderer* renderer);
+    void draw();
     State* getState();
     void setState(State* state);
 

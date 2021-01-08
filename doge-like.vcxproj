@@ -133,10 +133,11 @@
     <ClCompile Include="src\ECS\TransformComponent.cpp" />
     <ClCompile Include="src\entities\GameObject.cpp" />
     <ClCompile Include="src\gfx\TextureManager.cpp" />
-    <ClCompile Include="src\Manager.cpp" />
+    <ClCompile Include="src\EntityManager.cpp" />
     <ClCompile Include="src\states\State.cpp" />
     <ClCompile Include="src\states\StateManager.cpp" />
     <ClCompile Include="src\utils\Collision.cpp" />
+    <ClCompile Include="src\utils\Layer.cpp" />
     <ClCompile Include="src\utils\Map.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />
     <ClCompile Include="src\worlds\World.cpp" />
@@ -157,10 +158,11 @@
     <ClInclude Include="src\gfx\AssetManager.h" />
     <ClInclude Include="src\gfx\TextureManager.h" />
     <ClInclude Include="src\libs\json.hpp" />
-    <ClInclude Include="src\Manager.h" />
+    <ClInclude Include="src\EntityManager.h" />
     <ClInclude Include="src\states\State.h" />
     <ClInclude Include="src\states\StateManager.h" />
     <ClInclude Include="src\utils\Collision.h" />
+    <ClInclude Include="src\utils\Layer.h" />
     <ClInclude Include="src\utils\Map.h" />
     <ClInclude Include="src\utils\Vector2D.h" />
     <ClInclude Include="src\worlds\World.h" />

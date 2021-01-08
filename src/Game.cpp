@@ -10,14 +10,11 @@
 #include "worlds/World.h"
 #include "states/State.h"
 
-AssetManager* Game::assets = new AssetManager();
-
 bool Game::isRunning = false;
 
-Camera* Game::camera = new Camera(0, 0, CONSTANTS_GAME_WINDOW_WIDTH, CONSTANTS_GAME_WINDOW_HEIGHT);
-
-SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
+StateManager* Game::stateManager = new StateManager();
+SDL_Renderer* Game::renderer = nullptr;
 
 bool Game::running() { return isRunning; }
 
@@ -53,10 +50,10 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         return;
     }
 
-    World* world = new World(800, 800);
+    World* world = new World(renderer);
     State* state = new State(world);
 
-    stateManager = new StateManager(state);
+    world->init();
     stateManager->setState(state);
 }
 
@@ -82,7 +79,7 @@ void Game::update()
 
 void Game::draw()
 {
-    stateManager->draw(renderer);
+    stateManager->draw();
 }
 
 void Game::clean()
@@ -97,4 +94,3 @@ void Game::clean()
     std::cout << "Game Cleaned" << std::endl;
     std::cin.get();
 }
-

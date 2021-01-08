@@ -20,7 +20,7 @@
 class Game;
 class Component;
 class Entity;
-class Manager;
+class EntityManager;
 
 using ComponentID = std::size_t;
 using Group = std::size_t; // Groups used for collision layers and render layers
