@@ -17,7 +17,7 @@
          "name":"Floor",
          "opacity":1,
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":50,
          "x":0,
          "y":0
@@ -28,8 +28,14 @@
          "id":2,
          "name":"Above",
          "opacity":1,
-         "parallaxx":1.8,
-         "parallaxy":1.8,
+         "parallaxx":1.65,
+         "parallaxy":1.65,
+         "properties":[
+                {
+                 "name":"extraScale",
+                 "type":"int",
+                 "value":2
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":50,

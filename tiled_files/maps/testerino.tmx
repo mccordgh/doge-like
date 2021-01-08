@@ -4,7 +4,7 @@
   <export target="../../assets/tiles/tiled_test.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" source="../tilesets/grass_and_wall_with_borders.tsx"/>
- <layer id="1" name="Floor" width="50" height="35">
+ <layer id="1" name="Floor" width="50" height="35" visible="0">
   <data encoding="csv">
 2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,0,0,
 2,1,1,1,1,2,2,0,2,2,2,2,2,0,0,0,0,0,0,2,2,2,1,2,2,2,2,1,1,1,2,2,2,0,0,0,0,0,0,0,0,2,2,2,1,1,1,2,2,0,
@@ -43,7 +43,10 @@
 0,0,2,2,2,0,0,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="2" name="Above" width="50" height="35" parallaxx="1.4" parallaxy="1.4">
+ <layer id="2" name="Above" width="50" height="35" parallaxx="1.65" parallaxy="1.65">
+  <properties>
+   <property name="extraScale" type="int" value="2"/>
+  </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
