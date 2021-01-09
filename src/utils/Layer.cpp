@@ -1,24 +1,31 @@
 #include "Layer.h"
 #include "Game.h"
 #include "ECS/TileComponent.h"
+#include "ECS/TransformComponent.h"
 
-Layer::Layer() {};
+Layer::Layer()
+{
+    m_scale = 1;
+    number = NULL;
+};
 Layer::~Layer() {};
 
-Layer::Layer(string n, int num) : name(n), number(num)
+Layer::Layer(string n, int num, double scale) : name(n), number(num), m_scale(scale)
 {};
 
-void Layer::AddTile(string tileSheetId, int srcX, int srcY, int xpos, int ypos, int tileSize, int mapScale, double parallaxX, double parallaxY)
+void Layer::AddTile(string tileSheetId, int srcX, int srcY, int xpos, int ypos, int tileSize, int mapScale, double parallax)
 {
     Entity* tile = World::entityManager->addEntity();
 
-    tile->addComponent<TileComponent>(srcX, srcY, xpos, ypos, tileSize, mapScale, tileSheetId, parallaxX, parallaxY);
+    tile->addComponent<TileComponent>(srcX, srcY, xpos, ypos, tileSize, mapScale * parallax, tileSheetId, parallax);
 
     tiles.emplace_back(tile);
 }
 
-void Layer::AddEntity(Entity* e)
+void Layer::AddEntity(Entity* e, double newScale)
 {
+    e->getComponent<TransformComponent>().scale = newScale;
+
     entities.emplace_back(e);
 }
 
@@ -30,6 +37,11 @@ vector<Entity*> Layer::getEntities()
 vector<Entity*> Layer::getTiles()
 {
     return tiles;
+}
+
+double Layer::getScale()
+{
+    return m_scale;
 }
 //
 //vector<Entity*> Layer::getColliders()

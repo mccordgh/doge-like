@@ -9,27 +9,25 @@ class Layer
 {
 public:
     Layer();
-    Layer(string n, int num);
+    Layer(string n, int num, double scale);
 
     ~Layer();
 
-    void AddTile(string tileSheetId, int srcX, int srcY, int xpos, int ypos, int tileSize, int mapScale, double parallaxX, double parallaxY);
-    void AddEntity(Entity* e);
+    void AddTile(string tileSheetId, int srcX, int srcY, int xpos, int ypos, int tileSize, int mapScale, double parallax);
+    void AddEntity(Entity* e, double newScale);
 
     string name;
     int number;
 
+    double getScale();
+
     vector<Entity*> getTiles();
-    /* vector<Entity*> getColliders();
-     vector<Entity*> getEnemies();
-     Entity* getPlayer();*/
     vector<Entity*> getEntities();
     //vector<ProjectileComponent*> getProjectiles();
 
 private:
+    double m_scale;
+
     vector<Entity*> tiles;
-    //vector<Entity*> colliders;
-    //vector<Entity*> enemies;
-    //Entity* player;
     vector<Entity*> entities;
 };

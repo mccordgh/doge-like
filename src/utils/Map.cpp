@@ -47,16 +47,14 @@ unordered_map<string, int> Map::LoadTiledJsonMap(string path)
         string name = jsonLayer["name"].get<string>();
         int number = static_cast<int>(jsonLayer["id"].get<double>());
 
-        double parallaxX = NULL;
-        double parallaxY = NULL;
+        double parallax = NULL;
 
         bool parallaxxKeyExists = jsonLayer.find("parallaxx") != jsonLayer.end();
         bool parallaxyKeyExists = jsonLayer.find("parallaxy") != jsonLayer.end();
 
-        parallaxX = parallaxxKeyExists ? jsonLayer["parallaxx"].get<double>() : 1.0;
-        parallaxY = parallaxyKeyExists ? jsonLayer["parallaxy"].get<double>() : 1.0;
+        parallax = parallaxxKeyExists ? jsonLayer["parallaxx"].get<double>() : 1.0;
 
-        Layer* newLayer = new Layer{ name, number };
+        Layer* newLayer = new Layer { name, number, parallax };
 
         vector<int> data = jsonLayer["data"];
 
@@ -81,7 +79,7 @@ unordered_map<string, int> Map::LoadTiledJsonMap(string path)
             int xpos = tileX * scaledSize;
             int ypos = tileY * scaledSize;
 
-            newLayer->AddTile(textureId, srcX, srcY, xpos, ypos, tileSize, mapScale, parallaxX, parallaxY);
+            newLayer->AddTile(textureId, srcX, srcY, xpos, ypos, tileSize, mapScale, parallax);
         }
 
         layers.emplace_back(newLayer);
@@ -101,7 +99,7 @@ unordered_map<string, int> Map::LoadTiledJsonMap(string path)
     player->addComponent<ColliderComponent>("player");
     player->addGroup(World::entityManager->groupPlayers);
 
-    layers[0]->AddEntity(player);
+    layers[1]->AddEntity(player, mapScale * layers[1]->getScale());
 
     World::camera->centerOnEntity(player);
 
