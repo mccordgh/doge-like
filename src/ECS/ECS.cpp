@@ -67,7 +67,7 @@ bool Entity::hasGroup(Group mGroup)
 void Entity::addGroup(Group mGroup)
 {
     groupBitset[mGroup] = true;
-    Game::stateManager->getState()->getWorld()->getEntityManager()->AddToGroup(this, mGroup);
+    World::entityManager->AddToGroup(this, mGroup);
 }
 
 void Entity::delGroup(Group mGroup)
