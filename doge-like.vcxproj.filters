@@ -154,7 +154,6 @@
     <None Include=".gitignore" />
     <None Include="CMakeSettings_backup.json" />
     <None Include="README_old.md" />
-    <None Include="assets\tiles\test_exported_load_map.json" />
     <None Include="assets\tiles\tiled_test.json" />
   </ItemGroup>
   <ItemGroup>
