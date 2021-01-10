@@ -169,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
+    <None Include="assets\tiles\tiled-desert-test-32x32.json" />
     <None Include="assets\tiles\tiled_test.json" />
     <None Include="CMakeSettings_backup.json" />
     <None Include="README_old.md" />
@@ -177,7 +178,9 @@
     <Text Include="CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\tiles\some_clouds.png" />
     <Image Include="assets\tiles\testing_tiles_draw_and_dont_overlap.png" />
+    <Image Include="assets\tiles\tmw_desert.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

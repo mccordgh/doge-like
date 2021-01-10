@@ -25,6 +25,8 @@ void World::init()
 {
     //World::assets->AddTexture("terrain", "assets/tiles/grass_and_wall.png");
     assets->AddTexture("terrain", "assets/tiles/grass_and_wall_with_borders.png");
+    assets->AddTexture("clouds", "assets/tiles/some_clouds.png");
+    assets->AddTexture("desert", "assets/tiles/tmw_desert.png");
     //World::assets->AddTexture("terrain", "assets/tiles/testing_tiles_draw_and_dont_overlap.png");
 
     assets->AddTexture("player", "assets/ff_adventure_knight.png");
@@ -33,7 +35,9 @@ void World::init()
 
     Map* map = new Map("terrain", CONSTANTS_STANDARD_MAP_SCALE);
     //map->LoadPyxelJsonMap("assets/tiles/test_exported_load_map.json", groupColliders, groupMap);
-    unordered_map<string, int> mapDimensions = map->LoadTiledJsonMap("assets/tiles/tiled_test.json");
+    //unordered_map<string, int> mapDimensions = map->LoadTiledJsonMap("assets/tiles/tiled_test.json");
+    unordered_map<string, int> mapDimensions = map->LoadTiledJsonMap("assets/tiles/tiled-desert-test-32x32.json");
+
     mapHeight = mapDimensions["mapHeight"];
     mapWidth = mapDimensions["mapWidth"];
 

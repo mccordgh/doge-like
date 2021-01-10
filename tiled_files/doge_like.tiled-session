@@ -27,6 +27,7 @@
             "scaleInEditor": 1
         }
     },
+    "last.imagePath": "C:/Users/mattm/dev/cpp/games/doge-like/assets/tiles",
     "map.lastUsedFormat": "tmx",
     "openFiles": [
         "maps/_first.tmx",
@@ -35,9 +36,9 @@
     ],
     "project": "doge_like.tiled-project",
     "recentFiles": [
+        "maps/_first.tmx",
         "tilesets/House_1.tsx",
-        "tilesets/terrain_sheet_test1.tsx",
-        "maps/_first.tmx"
+        "tilesets/terrain_sheet_test1.tsx"
     ],
     "tileset.lastUsedFormat": "tsx"
 }

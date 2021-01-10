@@ -155,12 +155,19 @@
     <None Include="CMakeSettings_backup.json" />
     <None Include="README_old.md" />
     <None Include="assets\tiles\tiled_test.json" />
+    <None Include="assets\tiles\tiled-desert-test-32x32.json" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\tiles\testing_tiles_draw_and_dont_overlap.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\tiles\some_clouds.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\tiles\tmw_desert.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

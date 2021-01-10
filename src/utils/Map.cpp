@@ -99,7 +99,7 @@ unordered_map<string, int> Map::LoadTiledJsonMap(string path)
     player->addComponent<ColliderComponent>("player");
     player->addGroup(World::entityManager->groupPlayers);
 
-    layers[1]->AddEntity(player, mapScale * layers[1]->getScale());
+    layers[0]->AddEntity(player, mapScale * layers[0]->getScale());
 
     World::camera->centerOnEntity(player);
 
