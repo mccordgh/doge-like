@@ -2,7 +2,7 @@
 #include "utils/Vector2D.h"
 #include "ECS/Components.h"
 #include "utils/Collision.h"
-#include "utils/Map.h"
+#include "maps/Map.h"
 #include "gfx/AssetManager.h"
 #include "Camera.h"
 
