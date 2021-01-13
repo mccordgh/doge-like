@@ -23,6 +23,7 @@ public:
 
     vector<Entity*> getTiles();
     vector<Entity*> getEntities();
+    vector<Entity*> getColliders();
     //vector<ProjectileComponent*> getProjectiles();
 
 private:
@@ -30,4 +31,5 @@ private:
 
     vector<Entity*> tiles;
     vector<Entity*> entities;
+    vector<Entity*> colliders;
 };
