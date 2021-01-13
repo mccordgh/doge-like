@@ -39,6 +39,11 @@ vector<Entity*> Layer::getTiles()
     return tiles;
 }
 
+vector<Entity*> Layer::getColliders()
+{
+    return colliders;
+}
+
 double Layer::getScale()
 {
     return m_scale;

@@ -2,12 +2,10 @@
     "automappingRulesFile": "",
     "commands": [
     ],
-    "extensionsPath": "extensions",
+    "extensionsPath": "../../extensions",
     "folders": [
-        "assets",
         "maps",
-        "templates",
-        "tilesets"
+        "../../../assets/tiles"
     ],
     "objectTypesFile": ""
 }

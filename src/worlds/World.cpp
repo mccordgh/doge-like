@@ -91,7 +91,7 @@ void World::update()
             {
                 SDL_Rect eCollider = e->getComponent<ColliderComponent>().collider;
 
-                for (auto& c : entityManager->getGroup(entityManager->groupColliders))
+                for (auto& c : layer->getColliders())
                 {
                     SDL_Rect cCollider = c->getComponent<ColliderComponent>().collider;
 
