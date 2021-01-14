@@ -15,12 +15,12 @@ string TileObjectGroup::name()
 	return m_name;
 }
 
-vector<TileObject> TileObjectGroup::objects()
+vector<Entity*> TileObjectGroup::objects()
 {
 	return m_objects;
 }
 
-int TileObjectGroup::opacity()
+double TileObjectGroup::opacity()
 {
 	return m_opacity;
 }

@@ -1,30 +1,31 @@
 #pragma once
 
+#include <vector>
 #include <string>
+
+#include "Layer.h"
 
 using namespace std;
 
-class TileObject
+class LayerGroup
 {
 public:
-	int height();
 	int id();
+	vector<Layer*> layers();
 	string name();
-	int rotation();
+	double opacity();
 	string type();
 	bool visible();
-	int width();
 	int x();
 	int y();
 
 private:
-	int m_height;
 	int m_id;
+	vector<Layer*> m_layers;
 	string m_name;
-	int m_rotation;
+	double m_opacity;
 	string m_type;
 	bool m_visible;
-	int m_width;
 	int m_x;
 	int m_y;
 };

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SDL2/SDL.h>
-#include "maps/Layer.h"
+#include "maps/layers/Layer.h"
 #include "EntityManager.h"
 #include "Camera.h"
 #include "gfx/AssetManager.h"

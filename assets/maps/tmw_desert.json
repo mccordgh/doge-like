@@ -19,7 +19,7 @@
                  "name":"Underground Objects",
                  "objects":[
                         {
-                         "height":30.6666666666667,
+                         "height":30.6667,
                          "id":1,
                          "name":"Underground Trigger Green",
                          "properties":[
@@ -32,11 +32,11 @@
                          "type":"Trigger",
                          "visible":true,
                          "width":31,
-                         "x":304.666666666667,
-                         "y":593.333333333333
+                         "x":304.667,
+                         "y":593.333
                         }, 
                         {
-                         "height":24.3333666666667,
+                         "height":24.3334,
                          "id":3,
                          "name":"Underground Trigger Grey",
                          "properties":[
@@ -48,9 +48,9 @@
                          "rotation":0,
                          "type":"Trigger",
                          "visible":true,
-                         "width":22.9999999999998,
+                         "width":23,
                          "x":1078.5,
-                         "y":757.66665
+                         "y":757.667
                         }],
                  "opacity":1,
                  "type":"objectgroup",
@@ -115,7 +115,7 @@
                          "y":310.25
                         }, 
                         {
-                         "height":30.909090909091,
+                         "height":30.9091,
                          "id":6,
                          "name":"Ground Trigger Green",
                          "properties":[
@@ -127,9 +127,9 @@
                          "rotation":0,
                          "type":"Trigger",
                          "visible":true,
-                         "width":31.8181818181818,
-                         "x":1264.18181818182,
-                         "y":720.909090909091
+                         "width":31.8182,
+                         "x":1264.18,
+                         "y":720.909
                         }],
                  "opacity":1,
                  "type":"objectgroup",

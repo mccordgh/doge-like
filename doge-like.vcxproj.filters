@@ -72,25 +72,31 @@
     <ClCompile Include="src\EntityManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\maps\Layer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\maps\LayerGroup.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\maps\Map.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\maps\tiles\Tile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\maps\tiles\TileObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\maps\tiles\TileObjectGroup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\maps\tiles\TileSheet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maps\Map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maps\TileSet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maps\layers\LayerGroup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maps\layers\Layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maps\layers\ObjectLayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maps\layers\TileLayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -158,25 +164,31 @@
     <ClInclude Include="src\EntityManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\maps\Layer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maps\LayerGroup.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maps\Map.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\maps\tiles\Tile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\maps\tiles\TileObjectGroup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\maps\tiles\TileObject.h">
+    <ClInclude Include="src\maps\tiles\TileSheet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\maps\tiles\TileSheet.h">
+    <ClInclude Include="src\maps\Map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maps\TileSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maps\layers\LayerGroup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maps\layers\Layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maps\layers\ObjectLayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maps\layers\TileLayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

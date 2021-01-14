@@ -1,41 +1,44 @@
-//
-//  Map.h
-//  2d_game_engine
-//
-//  Created by Matthew mccord on 8/9/20.
-//  Copyright © 2020 MCCORDINATOR. All rights reserved.
-//
-
 #pragma once
 
+#include <vector>
 #include <string>
-#include <unordered_map>
-#include "ECS/ECS.h"
-#include "Layer.h"
-#include "worlds/World.h"
+
+#include "layers/LayerGroup.h"
+#include "TileSet.h"
 
 using namespace std;
 
 class Map
 {
 public:
-    Map(std::string texId, int ms);
-
-    //void AddTile(int srcX, int srcY, int xpos, int ypos, Group groupMap);
-    //void AddTileToLayer(int layerIndex, int srcX, int srcY, int xpos, int ypos, Group groupMap);
-
-    //void LoadPyxelJsonMap(std::string path);
-    unordered_map<string, int> LoadTiledJsonMap(std::string path);
-    //void LoadMap(std::string path, Group groupColliders, Group groupMap);
-    //void LoadMap(std::string path, int sizeX, int sizeY, Group groupColliders, Group groupMap);
-
-    vector<Layer*> getLayers();
+	int height();
+	bool infinite();
+	vector<LayerGroup*> layerGroups();
+	int nextLayerId();
+	int nextObjectId();
+	string orientation();
+	string renderOrder();
+	string tiledVersion();
+	int tileHeight();
+	vector<TileSet*> tileSets();
+	int tileWidth();
+	string type();
+	double version();
+	int width();
 
 private:
-    vector<Layer*> layers;
-    std::string textureId;
-
-    int mapScale;
-    int tileSize;
-    int scaledSize;
+	int m_height;
+	bool m_infinite;
+	vector<LayerGroup*> m_layerGroups;
+	int m_nextLayerId;
+	int m_nextObjectId;
+	string m_orientation;
+	string m_renderOrder;
+	string m_tiledVersion;
+	int m_tileHeight;
+	vector<TileSet*> m_tileSets;
+	int m_tileWidth;
+	string m_type;
+	double m_version;
+	int m_width;
 };

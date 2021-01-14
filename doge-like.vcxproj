@@ -134,16 +134,18 @@
     <ClCompile Include="src\entities\GameObject.cpp" />
     <ClCompile Include="src\gfx\TextureManager.cpp" />
     <ClCompile Include="src\EntityManager.cpp" />
+    <ClCompile Include="src\maps\layers\Layer.cpp" />
+    <ClCompile Include="src\maps\layers\LayerGroup.cpp" />
+    <ClCompile Include="src\maps\layers\ObjectLayer.cpp" />
+    <ClCompile Include="src\maps\layers\TileLayer.cpp" />
+    <ClCompile Include="src\maps\Map.cpp" />
+    <ClCompile Include="src\maps\TileSet.cpp" />
     <ClCompile Include="src\maps\tiles\Tile.cpp" />
-    <ClCompile Include="src\maps\tiles\TileObject.cpp" />
     <ClCompile Include="src\maps\tiles\TileObjectGroup.cpp" />
     <ClCompile Include="src\maps\tiles\TileSheet.cpp" />
     <ClCompile Include="src\states\State.cpp" />
     <ClCompile Include="src\states\StateManager.cpp" />
     <ClCompile Include="src\utils\Collision.cpp" />
-    <ClCompile Include="src\maps\Layer.cpp" />
-    <ClCompile Include="src\maps\LayerGroup.cpp" />
-    <ClCompile Include="src\maps\Map.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />
     <ClCompile Include="src\worlds\World.cpp" />
   </ItemGroup>
@@ -164,16 +166,18 @@
     <ClInclude Include="src\gfx\TextureManager.h" />
     <ClInclude Include="src\libs\json.hpp" />
     <ClInclude Include="src\EntityManager.h" />
+    <ClInclude Include="src\maps\layers\Layer.h" />
+    <ClInclude Include="src\maps\layers\LayerGroup.h" />
+    <ClInclude Include="src\maps\layers\ObjectLayer.h" />
+    <ClInclude Include="src\maps\layers\TileLayer.h" />
+    <ClInclude Include="src\maps\Map.h" />
+    <ClInclude Include="src\maps\TileSet.h" />
     <ClInclude Include="src\maps\tiles\Tile.h" />
-    <ClInclude Include="src\maps\tiles\TileObject.h" />
     <ClInclude Include="src\maps\tiles\TileObjectGroup.h" />
     <ClInclude Include="src\maps\tiles\TileSheet.h" />
     <ClInclude Include="src\states\State.h" />
     <ClInclude Include="src\states\StateManager.h" />
     <ClInclude Include="src\utils\Collision.h" />
-    <ClInclude Include="src\maps\Layer.h" />
-    <ClInclude Include="src\maps\LayerGroup.h" />
-    <ClInclude Include="src\maps\Map.h" />
     <ClInclude Include="src\utils\Vector2D.h" />
     <ClInclude Include="src\worlds\World.h" />
   </ItemGroup>
