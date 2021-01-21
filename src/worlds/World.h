@@ -5,6 +5,7 @@
 #include "EntityManager.h"
 #include "Camera.h"
 #include "gfx/AssetManager.h"
+#include "maps/Map.h"
 
 class World
 {
@@ -37,4 +38,5 @@ private:
     std::vector<Layer*> layers;
 
     SDL_Renderer* renderer;
+    Map* map;
 };

@@ -1,0 +1,175 @@
+//
+//  MapLoader.cpp
+//  2d_game_engine
+//
+//  Created by Matthew mccord on 8/9/20.
+//  Copyright © 2020 MCCORDINATOR. All rights reserved.
+//
+
+#include <fstream>
+#include <sstream>
+
+#include "MapLoader.h"
+#include "ECS/Components.h"
+
+extern EntityManager* GameManager;
+
+void MapLoader::LoadTiledJsonMap(Map* map, string path, int scaledSize)
+{
+    ifstream mapFile(path);
+    json mapJson;
+    mapFile >> mapJson;
+
+    BuildMapFromJson(map, mapJson);
+
+    //int tileRows = static_cast<int>(mapJson["height"].get<double>());
+    //int tileColumns = static_cast<int>(mapJson["width"].get<double>());
+
+    //int tileHeight = static_cast<int>(mapJson["tileheight"].get<double>());
+    //int tileWidth = static_cast<int>(mapJson["tilewidth"].get<double>());
+
+    //int mapWidth = tileColumns * scaledSize;
+    //int mapHeight = tileRows * scaledSize;
+
+    //auto jsonLayers = mapJson["layers"];
+
+    //for (auto& jsonLayer : jsonLayers)
+    //{
+    //    string name = jsonLayer["name"].get<string>();
+    //    int number = static_cast<int>(jsonLayer["id"].get<double>());
+
+    //    double parallax = NULL;
+
+    //    bool parallaxxKeyExists = jsonLayer.find("parallaxx") != jsonLayer.end();
+    //    bool parallaxyKeyExists = jsonLayer.find("parallaxy") != jsonLayer.end();
+
+    //    parallax = parallaxxKeyExists ? jsonLayer["parallaxx"].get<double>() : 1.0;
+
+    //    Layer* newLayer = new Layer{ name, number, parallax };
+
+    //    vector<int> data = jsonLayer["data"];
+
+    //    int tileY = 0;
+    //    int tileX = 0;
+    //    for (int i = 0; i < data.size(); ++i)
+    //    {
+    //        int tileX = i % tileColumns;
+    //        bool moveToNextRow = tileX == 0 && i != 0;
+
+    //        if (moveToNextRow)
+    //        {
+    //            tileY++;
+    //            tileX = 0;
+    //        }
+
+    //        int tileId = data[i];
+
+    //        // Tiled puts the id as 0 if no tile is present, so we need to offset by -1 so that 1 will be our first tile.
+    //        int srcX = (tileId - 1) * tileSize;
+    //        int srcY = 0;
+    //        int xpos = tileX * scaledSize;
+    //        int ypos = tileY * scaledSize;
+
+    //        newLayer->AddTile(textureId, srcX, srcY, xpos, ypos, tileSize, mapScale, parallax);
+    //    }
+
+    //    layers.emplace_back(newLayer);
+    //}
+
+    //Entity* player = World::entityManager->addEntity();
+
+    //player->addComponent<TransformComponent>(
+    //    800, //playerSpawnX will come from map data eventually
+    //    800, //playerSpawnY will come from map data eventually
+    //    CONSTANTS_STANDARD_TILE_SIZE,
+    //    CONSTANTS_STANDARD_TILE_SIZE,
+    //    CONSTANTS_STANDARD_TILE_SCALE
+    //    );
+    //player->addComponent<SpriteComponent>("player", true);
+    //player->addComponent<KeyboardController>();
+    //player->addComponent<ColliderComponent>("player");
+    //player->addGroup(World::entityManager->groupPlayers);
+
+    //layers[0]->AddEntity(player, mapScale * layers[0]->getScale());
+
+    //World::camera->centerOnEntity(player);
+
+    //return unordered_map<string, int>({ {"mapWidth", mapWidth}, {"mapHeight", mapHeight } });
+}
+
+void MapLoader::BuildMapFromJson(Map* map, json& mapJson)
+{
+    /*
+    vector<LayerGroup*> layerGroups;
+    vector<TileSet*> tileSets;
+    int tileWidth;
+    string type;
+    int width;*/
+    map->height = static_cast<int>(mapJson["height"].get<double>());
+    map->nextLayerId = static_cast<int>(mapJson["nextlayerid"].get<double>());
+    map->nextObjectId = static_cast<int>(mapJson["nextobjectid"].get<double>());
+    map->tileHeight = static_cast<int>(mapJson["tileheight"].get<double>());
+    map->tileWidth = static_cast<int>(mapJson["tileheight"].get<double>());
+    map->type = mapJson["type"].get<string>();
+    map->width = static_cast<int>(mapJson["width"].get<double>());
+
+    //map->layerGroups = ;
+    //map->tileSets = ;
+}
+
+//void MapLoader::LoadPyxelJsonMap(string path)
+//{
+//    ifstream mapFile(path);
+//    json mapJson;
+//    mapFile >> mapJson;
+//
+//    int tileRows = static_cast<int>(mapJson["tileshigh"].get<double>());
+//    int tileColumns = static_cast<int>(mapJson["tileswide"].get<double>());
+//
+//    int tileHeight = static_cast<int>(mapJson["tileheight"].get<double>());
+//    int tileWidth = static_cast<int>(mapJson["tilewidth"].get<double>());
+//
+//    GameManager->setMapSize(tileColumns * tileWidth * scaledSize, tileRows * tileHeight * scaledSize);
+//
+//    auto jsonLayers = mapJson["layers"];
+//
+//    // remove these dummies later
+//    int count = 0;
+//    int layerCount = 0;
+//    for (auto& jsonLayer : jsonLayers)
+//    {
+//        layerCount++;
+//
+//        string name = jsonLayer["name"].get<string>();
+//        int number = static_cast<int>(jsonLayer["number"].get<double>());
+//
+//        Layer* newLayer = new Layer{ name, number };
+//
+//        for (auto& t : jsonLayer["tiles"])
+//        {
+//            // really dumb way to just test layer 2
+//            // all first layer tiles will be the grass at 0, 0 in tilesheet
+//            // all second layer tiles will be the semi transparent thing in 2, 0 tilesheet
+//            if (layerCount == 1)
+//            {
+//                newLayer->AddTile(textureId, tileSize * count, 0, t["x"] * scaledSize, t["y"] * scaledSize, tileHeight, mapScale);
+//            }
+//            else
+//            {
+//                if (rand() % 2)
+//                {
+//                    newLayer->AddTile(textureId, tileSize * 2, 0, t["x"] * scaledSize, t["y"] * scaledSize, tileHeight, mapScale);
+//                }
+//            }
+//
+//            count++;
+//
+//            if (count > 1)
+//            {
+//                count = 0;
+//            }
+//        }
+//
+//        layers.emplace_back(newLayer);
+//    }
+//}

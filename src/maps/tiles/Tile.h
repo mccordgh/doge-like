@@ -5,10 +5,6 @@
 class Tile
 {
 public:
-	int id();
-	TileObjectGroup& objectGroup();
-
-private:
-	int m_id;
-	TileObjectGroup& m_objectGroup;
+	int id;
+	TileObjectGroup& objectGroup;
 };
