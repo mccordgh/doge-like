@@ -5,6 +5,15 @@
 
 void ObjectLayer::AddEntity(string type, int xpos, int ypos, int width, int height, int scale)
 {
+    // We dont need to create an entity just save the spawn point for the player on this map.
+    if (type == "PlayerSpawn")
+    {
+        World::nextPlayerSpawnX = xpos * scale;
+        World::nextPlayerSpawnY = ypos * scale;
+
+        return;
+    }
+
     Entity* entity = World::entityManager->addEntity();
 
     entity->addComponent<TransformComponent>(xpos, ypos, width, height, scale);

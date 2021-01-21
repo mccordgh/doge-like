@@ -24,9 +24,10 @@ public:
     static AssetManager* assets;
     static Camera* camera;
     static EntityManager* entityManager;
+    static Map* map;
 
-    static int mapHeight;
-    static int mapWidth;
+    static int nextPlayerSpawnX;
+    static int nextPlayerSpawnY;
 
 private:
     // these are all tracked via layers now
@@ -38,5 +39,4 @@ private:
     std::vector<Layer*> layers;
 
     SDL_Renderer* renderer;
-    Map* map;
 };

@@ -9,12 +9,14 @@
 #include "maps/layers/TileLayer.h"
 #include "maps/layers/ObjectLayer.h"
 
-int World::mapWidth = 0;
-int World::mapHeight = 0;
-
 AssetManager* World::assets = nullptr;
 Camera* World::camera = nullptr;
 EntityManager* World::entityManager = nullptr;
+Map* World::map = nullptr;
+
+int World::nextPlayerSpawnX = 0;
+int World::nextPlayerSpawnY = 0;
+
 
 World::World(SDL_Renderer* rend): renderer(rend) {
     entityManager = new EntityManager();

@@ -5,11 +5,11 @@
     },
     "activeFile": "maps/one.tmx",
     "expandedProjectPaths": [
-        "C:/Users/mattm/dev/cpp/games/doge-like/tiled_files/maps",
         "C:/Users/mattm/dev/cpp/games/doge-like/tiled_files/tilesets",
-        "maps",
         "C:/Users/mattm/dev/cpp/games/doge-like/tiled_files/sprites",
-        "C:/Users/mattm/dev/cpp/games/doge-like/assets/tiles"
+        "C:/Users/mattm/dev/cpp/games/doge-like/tiled_files/maps",
+        "C:/Users/mattm/dev/cpp/games/doge-like/assets/tiles",
+        "maps"
     ],
     "fileStates": {
         "C:/Users/mattm/dev/cpp/games/doge-like/assets/tiles/some_clouds.json": {
@@ -58,11 +58,11 @@
             "scaleInEditor": 3
         },
         "maps/one.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 3,
+            "scale": 8,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 842.6666666666667,
-                "y": 609.3333333333334
+                "x": 95.875,
+                "y": 71.5
             }
         }
     },

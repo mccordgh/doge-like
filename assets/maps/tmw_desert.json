@@ -130,6 +130,17 @@
                          "width":31.8182,
                          "x":1264.18,
                          "y":720.909
+                        }, 
+                        {
+                         "height":30,
+                         "id":8,
+                         "name":"PlayerSpawn",
+                         "rotation":0,
+                         "type":"PlayerSpawn",
+                         "visible":false,
+                         "width":33.3333333333334,
+                         "x":894.666666666667,
+                         "y":992.666666666667
                         }],
                  "opacity":1,
                  "type":"objectgroup",
@@ -170,8 +181,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":9,
- "nextobjectid":7,
+ "nextlayerid":10,
+ "nextobjectid":9,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2020.12.18",

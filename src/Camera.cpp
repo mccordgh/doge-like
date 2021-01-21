@@ -61,13 +61,13 @@ void Camera::update()
         cam.y = 0;
     }
 
-    int endOfMapHorizontal = (World::mapWidth - cam.w) + 1;
+    int endOfMapHorizontal = (World::map->width - cam.w) + 1;
     if (cam.x > endOfMapHorizontal)
     {
         cam.x = endOfMapHorizontal;
     }
 
-    int endOfMapVertical = (World::mapHeight - cam.h) + 1;
+    int endOfMapVertical = (World::map->height - cam.h) + 1;
     if (cam.y > endOfMapVertical)
     {
         cam.y = endOfMapVertical;

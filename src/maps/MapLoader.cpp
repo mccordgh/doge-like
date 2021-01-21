@@ -8,6 +8,7 @@
 
 #include <fstream>
 #include <sstream>
+#include <unordered_map>
 
 #include "MapLoader.h"
 #include "ECS/Components.h"
@@ -21,17 +22,19 @@ extern EntityManager* GameManager;
 
 void MapLoader::LoadTiledJsonMap(Map* map, string path, int scaledSize)
 {
+    unordered_map<int, vector<TileObject>> tileObjectDict;
+
     ifstream mapFile(path);
     json mapJson;
     mapFile >> mapJson;
 
-    map->height = static_cast<int>(mapJson["height"].get<double>());
     map->nextLayerId = static_cast<int>(mapJson["nextlayerid"].get<double>());
     map->nextObjectId = static_cast<int>(mapJson["nextobjectid"].get<double>());
-    map->tileHeight = static_cast<int>(mapJson["tileheight"].get<double>());
-    map->tileWidth = static_cast<int>(mapJson["tileheight"].get<double>());
+    map->tileHeight = static_cast<int>(mapJson["tileheight"].get<double>()) * scaledSize;
+    map->tileWidth = static_cast<int>(mapJson["tileheight"].get<double>()) * scaledSize;
     map->type = mapJson["type"].get<string>();
-    map->width = static_cast<int>(mapJson["width"].get<double>());
+    map->height = static_cast<int>(mapJson["height"].get<double>()) * map->tileHeight * scaledSize;
+    map->width = static_cast<int>(mapJson["width"].get<double>()) * map->tileWidth * scaledSize;
 
     // Loading in all the data for the tilesets for later use when creating Tile entities below
     for (auto& set : mapJson["tilesets"])
@@ -39,6 +42,7 @@ void MapLoader::LoadTiledJsonMap(Map* map, string path, int scaledSize)
        /* World::assets->AddTexture("Clouds", "assets/tiles/some_clouds.png");
         World::assets->AddTexture("Tiles", "assets/tiles/tmw_desert.png");*/
 
+        // Tileset is part of the map json data it contains the first tile id in the set, and the path to the tile json data source
         TileSet tileSet;
         tileSet.firstId = static_cast<int>(set["firstgid"].get<double>());
 
@@ -57,36 +61,54 @@ void MapLoader::LoadTiledJsonMap(Map* map, string path, int scaledSize)
         tileSheet.tilesWidth = static_cast<int>(tileJson["tilewidth"].get<double>());
         tileSheet.type = tileJson["type"].get<string>();
 
-        for (auto& tile : tileJson["tiles"])
+        // Some tilesheets may not have tile object data.
+        if (tileJson.find("tiles") != tileJson.end())
         {
-            TileWithObjects tileWithObj;
-            tileWithObj.id = static_cast<int>(tile["id"].get<double>());
-
-            json objGroup = tile["objectgroup"];
-
-            TileObjectGroup tileObjGroup;
-            tileObjGroup.id = static_cast<int>(objGroup["id"].get<double>());
-            tileObjGroup.opacity = objGroup["opacity"].get<double>();
-            tileObjGroup.x = static_cast<int>(objGroup["x"].get<double>());
-            tileObjGroup.y = static_cast<int>(objGroup["y"].get<double>());
-            tileObjGroup.visible = objGroup["x"].get<bool>();
-
-            for (auto& obj : objGroup["objects"])
+            for (auto& tile : tileJson["tiles"])
             {
-                TileObject tileObj;
-                tileObj.height = static_cast<int>(obj["height"].get<double>());
-                tileObj.id = static_cast<int>(obj["id"].get<double>());
-                tileObj.type = obj["type"].get<string>();
-                tileObj.visible = obj["visible"].get<bool>();
-                tileObj.width = static_cast<int>(obj["width"].get<double>());
-                tileObj.x = static_cast<int>(obj["x"].get<double>());
-                tileObj.y = static_cast<int>(obj["y"].get<double>());
+                TileWithObjects tileWithObj;
+                tileWithObj.id = static_cast<int>(tile["id"].get<double>());
 
-                tileObjGroup.objects.emplace_back(tileObj);
+                json objGroup = tile["objectgroup"];
+
+                TileObjectGroup tileObjGroup;
+                tileObjGroup.id = static_cast<int>(objGroup["id"].get<double>());
+                tileObjGroup.opacity = objGroup["opacity"].get<double>();
+                tileObjGroup.x = static_cast<int>(objGroup["x"].get<double>());
+                tileObjGroup.y = static_cast<int>(objGroup["y"].get<double>());
+                tileObjGroup.visible = objGroup["visible"].get<bool>();
+
+                //vector<TileObject> tileObjArray;
+                for (auto& obj : objGroup["objects"])
+                {
+                    TileObject tileObj;
+                    tileObj.height = static_cast<int>(obj["height"].get<double>());
+                    tileObj.id = static_cast<int>(obj["id"].get<double>());
+                    tileObj.type = obj["type"].get<string>();
+                    tileObj.visible = obj["visible"].get<bool>();
+                    tileObj.width = static_cast<int>(obj["width"].get<double>());
+                    tileObj.x = static_cast<int>(obj["x"].get<double>());
+                    tileObj.y = static_cast<int>(obj["y"].get<double>());
+
+                    tileObjGroup.objects.emplace_back(tileObj);
+
+                    // check if key exists yet for this tile id
+                    if (tileObjectDict.find(tileObj.id) != tileObjectDict.end())
+                    {
+                        tileObjectDict[tileObj.id].emplace_back(tileObj);
+                    }
+                    else
+                    {
+                        vector<TileObject> tileObjVector;
+                        tileObjVector.emplace_back(tileObj);
+
+                        tileObjectDict.insert({ tileObj.id, tileObjVector });
+                    }
+                }
+
+                tileWithObj.objectGroup = tileObjGroup;
+                tileSheet.tiles.emplace_back(tileWithObj);
             }
-
-            tileWithObj.objectGroup = tileObjGroup;
-            tileSheet.tiles.emplace_back(tileWithObj);
         }
 
         tileSet.tileSheet = tileSheet;
@@ -130,7 +152,6 @@ void MapLoader::LoadTiledJsonMap(Map* map, string path, int scaledSize)
                     int width = static_cast<int>(obj["width"].get<double>());
                     int height = static_cast<int>(obj["height"].get<double>());
 
-                    //(string type, int xpos, int ypos, int width, int height, int scale)
                     newLayer.AddEntity(type, xpos, ypos, width, height, scaledSize);
                 }
 
