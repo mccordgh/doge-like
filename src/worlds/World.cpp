@@ -6,6 +6,8 @@
 #include "gfx/AssetManager.h"
 #include "Camera.h"
 #include "maps/MapLoader.h"
+#include "maps/layers/TileLayer.h"
+#include "maps/layers/ObjectLayer.h"
 
 int World::mapWidth = 0;
 int World::mapHeight = 0;
@@ -26,11 +28,10 @@ World::~World() {};
 
 void World::init()
 {
-    /*assets->AddTexture("terrain", "assets/tiles/grass_and_wall_with_borders.png");
-    assets->AddTexture("clouds", "assets/tiles/some_clouds.png");
-    assets->AddTexture("desert", "assets/tiles/tmw_desert.png");
+    //assets->AddTexture("Tiles", "assets/tiles/grass_and_wall_with_borders.png");
 
-    assets->AddTexture("player", "assets/ff_adventure_knight.png");*/
+    assets->AddTexture("Player", "assets/ff_adventure_knight.png");
+    assets->AddTexture("Trigger", "assets/ff_adventure_ghost.png");
 
     map = new Map();
     MapLoader::LoadTiledJsonMap(map, "assets/maps/tmw_desert.json", 1);
@@ -68,6 +69,25 @@ void World::init()
 void World::update()
 {
     entityManager->refresh();
+
+    for (LayerGroup group : map->layerGroups)
+    {
+        for (TileLayer layer : group.tileLayers)
+        {
+            for (Entity* tile : layer.tiles)
+            {
+                tile->update();
+            }
+        }
+
+        for (ObjectLayer layer : group.objectLayers)
+        {
+            for (Entity* entity : layer.entities)
+            {
+                entity->update();
+            }
+        }
+    }
 
    // for (Layer* layer : layers)
    // {
@@ -120,6 +140,25 @@ void World::draw()
 {
    // clear renderer
     SDL_RenderClear(renderer);
+
+    for (LayerGroup group : map->layerGroups)
+    {
+        for (TileLayer layer : group.tileLayers)
+        {
+            for (Entity* tile : layer.tiles)
+            {
+                tile->draw();
+            }
+        }
+
+        for (ObjectLayer layer : group.objectLayers)
+        {
+            for (Entity* entity : layer.entities)
+            {
+                entity->draw();
+            }
+        }
+    }
 
     //for (Layer* layer : layers)
     //{

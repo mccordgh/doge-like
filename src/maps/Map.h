@@ -12,11 +12,11 @@ class Map
 {
 public:
 	int height;
-	vector<LayerGroup*> layerGroups;
+	vector<LayerGroup> layerGroups;
 	int nextLayerId;
 	int nextObjectId;
 	int tileHeight;
-	vector<TileSet*> tileSets;
+	vector<TileSet> tileSets;
 	int tileWidth;
 	string type;
 	int width;

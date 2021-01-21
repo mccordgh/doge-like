@@ -4,6 +4,8 @@
 #include <string>
 
 #include "Layer.h"
+#include "TileLayer.h"
+#include "ObjectLayer.h"
 
 using namespace std;
 
@@ -11,7 +13,8 @@ class LayerGroup
 {
 public:
 	int id;
-	vector<Layer*> layers;
+	vector<TileLayer> tileLayers;
+	vector<ObjectLayer> objectLayers;
 	string name;
 	double opacity;
 	string type;

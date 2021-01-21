@@ -2,9 +2,9 @@
 
 #include "TileObjectGroup.h"
 
-class Tile
+class TileWithObjects
 {
 public:
 	int id;
-	TileObjectGroup& objectGroup;
+	TileObjectGroup objectGroup;
 };

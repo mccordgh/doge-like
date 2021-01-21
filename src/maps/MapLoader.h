@@ -18,7 +18,4 @@ class MapLoader
 {
 public:
     static void LoadTiledJsonMap(Map* map, std::string path, int scaledSize);
-
-private:
-    static void BuildMapFromJson(Map* map, json& mapJson);
 };

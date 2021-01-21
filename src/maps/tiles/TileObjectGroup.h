@@ -2,7 +2,7 @@
 
 #include <string>
 #include <vector>
-#include "ECS/ECS.h"
+#include "TileObject.h"
 
 using namespace std;
 
@@ -12,7 +12,7 @@ public:
 	string drawOrder;
 	int id;
 	string name;
-	vector<Entity*> objects; // <= this array of data in the json with key "objects" will be converted to entities during map load
+	vector<TileObject> objects; // <= this array of data in the json with key "objects" will be converted to entities during map load
 	double opacity;
 	string type;
 	bool visible;

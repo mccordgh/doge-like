@@ -25,6 +25,8 @@ public:
         groupMap,
         groupPlayers,
         groupProjectiles,
+        groupTiles,
+        groupTriggers,
     };
 
     void AddToGroup(Entity* mEntity, Group mGroup);

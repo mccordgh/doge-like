@@ -134,6 +134,8 @@
     <ClCompile Include="src\entities\GameObject.cpp" />
     <ClCompile Include="src\gfx\TextureManager.cpp" />
     <ClCompile Include="src\EntityManager.cpp" />
+    <ClCompile Include="src\maps\layers\ObjectLayer.cpp" />
+    <ClCompile Include="src\maps\layers\TileLayer.cpp" />
     <ClCompile Include="src\maps\MapLoader.cpp" />
     <ClCompile Include="src\states\State.cpp" />
     <ClCompile Include="src\states\StateManager.cpp" />
@@ -165,7 +167,8 @@
     <ClInclude Include="src\maps\Map.h" />
     <ClInclude Include="src\maps\MapLoader.h" />
     <ClInclude Include="src\maps\TileSet.h" />
-    <ClInclude Include="src\maps\tiles\Tile.h" />
+    <ClInclude Include="src\maps\tiles\TileObject.h" />
+    <ClInclude Include="src\maps\tiles\TileWithObjects.h" />
     <ClInclude Include="src\maps\tiles\TileObjectGroup.h" />
     <ClInclude Include="src\maps\tiles\TileSheet.h" />
     <ClInclude Include="src\states\State.h" />

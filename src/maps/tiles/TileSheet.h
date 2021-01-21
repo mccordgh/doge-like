@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "Tile.h"
+#include "TileWithObjects.h"
 
 using namespace std;
 
@@ -9,7 +9,7 @@ class TileSheet
 {
 public:
 	int columns;
-	string image;
+	string imagePath;
 	int imageHeight;
 	int imageWidth;
 	int margin;
@@ -17,7 +17,7 @@ public:
 	int spacing;
 	int tileCount;
 	int tileHeight;
-	vector<Tile*> tiles;
+	vector<TileWithObjects> tiles;
 	int tilesWidth;
 	string type;
 	string version;

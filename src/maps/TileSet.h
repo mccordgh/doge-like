@@ -1,12 +1,13 @@
 #pragma once
 
 #include <string>
+#include "tiles/TileSheet.h"
 
 using namespace std;
 
 class TileSet
 {
 public:
-	int firstGid;
-	string source;
+	int firstId;
+	TileSheet tileSheet;
 };
