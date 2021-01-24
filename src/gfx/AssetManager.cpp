@@ -6,10 +6,12 @@
 //  Copyright © 2020 MCCORDINATOR. All rights reserved.
 //
 
+#include <string>
+
 #include "AssetManager.h"
 #include "TextureManager.h"
 
-// void AssetManager::CreateProjectile(std::string id, Vector2D pos, Vector2D velocity, int range, int speed)
+// void AssetManager::CreateProjectile(string id, Vector2D pos, Vector2D velocity, int range, int speed)
 // {
 //     auto& projectile(manager->addEntity());
 
@@ -24,12 +26,12 @@ AssetManager::AssetManager() {};
 
 AssetManager::~AssetManager() {};
 
-void AssetManager::AddTexture(std::string id, const char *path)
+void AssetManager::AddTexture(string id, string path)
 {
     textures.try_emplace(id, TextureManager::LoadTexture(path));
 }
 
-SDL_Texture* AssetManager::GetTexture(std::string id)
+SDL_Texture* AssetManager::GetTexture(string id)
 {
     return textures[id];
 }

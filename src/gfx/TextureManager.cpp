@@ -18,7 +18,7 @@
 //const char* assetsDir = "assets/";
 //const char* spriteExtension = ".png";
 
-SDL_Texture* TextureManager::LoadTexture(const char* fullpath)
+SDL_Texture* TextureManager::LoadTexture(string fullpath)
 {
 //    size_t bufferSize = strlen(assetsDir) + strlen(fileName) + strlen(spriteExtension) + 1;
 //    char* fullpath = new char[bufferSize];
@@ -28,11 +28,11 @@ SDL_Texture* TextureManager::LoadTexture(const char* fullpath)
 //    strcat(fullpath, spriteExtension);
 
     char buff[FILENAME_MAX];
-    getcwd(buff, FILENAME_MAX);
+    //getcwd(buff, FILENAME_MAX);
     std::string currentDir(buff);
     std::cout << currentDir << std::endl;
 
-    SDL_Surface* tempSurface = IMG_Load(fullpath);
+    SDL_Surface* tempSurface = IMG_Load(fullpath.c_str());
 
     std::string imgError = IMG_GetError();
 

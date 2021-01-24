@@ -73,7 +73,7 @@
          "name":"Underground",
          "opacity":1,
          "type":"group",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -138,9 +138,9 @@
                          "rotation":0,
                          "type":"PlayerSpawn",
                          "visible":false,
-                         "width":33.3333333333334,
-                         "x":894.666666666667,
-                         "y":992.666666666667
+                         "width":33.3333,
+                         "x":894.667,
+                         "y":992.667
                         }],
                  "opacity":1,
                  "type":"objectgroup",
@@ -177,7 +177,7 @@
          "parallaxx":1.5,
          "parallaxy":1.5,
          "type":"group",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }],

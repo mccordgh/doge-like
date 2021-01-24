@@ -9,5 +9,6 @@ class TileSet
 {
 public:
 	int firstId;
+	int lastId;
 	TileSheet tileSheet;
 };

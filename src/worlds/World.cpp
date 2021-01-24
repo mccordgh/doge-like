@@ -36,7 +36,7 @@ void World::init()
     assets->AddTexture("Trigger", "assets/ff_adventure_ghost.png");
 
     map = new Map();
-    MapLoader::LoadTiledJsonMap(map, "assets/maps/tmw_desert.json", 1);
+    MapLoader::LoadTiledJsonMap(map, "assets/maps/tmw_desert_map.json", 1);
 
    /* Map* map = new Map("terrain", CONSTANTS_STANDARD_MAP_SCALE);
     unordered_map<string, int> mapDimensions = map->LoadTiledJsonMap("assets/tiles/tiled-desert-test-32x32.json");

@@ -140,6 +140,7 @@
     <ClCompile Include="src\states\State.cpp" />
     <ClCompile Include="src\states\StateManager.cpp" />
     <ClCompile Include="src\utils\Collision.cpp" />
+    <ClCompile Include="src\utils\StringHelper.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />
     <ClCompile Include="src\worlds\World.cpp" />
   </ItemGroup>
@@ -174,6 +175,7 @@
     <ClInclude Include="src\states\State.h" />
     <ClInclude Include="src\states\StateManager.h" />
     <ClInclude Include="src\utils\Collision.h" />
+    <ClInclude Include="src\utils\StringHelper.h" />
     <ClInclude Include="src\utils\Vector2D.h" />
     <ClInclude Include="src\worlds\World.h" />
   </ItemGroup>
@@ -181,6 +183,7 @@
     <None Include=".gitignore" />
     <None Include="assets\maps\tiled-desert-test-32x32.json" />
     <None Include="assets\maps\tiled_test.json" />
+    <None Include="assets\maps\tmw_desert_map.json" />
     <None Include="CMakeSettings_backup.json" />
     <None Include="README_old.md" />
   </ItemGroup>

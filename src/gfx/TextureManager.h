@@ -9,10 +9,13 @@
 #pragma once
 
 #include "SDL2/SDL.h"
+#include <string>
+
+using namespace std;
 
 class TextureManager
 {
 public:
-    static SDL_Texture* LoadTexture(const char* fullpath);
+    static SDL_Texture* LoadTexture(string fullpath);
     static void Draw(SDL_Texture* tex, SDL_Rect src, SDL_Rect dest, SDL_RendererFlip flip);
 };

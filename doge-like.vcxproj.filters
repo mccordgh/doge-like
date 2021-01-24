@@ -81,6 +81,9 @@
     <ClCompile Include="src\maps\layers\TileLayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\utils\StringHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GameConstants.h">
@@ -179,6 +182,9 @@
     <ClInclude Include="src\maps\tiles\TileObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\utils\StringHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
@@ -186,6 +192,7 @@
     <None Include="README_old.md" />
     <None Include="assets\maps\tiled-desert-test-32x32.json" />
     <None Include="assets\maps\tiled_test.json" />
+    <None Include="assets\maps\tmw_desert_map.json" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />

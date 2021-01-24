@@ -9,7 +9,7 @@ class TileSheet
 {
 public:
 	int columns;
-	string imagePath;
+	string imageName;
 	int imageHeight;
 	int imageWidth;
 	int margin;
@@ -21,4 +21,5 @@ public:
 	int tilesWidth;
 	string type;
 	string version;
+	string textureId;
 };

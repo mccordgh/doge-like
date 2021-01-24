@@ -41,7 +41,11 @@ void ColliderComponent::init()
 
     transform = &entity->getComponent<TransformComponent>();
 
-    texture = TextureManager::LoadTexture("assets/tiles/collision_texture.png");
+    if (drawTexture)
+    {
+        texture = TextureManager::LoadTexture("assets/tiles/collision_texture.png");
+    }
+
     srcRect = { 0, 0, CONSTANTS_STANDARD_TILE_SIZE, CONSTANTS_STANDARD_TILE_SIZE };
     destRect = { collider.x, collider.y, collider.w, collider.h };
 }

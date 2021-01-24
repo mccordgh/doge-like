@@ -13,20 +13,22 @@
 #include <iostream>
 //#include "ECS/ECS.h"
 
+using namespace std;
+
 class AssetManager
 {
 public:
     AssetManager();
     ~AssetManager();
-    
+
     //game objects
-    //void CreateProjectile(std::string id, Vector2D pos, Vector2D velocity, int range, int speed);
+    //void CreateProjectile(string id, Vector2D pos, Vector2D velocity, int range, int speed);
 
     //texture management
-    void AddTexture(std::string id, const char* path);
+    void AddTexture(string id, string path);
 
-    SDL_Texture* GetTexture(std::string id);
+    SDL_Texture* GetTexture(string id);
 
 private:
-    std::unordered_map<std::string, SDL_Texture*> textures;
+    unordered_map<string, SDL_Texture*> textures;
 };

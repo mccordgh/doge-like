@@ -18,4 +18,6 @@ class MapLoader
 {
 public:
     static void LoadTiledJsonMap(Map* map, std::string path, int scaledSize);
+    static void loadMapData(Map* map, json mapJson, int scaledSize, unordered_map<int, vector<TileObject>>& tileObjectDict);
+    static void loadTileData(Map* map, json mapJson, unordered_map<int, vector<TileObject>>& tileObjectDict);
 };
