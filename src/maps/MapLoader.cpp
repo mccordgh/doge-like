@@ -55,14 +55,18 @@ void MapLoader::LoadTiledJsonMap(Map* map, string path, int scaledSize)
 void MapLoader::loadTileData(Map* map, json mapJson, unordered_map<int, vector<TileObject>>& tileObjectDict)
 {
     // Loading in all the data for the tilesets for later use when creating Tile entities below
-    //for (auto& set : mapJson["tilesets"])
     vector<json> tilesets = mapJson["tilesets"].get<vector<json>>();
     for (vector<json>::reverse_iterator it = tilesets.rbegin(); it != tilesets.rend(); ++it)
     {
         json set = *it;
+
          // Tileset is part of the map json data it contains the first tile id in the set, and the path to the tile json data source
         TileSet tileSet;
-        tileSet.firstId = static_cast<int>(set["firstgid"].get<double>());
+
+        // Each tile id in this array is increased by 1 for some reason (starts at 1 instead of 0 like it does in the tileset data)
+        // so we have to compensate.... >:(
+        tileSet.firstId = static_cast<int>(set["firstgid"].get<double>()) - 1;
+
         // if this is the first item while running through reverse iteration of tilesets set lastId to -1 otherwise set it to the previous items firstId - 1
         tileSet.lastId = map->tileSets.empty() ? -1 : map->tileSets.end()[-1].firstId - 1;
 
@@ -203,7 +207,11 @@ void MapLoader::loadMapData(Map* map, json mapJson, int scaledSize, unordered_ma
                 // "data" key aka tiles property will be converted to in game tile entities
                 for (int const item : layerJson["data"])
                 {
-                    //srcX, srcY, xpos, ypos, tileSize, mapScale* parallax, tileSheetId, parallax
+                    // no tile exists here
+                    if (item == 0)
+                    {
+                        continue;
+                    }
 
                     // Each tile id in this array is increased by 1 for some reason (starts at 1 instead of 0 like it does in the tileset data)
                     // so we have to compensate.... >:(
@@ -213,18 +221,20 @@ void MapLoader::loadMapData(Map* map, json mapJson, int scaledSize, unordered_ma
                     int srcY = id * map->tileHeight;
 
                     auto it = find_if(
-                        map->tileSets.begin(),
-                        map->tileSets.end(),
+                        map->tileSets.rbegin(),
+                        map->tileSets.rend(),
                         [&id](const TileSet& tileset)
                         {
+                            // if lastId is -1 then this is the final tileset so it will have had a lastId of -1 assigned to it
+                            bool partOfLastTileSet = tileset.lastId == -1 && id >= tileset.firstId;
 
-                            return tileset.lastId == -1 // if lastId is -1 then this is the final tileset so it will have had a lastId of -1 assigned to it
-                                ? tileset.firstId >= id
-                                : tileset.firstId >= id && tileset.lastId <= id; // this is assuming a lastId exists, but it won't for the final tileset which will have a -1 as lastId.
+                            return partOfLastTileSet
+                                ? true
+                                : id >= tileset.firstId && id <= tileset.lastId;
                         }
                     );
 
-                    if (it == map->tileSets.end())
+                    if (it == map->tileSets.rend())
                     {
                         throw runtime_error(string("no tileset found with id range"));
                     }
@@ -235,7 +245,7 @@ void MapLoader::loadMapData(Map* map, json mapJson, int scaledSize, unordered_ma
 
                     // ONCE AGAIN ASSUMING TILES HAVE EQUAL WIDTH AND HEIGHT HERE PASSING IN TILESIZE
                     // ALSO TODO: Use scaled size again instead of hardcoded 1?
-                    newLayer.AddTile(set.tileSheet.textureId, srcX, srcY, xpos, ypos, map->tileHeight, 1, 1);\
+                    newLayer.AddTile(set.tileSheet.textureId, srcX, srcY, xpos, ypos, map->tileHeight, 1, 1);
 
                     tileCount++;
                 }
