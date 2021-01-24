@@ -191,6 +191,8 @@
     <Text Include="CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\32x32_ff_adventure_knight.png" />
+    <Image Include="assets\32x32_trigger.png" />
     <Image Include="assets\tiles\some_clouds.png" />
     <Image Include="assets\tiles\testing_tiles_draw_and_dont_overlap.png" />
     <Image Include="assets\tiles\tmw_desert.png" />

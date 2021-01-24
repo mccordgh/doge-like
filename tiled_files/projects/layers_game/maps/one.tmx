@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.4" tiledversion="2020.12.18" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="9">
  <editorsettings>
-  <export target="../../../../assets/maps/one.json" format="json"/>
+  <export target="../../../../assets/maps/tmw_desert.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" source="../../../../assets/tiles/tmw_desert.json"/>
  <tileset firstgid="49" source="../../../../assets/tiles/some_clouds.json"/>
@@ -63,7 +63,7 @@
 </data>
   </layer>
  </group>
- <group id="2" name="Ground">
+ <group id="2" name="Ground" offsetx="86" offsety="832">
   <layer id="1" name="Ground tiles" width="50" height="40">
    <data encoding="csv">
 25,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,
@@ -119,7 +119,7 @@
      <property name="moveTo" type="object" value="1"/>
     </properties>
    </object>
-   <object id="8" name="PlayerSpawn" type="PlayerSpawn" x="894.667" y="992.667" width="33.3333" height="30" visible="0"/>
+   <object id="8" name="Player" type="Player" x="894.667" y="992.667" width="33.3333" height="30" visible="0"/>
   </objectgroup>
  </group>
  <group id="3" name="Sky" visible="0" parallaxx="1.5" parallaxy="1.5">

@@ -48,9 +48,9 @@ std::vector<Entity*>& EntityManager::getGroup(Group mGroup)
     return groupedEntities[mGroup];
 }
 
-Entity* EntityManager::addEntity()
+Entity* EntityManager::addEntity(std::string type = "")
 {
-    Entity* e = new Entity();
+    Entity* e = new Entity(type);
     std::unique_ptr<Entity> uPtr{ e };
 
     entities.emplace_back(std::move(uPtr));

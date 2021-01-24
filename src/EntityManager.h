@@ -2,7 +2,10 @@
 
 #include <vector>
 #include <array>
+#include <string>
 #include "ECS/ECS.h"
+
+using namespace std;
 
 class EntityManager
 {
@@ -33,7 +36,7 @@ public:
 
     std::vector<Entity*>& getGroup(Group mGroup);
 
-    Entity* addEntity();
+    Entity* addEntity(string name);
 
 private:
     std::vector<std::unique_ptr<Entity>> entities;

@@ -4,7 +4,7 @@
      "export":
         {
          "format":"json",
-         "target":"one.json"
+         "target":"tmw_desert.json"
         }
     },
  "height":40,
@@ -73,7 +73,7 @@
          "name":"Underground",
          "opacity":1,
          "type":"group",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -134,9 +134,9 @@
                         {
                          "height":30,
                          "id":8,
-                         "name":"PlayerSpawn",
+                         "name":"Player",
                          "rotation":0,
-                         "type":"PlayerSpawn",
+                         "type":"Player",
                          "visible":false,
                          "width":33.3333,
                          "x":894.667,
@@ -149,6 +149,8 @@
                  "y":0
                 }],
          "name":"Ground",
+         "offsetx":86,
+         "offsety":832,
          "opacity":1,
          "type":"group",
          "visible":true,
@@ -177,7 +179,7 @@
          "parallaxx":1.5,
          "parallaxy":1.5,
          "type":"group",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],

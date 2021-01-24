@@ -14,6 +14,7 @@
 #include <algorithm>
 #include <bitset>
 #include <array>
+#include <string>
 
 #include "GameConstants.h"
 
@@ -65,7 +66,9 @@ public:
 class Entity
 {
 public:
-    Entity();
+    Entity(std::string type);
+
+    std::string tag;
 
     void update();
     void draw();

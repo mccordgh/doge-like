@@ -5,7 +5,7 @@
 
 void TileLayer::AddTile(string tileSheetId, int srcX, int srcY, int xpos, int ypos, int tileSize, int mapScale, double parallax)
 {
-    Entity* tile = World::entityManager->addEntity();
+    Entity* tile = World::entityManager->addEntity("Tile");
 
     tile->addComponent<TileComponent>(srcX, srcY, xpos, ypos, tileSize, mapScale * parallax, tileSheetId, parallax);
     tile->addGroup(World::entityManager->groupTiles);

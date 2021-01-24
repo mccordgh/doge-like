@@ -29,8 +29,8 @@ SDL_Texture* TextureManager::LoadTexture(string fullpath)
 
     char buff[FILENAME_MAX];
     //getcwd(buff, FILENAME_MAX);
-    std::string currentDir(buff);
-    std::cout << currentDir << std::endl;
+    //std::string currentDir(buff);
+    //std::cout << currentDir << std::endl;
 
     SDL_Surface* tempSurface = IMG_Load(fullpath.c_str());
 

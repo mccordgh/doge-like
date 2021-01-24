@@ -44,7 +44,11 @@ Component::~Component() {}
 
 
 /* ENTITY */
-Entity::Entity() : active(true) {}
+Entity::Entity(std::string type)
+{
+    active = true;
+    tag = type;
+}
 
 void Entity::update()
 {

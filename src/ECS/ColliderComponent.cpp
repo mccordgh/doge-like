@@ -19,7 +19,7 @@ ColliderComponent::ColliderComponent(std::string t)
 {
     tag = t;
 
-    drawTexture = true;
+    drawTexture = false;
 }
 
 ColliderComponent::ColliderComponent(std::string t, int xpos, int ypos, int size)
@@ -30,7 +30,7 @@ ColliderComponent::ColliderComponent(std::string t, int xpos, int ypos, int size
     collider.y = ypos;
     collider.h = collider.w = size;
 
-    drawTexture = true;
+    drawTexture = false;
 }
 
 void ColliderComponent::init()
