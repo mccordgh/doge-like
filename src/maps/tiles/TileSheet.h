@@ -18,8 +18,10 @@ public:
 	int tileCount;
 	int tileHeight;
 	vector<TileWithObjects> tiles;
-	int tilesWidth;
+	int tileWidth;
 	string type;
 	string version;
 	string textureId;
+	int tilesHigh;
+	int tilesWide;
 };

@@ -44,8 +44,10 @@ void MapLoader::LoadTiledJsonMap(Map* map, string path, int scaledSize)
     map->type = mapJson["type"].get<string>();
  /*   map->height = static_cast<int>(mapJson["height"].get<double>()) * map->tileHeight * scaledSize;
     map->width = static_cast<int>(mapJson["width"].get<double>()) * map->tileWidth * scaledSize;*/
-    map->height = static_cast<int>(mapJson["height"].get<double>()) * map->tileHeight;
-    map->width = static_cast<int>(mapJson["width"].get<double>()) * map->tileWidth;
+    map->tilesHigh = static_cast<int>(mapJson["height"].get<double>());
+    map->tilesWide = static_cast<int>(mapJson["width"].get<double>());
+    map->height = map->tilesHigh * map->tileHeight;
+    map->width = map->tilesWide * map->tileWidth;
 
     loadTileData(map, mapJson, tileObjectDict);
 
@@ -82,7 +84,9 @@ void MapLoader::loadTileData(Map* map, json mapJson, unordered_map<int, vector<T
         tileSheet.name = tileJson["name"].get<string>();
         tileSheet.tileCount = static_cast<int>(tileJson["tilecount"].get<double>());
         tileSheet.tileHeight = static_cast<int>(tileJson["tileheight"].get<double>());
-        tileSheet.tilesWidth = static_cast<int>(tileJson["tilewidth"].get<double>());
+        tileSheet.tileWidth = static_cast<int>(tileJson["tilewidth"].get<double>());
+        tileSheet.tilesHigh = tileSheet.imageHeight / tileSheet.tileHeight;
+        tileSheet.tilesWide = tileSheet.imageWidth / tileSheet.tileWidth;
         tileSheet.type = tileJson["type"].get<string>();
 
         tileSheet.textureId = StringHelper::getSubStringBeforeCharacter(tileSheet.imageName, '.');
@@ -204,21 +208,27 @@ void MapLoader::loadMapData(Map* map, json mapJson, int scaledSize, unordered_ma
                 newLayer.y = static_cast<int>(layerJson["y"].get<double>());
 
                 int tileCount = 0;
+                int tileRow = 0;
+               /* int tileSheetCount = 0;
+                int tileSheetRow = 0;*/
                 // "data" key aka tiles property will be converted to in game tile entities
                 for (int const item : layerJson["data"])
                 {
                     // no tile exists here
                     if (item == 0)
                     {
+                        tileCount++;
+
+                        if (tileCount % map->tilesWide == 0)
+                        {
+                            tileRow++;
+                        }
                         continue;
                     }
 
                     // Each tile id in this array is increased by 1 for some reason (starts at 1 instead of 0 like it does in the tileset data)
                     // so we have to compensate.... >:(
                     int id = item - 1;
-
-                    int srcX = id * map->tileWidth;
-                    int srcY = id * map->tileHeight;
 
                     auto it = find_if(
                         map->tileSets.rbegin(),
@@ -240,14 +250,38 @@ void MapLoader::loadMapData(Map* map, json mapJson, int scaledSize, unordered_ma
                     }
 
                     TileSet set = *it;
-                    int xpos = (tileCount % map->width) * map->tileWidth;
-                    int ypos = (tileCount % map->height) * map->tileHeight;
+
+                    // if this is true then we need to offset the id to correctly work with another tilesheet
+                    // Example: ID 49 may actually refer to the first tile in a second, third, or later tilesheet in which case id needs to offset back to 0 for the first tile
+                    // If firstId is > 0 then we are on a tilesheet after the first tilesheet
+                    if (set.firstId > 0)
+                    {
+                        id -= set.firstId;
+                    }
+
+                    int srcX = (id % set.tileSheet.tilesWide) * set.tileSheet.tileWidth;
+                    int srcY = id == 0 ? 0 : (id / set.tileSheet.tilesWide) * set.tileSheet.tileHeight;
+
+                   /* tileSheetCount++;
+
+                    if (tileSheetCount % set.tileSheet.tilesWide == 0)
+                    {
+                        tileSheetRow++;
+                    }*/
+
+                    int xpos = (tileCount % map->tilesWide) * map->tileWidth;
+                    int ypos = (tileRow % map->tilesHigh) * map->tileHeight;
 
                     // ONCE AGAIN ASSUMING TILES HAVE EQUAL WIDTH AND HEIGHT HERE PASSING IN TILESIZE
                     // ALSO TODO: Use scaled size again instead of hardcoded 1?
                     newLayer.AddTile(set.tileSheet.textureId, srcX, srcY, xpos, ypos, map->tileHeight, 1, 1);
 
                     tileCount++;
+
+                    if (tileCount % map->tilesWide == 0)
+                    {
+                        tileRow++;
+                    }
                 }
 
                 layerGroup.tileLayers.emplace_back(newLayer);

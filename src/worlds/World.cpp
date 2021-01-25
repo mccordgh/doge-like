@@ -75,6 +75,8 @@ void World::draw()
 
     for (LayerGroup group : map->layerGroups)
     {
+        //if (group.name != "Sky") continue;
+
         for (TileLayer layer : group.tileLayers)
         {
             for (Entity* tile : layer.tiles)

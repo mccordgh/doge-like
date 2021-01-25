@@ -14,4 +14,6 @@ public:
 	bool visible;
 	int x;
 	int y;
+	int parallaxX;
+	int parallaxY;
 };

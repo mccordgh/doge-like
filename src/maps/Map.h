@@ -20,4 +20,6 @@ public:
 	int tileWidth;
 	string type;
 	int width;
+	int tilesWide;
+	int tilesHigh;
 };
