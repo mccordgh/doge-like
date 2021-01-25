@@ -161,8 +161,10 @@ void MapLoader::loadMapData(Map* map, json mapJson, int scaledSize, unordered_ma
         layerGroup.visible = group["visible"].get<bool>();
         layerGroup.x = static_cast<int>(group["x"].get<double>());
         layerGroup.y = static_cast<int>(group["y"].get<double>());
+        layerGroup.parallaxX = group.find("parallaxx") == group.end() ? 1.00 : group["parallaxx"].get<double>();
+        //layerGroup.parallaxX = 1.00;
 
-        // "layers" key here will be actual layers of type "objectgroup" or "tilelayer" (other possiblities we arent using yet as well come from Tiled)
+        // "layers" key here will be actual layers of type "objectgroup" or "tilelayer" (other possiblities we arent using yet as well can come from Tiled)
         for (auto& layerJson : group["layers"])
         {
             string type = layerJson["type"].get<string>();
@@ -189,7 +191,8 @@ void MapLoader::loadMapData(Map* map, json mapJson, int scaledSize, unordered_ma
 
                     //newLayer.AddEntity(type, xpos, ypos, width, height, scaledSize);
                     // TODO Use scaled size again instead of hardcoded 1?
-                    newLayer.AddEntity(type, xpos, ypos, width, height, 1);
+                    // For now just using parallaxX as we dont plan on having different x and y parallax values
+                    newLayer.AddEntity(type, xpos, ypos, width, height, 1, layerGroup.parallaxX);
                 }
 
                 layerGroup.objectLayers.emplace_back(newLayer);
@@ -274,7 +277,8 @@ void MapLoader::loadMapData(Map* map, json mapJson, int scaledSize, unordered_ma
 
                     // ONCE AGAIN ASSUMING TILES HAVE EQUAL WIDTH AND HEIGHT HERE PASSING IN TILESIZE
                     // ALSO TODO: Use scaled size again instead of hardcoded 1?
-                    newLayer.AddTile(set.tileSheet.textureId, srcX, srcY, xpos, ypos, map->tileHeight, 1, 1);
+                    // For now just using parallaxX as we dont plan on having different x and y parallax values
+                    newLayer.AddTile(set.tileSheet.textureId, srcX, srcY, xpos, ypos, map->tileHeight, 1, layerGroup.parallaxX);
 
                     tileCount++;
 

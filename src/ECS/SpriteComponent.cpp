@@ -24,14 +24,14 @@ void SpriteComponent::setValues(bool isAnimated)
     spriteFlip = SDL_FLIP_NONE;
 }
 
-SpriteComponent::SpriteComponent(std::string id)
+SpriteComponent::SpriteComponent(std::string id, double para) : parallax(para)
 {
     setValues(false);
 
     setTexture(id);
 }
 
-SpriteComponent::SpriteComponent(std::string id, bool isAnimated)
+SpriteComponent::SpriteComponent(std::string id, double para, bool isAnimated) : parallax(para)
 {
     setValues(isAnimated);
 
@@ -75,8 +75,10 @@ void SpriteComponent::update()
 
     srcRect.y = animIndex * transform->height;
 
-    destRect.x = static_cast<int>(transform->position.x) - World::camera->xPosition();
-    destRect.y = static_cast<int>(transform->position.y) - World::camera->yPosition();
+    destRect.x = static_cast<int>(transform->position.x) - (World::camera->xPosition() * parallax);
+    destRect.y = static_cast<int>(transform->position.y) - (World::camera->yPosition() * parallax);
+   /* destRect.x = (static_cast<int>(transform->position.x) * parallax) - World::camera->xPosition();
+    destRect.y = (static_cast<int>(transform->position.y) * parallax) - World::camera->yPosition();*/
     destRect.w = transform->width * transform->scale;
     destRect.h = transform->height * transform->scale;
 }

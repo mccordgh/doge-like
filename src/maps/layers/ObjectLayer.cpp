@@ -3,12 +3,12 @@
 #include "worlds/World.h"
 #include "ECS/Components.h"
 
-void ObjectLayer::AddEntity(string type, int xpos, int ypos, int width, int height, int scale)
+void ObjectLayer::AddEntity(string type, int xpos, int ypos, int width, int height, int scale, double parallax)
 {
     Entity* entity = World::entityManager->addEntity(type);
 
     entity->addComponent<TransformComponent>(xpos, ypos, width, height, scale);
-    entity->addComponent<SpriteComponent>(type, true);
+    entity->addComponent<SpriteComponent>(type, parallax, true);
     entity->addComponent<ColliderComponent>(type);
 
     if (type == "Player")

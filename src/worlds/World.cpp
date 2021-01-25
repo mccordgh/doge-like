@@ -76,20 +76,25 @@ void World::draw()
     for (LayerGroup group : map->layerGroups)
     {
         //if (group.name != "Sky") continue;
-
-        for (TileLayer layer : group.tileLayers)
+        if (group.visible)
         {
-            for (Entity* tile : layer.tiles)
+            for (TileLayer layer : group.tileLayers)
             {
-                tile->draw();
+                if (layer.visible)
+                {
+                    for (Entity* tile : layer.tiles)
+                    {
+                        tile->draw();
+                    }
+                }
             }
-        }
 
-        for (ObjectLayer layer : group.objectLayers)
-        {
-            for (Entity* entity : layer.entities)
+            for (ObjectLayer layer : group.objectLayers)
             {
-                entity->draw();
+                for (Entity* entity : layer.entities)
+                {
+                    entity->draw();
+                }
             }
         }
     }

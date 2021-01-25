@@ -22,10 +22,11 @@ public:
     std::map<const char*, Animation> animations;
 
     SDL_RendererFlip spriteFlip;
+    double parallax;
 
     SpriteComponent();
-    SpriteComponent(std::string id);
-    SpriteComponent(std::string id, bool isAnimated);
+    SpriteComponent(std::string id, double parallax);
+    SpriteComponent(std::string id, double parallax, bool isAnimated);
 
     ~SpriteComponent();
 

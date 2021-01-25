@@ -21,4 +21,6 @@ public:
 	bool visible;
 	int x;
 	int y;
+	double parallaxX;
+	//double parallaxY;
 };
